@@ -19,19 +19,19 @@
         android:id="@+id/main_screen_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pelo bem-estar do seu melhor amigo"
-        android:fontFamily="@font/signika_semibold"
-        android:textSize="20sp"
-        android:textAlignment="center"
         android:width="196dp"
-        android:textColor="@color/gray"/>
+        android:fontFamily="@font/signika_semibold"
+        android:text="Pelo bem-estar do seu melhor amigo"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/main_screen_login_button"
         style="@style/main_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ENTRAR" />
+        android:text="@string/login" />
 
     <Button
         android:id="@+id/main_screen_signup_button"

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PetsUp</string>
+    <string name="login">ENTRAR</string>
+    <string name="signup">CADASTRAR</string>
+    <string name="go_back">Voltar</string>
+    <string name="go_forward">Continuar</string>
+    <string name="confirm">CONFIRMAR</string>
 </resources>
