@@ -5,8 +5,8 @@
         <item name="android:fontFamily">@font/signika_semibold</item>
         <item name="android:textSize">16sp</item>
         <item name="color">@color/white</item>
-        <item name="backgroundTint">#F49C63</item>
-        <item name="android:width">324dp</item>
+        <item name="backgroundTint">@color/orange</item>
+        <item name="android:width">328dp</item>
         <item name="android:height">40dp</item>
         <item name="cornerRadius">2dp</item>
         <item name="android:layout_marginTop">8dp</item>
@@ -17,9 +17,27 @@
         <item name="android:fontFamily">@font/signika_semibold</item>
         <item name="android:textSize">16sp</item>
         <item name="color">@color/white</item>
-        <item name="backgroundTint">#7E2C61</item>
-        <item name="android:width">324dp</item>
+        <item name="backgroundTint">@color/purple</item>
+        <item name="android:width">328dp</item>
         <item name="android:height">40dp</item>
         <item name="cornerRadius">2dp</item>
+    </style>
+
+    <style name="default_edit_text">
+        <item name="android:padding">8dp</item>
+        <item name="android:width">328dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/signika</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="default_title_text_view">
+        <item name="fontFamily">@font/signika_semibold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="default_forms_text_view">
+        <item name="fontFamily">@font/signika_semibold</item>
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>
