@@ -8,23 +8,26 @@
         android:id="@+id/arrow_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
         android:src="@drawable/arrow_back" />
 
     <ImageView
         android:id="@+id/petsup_icon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:src="@drawable/petsup_icon" />
 
     <TextView
-        android:layout_alignBottom="@id/petsup_icon"
         android:id="@+id/title_signup_text_view"
         style="@style/default_title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/petsup_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="16dp"
         android:text="Faça seu cadastro" />
 
     <TextView
@@ -32,22 +35,98 @@
         style="@style/default_forms_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/title_signup_text_view"
+        android:layout_alignLeft="@id/name_edit_text"
         android:text="Nome" />
 
     <EditText
-        android:id="@+id/edit_text_name"
+        android:id="@+id/name_edit_text"
         style="@style/default_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/forms_name_text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/default_edit_text_background"
         android:hint="Digite seu nome aqui" />
+
+    <TextView
+        android:id="@+id/forms_email_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="E-mail" />
+
 
     <EditText
         android:id="@+id/edit_text_email"
         style="@style/default_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/forms_email_text_view"
+        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/default_edit_text_background"
         android:hint="Digite seu e-mail aqui" />
+
+    <TextView
+        android:id="@+id/forms_password_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text_email"
+        android:layout_alignStart="@id/edit_text_email"
+        android:text="Senha" />
+
+    <EditText
+        android:id="@+id/password_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_password_text_view"
+        android:layout_alignStart="@id/forms_password_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background"
+        android:hint="@string/hidden_password" />
+
+    <TextView
+        android:id="@+id/forms_password_confirmation_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password_edit_text"
+        android:layout_alignStart="@id/password_edit_text"
+        android:text="Confirmar senha" />
+
+    <EditText
+        android:id="@+id/password_confirmation_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_password_confirmation_text_view"
+        android:layout_alignStart="@id/forms_password_confirmation_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background"
+        android:hint="@string/hidden_password" />
+
+    <Button
+        android:id="@+id/signup_button"
+        style="@style/main_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password_confirmation_edit_text"
+        android:layout_alignStart="@id/password_confirmation_edit_text"
+        android:text="@string/signup" />
+
+    <Button
+        android:id="@+id/redirect_to_login_button"
+        style="@style/secondary_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signup_button"
+        android:layout_alignStart="@id/signup_button"
+        android:text="Já possuo cadastro" />
 
 </RelativeLayout>
