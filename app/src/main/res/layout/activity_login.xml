@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/arrow_back"
@@ -21,42 +20,22 @@
         android:src="@drawable/petsup_icon" />
 
     <TextView
-        android:id="@+id/title_signup_text_view"
+        android:id="@+id/title_login_text_view"
         style="@style/default_title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/petsup_icon"
         android:layout_centerHorizontal="true"
         android:layout_marginVertical="16dp"
-        android:text="Faça seu cadastro" />
-
-    <TextView
-        android:id="@+id/forms_name_text_view"
-        style="@style/default_forms_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title_signup_text_view"
-        android:layout_alignLeft="@id/name_edit_text"
-        android:text="Nome" />
-
-    <EditText
-        android:id="@+id/name_edit_text"
-        style="@style/default_edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/forms_name_text_view"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/default_edit_text_background"
-        android:hint="Digite seu nome aqui" />
+        android:text="Bem-vindo de volta!" />
 
     <TextView
         android:id="@+id/forms_email_text_view"
         style="@style/default_forms_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/name_edit_text"
-        android:layout_alignStart="@id/name_edit_text"
+        android:layout_below="@id/title_login_text_view"
+        android:layout_alignStart="@id/email_edit_text"
         android:text="E-mail" />
 
 
@@ -66,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/forms_email_text_view"
-        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:background="@drawable/default_edit_text_background"
         android:hint="Digite seu e-mail aqui" />
@@ -87,46 +66,38 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/forms_password_text_view"
         android:layout_alignStart="@id/forms_password_text_view"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="12dp"
         android:background="@drawable/default_edit_text_background"
         android:hint="@string/hidden_password" />
 
     <TextView
-        android:id="@+id/forms_password_confirmation_text_view"
-        style="@style/default_forms_text_view"
+        android:id="@+id/forgot_password_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/password_edit_text"
-        android:layout_alignStart="@id/password_edit_text"
-        android:text="Confirmar senha" />
-
-    <EditText
-        android:id="@+id/password_confirmation_edit_text"
-        style="@style/default_edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/forms_password_confirmation_text_view"
-        android:layout_alignStart="@id/forms_password_confirmation_text_view"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/default_edit_text_background"
-        android:hint="@string/hidden_password" />
+        android:layout_alignEnd="@id/password_edit_text"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/signika"
+        android:text="Esqueci minha senha"
+        android:textColor="@color/orange"
+        android:textSize="14sp" />
 
     <Button
-        android:id="@+id/signup_button"
+        android:id="@+id/login_button"
         style="@style/main_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/password_confirmation_edit_text"
-        android:layout_alignStart="@id/password_confirmation_edit_text"
-        android:text="@string/signup" />
+        android:layout_below="@id/forgot_password_text_view"
+        android:layout_alignStart="@id/password_edit_text"
+        android:text="@string/login" />
 
     <Button
-        android:id="@+id/redirect_to_login_button"
+        android:id="@+id/redirect_to_signup_button"
         style="@style/secondary_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/signup_button"
-        android:layout_alignStart="@id/signup_button"
-        android:text="Já possuo cadastro" />
+        android:layout_below="@id/login_button"
+        android:layout_alignStart="@id/login_button"
+        android:text="Criar uma conta" />
 
 </RelativeLayout>
