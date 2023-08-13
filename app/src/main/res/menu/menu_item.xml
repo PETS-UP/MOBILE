@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_button"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Início" />
+
+    <item
+        android:id="@+id/search_button"
+        android:icon="@drawable/baseline_search_24"
+        android:title="Buscar" />
+
+    <item
+        android:id="@+id/my_pets_button"
+        android:icon="@drawable/baseline_pets_24"
+        android:title="Meus pets" />
+
+    <item
+        android:id="@+id/calendar_button"
+        android:icon="@drawable/baseline_calendar_month_24"
+        android:title="Agenda" />
+
+    <item
+        android:id="@+id/profile_button"
+        android:icon="@drawable/baseline_person_24"
+        android:title="Perfil" />
+</menu>
