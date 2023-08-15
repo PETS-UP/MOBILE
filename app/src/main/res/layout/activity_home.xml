@@ -11,11 +11,29 @@
 
     <Button
         android:id="@+id/search_button"
-        style="@style/search_button"
+        style="@style/vertical_button_with_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Buscar"
-        android:layout_alignParentEnd="true" />
+        android:layout_toLeftOf="@id/filter_button"
+        android:drawableTop="@drawable/baseline_search_24"
+        android:text="Buscar" />
+
+    <Button
+        android:id="@+id/filter_button"
+        style="@style/vertical_button_with_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:drawableTop="@drawable/baseline_filter_alt_24"
+        android:text="Filtrar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/default_title_text_view"
+        android:textColor="@color/purple"
+        android:text="Pet shops"
+        android:layout_below="@id/petsup_icon"
 
     <include layout="@layout/bottom_menu" />
 

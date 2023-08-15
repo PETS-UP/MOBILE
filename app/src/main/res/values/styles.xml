@@ -35,11 +35,10 @@
         <item name="cornerRadius">2dp</item>
     </style>
 
-    <style name="search_button">
-        <item name="android:drawableTop">@drawable/baseline_search_24</item>
+    <style name="vertical_button_with_icon">
         <item name="fontFamily">@font/signika</item>
         <item name="android:textSize">10sp</item>
-        <item name="android:width">64dp</item>
+        <item name="android:width">32dp</item>
         <item name="android:height">64dp</item>
         <item name="backgroundTint">@color/white</item>
         <item name="android:textColor">@color/black</item>
