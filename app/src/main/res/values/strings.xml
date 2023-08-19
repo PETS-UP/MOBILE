@@ -6,4 +6,7 @@
     <string name="go_forward">Continuar</string>
     <string name="confirm">CONFIRMAR</string>
     <string name="hidden_password">*******</string>
+    <string name="services">• Banho e Tosa</string>
+    <string name="status_open">• Aberto</string>
+    <string name="status_closed">• Fechado</string>
 </resources>
