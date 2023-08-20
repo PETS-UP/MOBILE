@@ -13,6 +13,16 @@
         <item name="android:layout_marginBottom">8dp</item>
     </style>
 
+    <style name="small_main_action_button">
+        <item name="android:fontFamily">@font/signika_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/orange</item>
+        <item name="android:width">152dp</item>
+        <item name="android:height">40dp</item>
+        <item name="cornerRadius">2dp</item>
+    </style>
+
     <style name="main_action_alternate_button">
         <item name="android:fontFamily">@font/signika_semibold</item>
         <item name="android:textSize">16sp</item>
@@ -31,6 +41,18 @@
         <item name="strokeColor">@color/purple</item>
         <item name="strokeWidth">2dp</item>
         <item name="android:width">328dp</item>
+        <item name="android:height">40dp</item>
+        <item name="cornerRadius">2dp</item>
+    </style>
+
+    <style name="small_secondary_action_button">
+        <item name="android:fontFamily">@font/signika_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/purple</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="strokeColor">@color/purple</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:width">152dp</item>
         <item name="android:height">40dp</item>
         <item name="cornerRadius">2dp</item>
     </style>
@@ -63,9 +85,21 @@
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="default_subtitle_text_view">
+        <item name="fontFamily">@font/signika_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/purple</item>
+    </style>
+
     <style name="default_forms_text_view">
         <item name="fontFamily">@font/signika_semibold</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="default_description_text_view">
+        <item name="fontFamily">@font/signika</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/darker_gray</item>
     </style>
 
     <style name="gray_description_text_view">
@@ -85,9 +119,21 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/orange</item>
     </style>
-    
-    <style name="pet_shop_card_view">
+
+    <style name="default_card_view">
         <item name="cardBackgroundColor">@color/lighter_gray</item>
         <item name="cardCornerRadius">4dp</item>
+    </style>
+
+    <style name="default_card_title">
+        <item name="fontFamily">@font/signika_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="default_card_subtitle">
+        <item name="fontFamily">@font/signika_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

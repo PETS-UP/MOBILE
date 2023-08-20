@@ -51,7 +51,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/pet_shop_card_view_1"
-        style="@style/pet_shop_card_view"
+        style="@style/default_card_view"
         android:layout_width="match_parent"
         android:layout_height="104dp"
         android:layout_below="@id/section_title"
@@ -111,16 +111,17 @@
                 app:layout_constraintTop_toBottomOf="@id/card_services_1" />
 
             <ImageView
+                android:id="@+id/grade_image_view_1"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="2dp"
                 android:src="@drawable/star_icon"
-                app:layout_constraintEnd_toStartOf="@id/grade_text_view"
+                app:layout_constraintEnd_toStartOf="@id/grade_text_view_1"
                 app:layout_constraintTop_toTopOf="@id/card_title_1" />
 
             <TextView
-                android:id="@+id/grade_text_view"
+                android:id="@+id/grade_text_view_1"
                 style="@style/grade_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,11 +136,10 @@
                 android:layout_height="24dp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/favorite_icon"
-                app:layout_constraintStart_toStartOf="@id/grade_text_view"
-                app:layout_constraintTop_toBottomOf="@id/grade_text_view" />
+                app:layout_constraintStart_toStartOf="@id/grade_text_view_1"
+                app:layout_constraintTop_toBottomOf="@id/grade_text_view_1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.cardview.widget.CardView>
 
