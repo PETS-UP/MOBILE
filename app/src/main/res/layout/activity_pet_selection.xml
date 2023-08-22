@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/pet_selection_box"
-        android:layout_marginStart="19dp"
+        android:layout_marginStart="20dp"
         android:layout_toEndOf="@id/return_button"
         android:text="@string/go_forward" />
 

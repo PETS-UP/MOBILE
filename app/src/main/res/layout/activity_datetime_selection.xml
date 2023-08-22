@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/booking_subtitle"
+        style="@style/default_subtitle_text_view"
+        android:layout_width="372dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Selecione a data e horário do atendimento"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/date_text_view"
+        style="@style/default_card_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/booking_subtitle"
+        android:text="Data" />
+
+    <TextView
+        android:id="@+id/time_text_view"
+        style="@style/default_card_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/booking_subtitle"
+        android:layout_marginStart="196dp"
+        android:text="Horário" />
+
+    <Button
+        android:id="@+id/date_button"
+        style="@style/picker_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_text_view"
+        android:drawableLeft="@drawable/baseline_calendar_month_24"
+        android:text="dd/MM/yy" />
+
+    <Button
+        android:id="@+id/time_button"
+        style="@style/picker_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time_text_view"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@id/date_button"
+        android:drawableLeft="@drawable/baseline_access_time_24"
+        android:text="hh:mm" />
+
+    <Button
+        android:id="@+id/return_button"
+        style="@style/small_secondary_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time_button"
+        android:text="@string/go_back" />
+
+    <Button
+        android:id="@+id/continue_button"
+        style="@style/small_main_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time_button"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@id/return_button"
+        android:text="@string/go_forward" />
+
+
+</RelativeLayout>

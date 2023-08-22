@@ -80,6 +80,20 @@
         <item name="android:layout_marginBottom">10dp</item>
     </style>
 
+    <style name="picker_button">
+        <item name="android:fontFamily">@font/signika</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="backgroundTint">@color/lighter_gray</item>
+        <item name="strokeColor">@color/light_gray_opacity_reduced</item>
+        <item name="drawableTint">@color/gray</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:width">176dp</item>
+        <item name="android:height">40dp</item>
+        <item name="cornerRadius">2dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
     <style name="default_edit_text">
         <item name="android:padding">8dp</item>
         <item name="android:width">328dp</item>
