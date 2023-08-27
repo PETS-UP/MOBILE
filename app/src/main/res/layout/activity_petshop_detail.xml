@@ -155,7 +155,7 @@
     <Button
         android:id="@+id/return_button"
         style="@style/small_secondary_action_button"
-        android:layout_width="wrap_content"
+        android:layout_width="168dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/go_back"
@@ -165,9 +165,9 @@
     <Button
         android:id="@+id/continue_button"
         style="@style/small_main_action_button"
-        android:layout_width="wrap_content"
+        android:layout_width="168dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:text="@string/go_forward"
         app:layout_constraintStart_toEndOf="@+id/return_button"
         app:layout_constraintTop_toTopOf="@+id/return_button" />

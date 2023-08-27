@@ -94,6 +94,19 @@
         <item name="android:layout_marginBottom">10dp</item>
     </style>
 
+    <style name="payment_button">
+        <item name="fontFamily">@font/signika</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="backgroundTint">@color/lighter_gray</item>
+        <item name="strokeColor">@color/light_gray_opacity_reduced</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:width">168dp</item>
+        <item name="android:height">40dp</item>
+        <item name="cornerRadius">2dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
     <style name="default_edit_text">
         <item name="android:padding">8dp</item>
         <item name="android:width">328dp</item>
@@ -110,6 +123,12 @@
     <style name="default_title_text_view">
         <item name="fontFamily">@font/signika_semibold</item>
         <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="purple_subtitle_text_view">
+        <item name="fontFamily">@font/signika_semibold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/purple</item>
     </style>
 
     <style name="default_subtitle_text_view">
@@ -161,6 +180,30 @@
     <style name="default_card_subtitle">
         <item name="fontFamily">@font/signika_semibold</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="bold_text_view">
+        <item name="fontFamily">@font/signika_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="regular_text_view">
+        <item name="fontFamily">@font/signika</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="bold_price_text_view">
+        <item name="fontFamily">@font/signika_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="regular_price_text_view">
+        <item name="fontFamily">@font/signika</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
 </resources>
