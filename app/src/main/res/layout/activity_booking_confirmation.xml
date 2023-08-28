@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Pet shop: "
+                android:text="@string/unfilled_petshop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,7 +64,7 @@
                 style="@style/bold_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Serviço: "
+                android:text="@string/unfilled_service"
                 app:layout_constraintStart_toStartOf="@id/petshop_title"
                 app:layout_constraintTop_toBottomOf="@id/petshop_title" />
 
@@ -82,7 +82,7 @@
                 style="@style/bold_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pet: "
+                android:text="@string/unfilled_pet"
                 app:layout_constraintStart_toStartOf="@id/service_title"
                 app:layout_constraintTop_toBottomOf="@id/service_title" />
 
@@ -100,7 +100,7 @@
                 style="@style/bold_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Data: "
+                android:text="@string/unfilled_date"
                 app:layout_constraintStart_toStartOf="@id/pet_title"
                 app:layout_constraintTop_toBottomOf="@id/pet_title" />
 
@@ -118,7 +118,7 @@
                 style="@style/bold_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Horário: "
+                android:text="@string/unfilled_time"
                 app:layout_constraintStart_toStartOf="@id/date_title"
                 app:layout_constraintTop_toBottomOf="@id/date_title" />
 
@@ -137,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Valor: "
+                android:text="@string/unfilled_price"
                 app:layout_constraintStart_toStartOf="@id/time_title"
                 app:layout_constraintTop_toBottomOf="@id/time_title" />
 

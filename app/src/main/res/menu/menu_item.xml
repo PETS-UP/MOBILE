@@ -9,12 +9,12 @@
     <item
         android:id="@+id/search_button"
         android:icon="@drawable/baseline_search_24"
-        android:title="Buscar" />
+        android:title="@string/search" />
 
     <item
         android:id="@+id/my_pets_button"
         android:icon="@drawable/baseline_pets_24"
-        android:title="Meus pets" />
+        android:title="@string/mypets" />
 
     <item
         android:id="@+id/calendar_button"

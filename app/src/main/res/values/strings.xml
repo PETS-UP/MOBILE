@@ -20,4 +20,18 @@
     <string name="male">Macho</string>
     <string name="female">Fêmea</string>
     <string name="name">Nome</string>
+    <string name="mydata">Meus dados</string>
+    <string name="mypets">Meus pets</string>
+    <string name="search">Buscar</string>
+    <string name="filter">Filtrar</string>
+    <string name="add_lower_case">Adicionar</string>
+    <string name="date">Data</string>
+    <string name="time">Horário</string>
+    <string name="unfilled_date">Data:</string>
+    <string name="unfilled_time">Horário:</string>
+    <string name="unfilled_petshop">Pet shop:</string>
+    <string name="unfilled_service">Serviço:</string>
+    <string name="unfilled_pet">Pet:</string>
+    <string name="unfilled_price">Valor:</string>
+    <string name="myfavorites">Favoritos</string>
 </resources>

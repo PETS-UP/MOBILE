@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/profile_icon"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/profile_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/edit_button"
+        style="@style/vertical_button_with_icon"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp"
+        android:drawableTop="@drawable/baseline_edit_24"
+        android:text="Editar perfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        style="@style/profile_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Ana Beatriz"
+        app:layout_constraintStart_toStartOf="@id/profile_icon"
+        app:layout_constraintTop_toBottomOf="@id/profile_icon" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/data_card_view"
+        style="@style/default_card_view"
+        android:layout_width="344dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="@id/profile_name"
+        app:layout_constraintTop_toBottomOf="@id/profile_name">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/data_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/file_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/data_title"
+                style="@style/profile_card_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/mydata"
+                app:layout_constraintStart_toEndOf="@id/data_icon"
+                app:layout_constraintTop_toTopOf="@id/data_icon" />
+
+            <TextView
+                android:id="@+id/data_description"
+                style="@style/gray_description_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-mail, telefone, endereço etc."
+                app:layout_constraintStart_toStartOf="@id/data_title"
+                app:layout_constraintTop_toBottomOf="@id/data_title" />
+
+            <ImageView
+                android:id="@+id/data_arrow"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/baseline_keyboard_arrow_right_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pets_card_view"
+        style="@style/default_card_view"
+        android:layout_width="344dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/data_card_view"
+        app:layout_constraintTop_toBottomOf="@id/data_card_view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/pets_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/baseline_pets_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/pets_title"
+                style="@style/profile_card_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/mypets"
+                app:layout_constraintStart_toEndOf="@id/pets_icon"
+                app:layout_constraintTop_toTopOf="@id/pets_icon" />
+
+            <TextView
+                android:id="@+id/pets_description"
+                style="@style/gray_description_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pets cadastrados."
+                app:layout_constraintStart_toStartOf="@id/pets_title"
+                app:layout_constraintTop_toBottomOf="@id/pets_title" />
+
+            <ImageView
+                android:id="@+id/pets_arrow"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/baseline_keyboard_arrow_right_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/favorites_card_view"
+        style="@style/default_card_view"
+        android:layout_width="344dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/pets_card_view"
+        app:layout_constraintTop_toBottomOf="@id/pets_card_view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/favorites_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/favorite_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/favorites_title"
+                style="@style/profile_card_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/myfavorites"
+                app:layout_constraintStart_toEndOf="@id/favorites_icon"
+                app:layout_constraintTop_toTopOf="@id/favorites_icon" />
+
+            <TextView
+                android:id="@+id/favorites_description"
+                style="@style/gray_description_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lista de pet shops favoritados."
+                app:layout_constraintStart_toStartOf="@id/favorites_title"
+                app:layout_constraintTop_toBottomOf="@id/favorites_title" />
+
+            <ImageView
+                android:id="@+id/favorites_arrow"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/baseline_keyboard_arrow_right_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <include layout="@layout/bottom_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
