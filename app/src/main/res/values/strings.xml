@@ -17,4 +17,6 @@
     <string name="cat">Gato</string>
     <string name="rabbit">Coelho</string>
     <string name="rodent">Roedor</string>
+    <string name="male">Macho</string>
+    <string name="female">Fêmea</string>
 </resources>
