@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title_signup_text_view"
         android:layout_alignLeft="@id/name_edit_text"
-        android:text="Nome" />
+        android:text="@string/name" />
 
     <EditText
         android:id="@+id/name_edit_text"

@@ -19,4 +19,5 @@
     <string name="rodent">Roedor</string>
     <string name="male">Macho</string>
     <string name="female">Fêmea</string>
+    <string name="name">Nome</string>
 </resources>
