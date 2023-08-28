@@ -13,4 +13,8 @@
     <string name="shorter_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="empty_pet_list_message">Parece que você ainda não cadastrou nenhum pet :c</string>
     <string name="add">ADICIONAR</string>
+    <string name="dog">Cachorro</string>
+    <string name="cat">Gato</string>
+    <string name="rabbit">Coelho</string>
+    <string name="rodent">Roedor</string>
 </resources>
