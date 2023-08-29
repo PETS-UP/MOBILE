@@ -34,4 +34,5 @@
     <string name="unfilled_pet">Pet:</string>
     <string name="unfilled_price">Valor:</string>
     <string name="myfavorites">Favoritos</string>
+    <string name="back_to_start">Voltar para o início</string>
 </resources>

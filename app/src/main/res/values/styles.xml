@@ -230,4 +230,20 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="arrow_back_style">
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:src">@drawable/arrow_back</item>
+    </style>
+
+    <style name="close_icon_style">
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:src">@drawable/baseline_close_24</item>
+    </style>
+
+    <style name="booking_closing_icon">
+        <item name="tint">@color/purple</item>
+    </style>
 </resources>
