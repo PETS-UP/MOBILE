@@ -36,4 +36,8 @@
     <string name="myfavorites">Favoritos</string>
     <string name="back_to_start">Voltar para o início</string>
     <string name="retry">TENTAR NOVAMENTE</string>
+    <string name="history">Histórico</string>
+    <string name="agenda">Agenda</string>
+    <string name="home">Início</string>
+    <string name="profile">Perfil</string>
 </resources>
