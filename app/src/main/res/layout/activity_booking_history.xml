@@ -11,20 +11,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="@string/agenda"
+        android:text="@string/history"
         android:textColor="@color/purple"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/history_button"
-        style="@style/vertical_button_with_icon"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:drawableTop="@drawable/baseline_history_24"
-        android:text="@string/history"
+    <ImageView
+        android:id="@+id/close_button"
+        style="@style/close_icon_style"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -111,7 +108,7 @@
                 style="@style/regular_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="03/11/23"
+                android:text="22/06/23"
                 app:layout_constraintStart_toEndOf="@id/date_title"
                 app:layout_constraintTop_toTopOf="@id/date_title" />
 
@@ -129,7 +126,7 @@
                 style="@style/regular_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="09h30"
+                android:text="11h00"
                 app:layout_constraintStart_toEndOf="@id/time_title"
                 app:layout_constraintTop_toTopOf="@id/time_title" />
 
