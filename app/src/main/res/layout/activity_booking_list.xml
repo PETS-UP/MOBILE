@@ -28,132 +28,149 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/booking_card_1"
-        style="@style/default_card_view"
-        android:layout_width="360dp"
-        android:layout_height="136dp"
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@id/section_title"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/section_title">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/booking_card_1"
+            style="@style/default_card_view"
+            android:layout_width="360dp"
+            android:layout_height="136dp"
+            android:layout_marginStart="16dp"
+            android:minHeight="136dp"
+            app:layout_constraintStart_toStartOf="@id/section_title"
+            app:layout_constraintTop_toBottomOf="@id/section_title">
 
-            <TextView
-                android:id="@+id/petshop_title"
-                style="@style/bold_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/unfilled_petshop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/petshop_name"
-                style="@style/regular_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fofinho Pet shop"
-                app:layout_constraintStart_toEndOf="@id/petshop_title"
-                app:layout_constraintTop_toTopOf="@id/petshop_title" />
+                <TextView
+                    android:id="@+id/petshop_title"
+                    style="@style/bold_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/unfilled_petshop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/service_title"
-                style="@style/bold_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/unfilled_service"
-                app:layout_constraintStart_toStartOf="@id/petshop_title"
-                app:layout_constraintTop_toBottomOf="@id/petshop_title" />
+                <TextView
+                    android:id="@+id/petshop_name"
+                    style="@style/regular_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="Fofinho Pet shop"
+                    app:layout_constraintStart_toEndOf="@id/petshop_title"
+                    app:layout_constraintTop_toTopOf="@id/petshop_title" />
 
-            <TextView
-                android:id="@+id/service_name"
-                style="@style/regular_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Banho"
-                app:layout_constraintStart_toEndOf="@id/service_title"
-                app:layout_constraintTop_toTopOf="@id/service_title" />
+                <TextView
+                    android:id="@+id/service_title"
+                    style="@style/bold_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unfilled_service"
+                    app:layout_constraintStart_toStartOf="@id/petshop_title"
+                    app:layout_constraintTop_toBottomOf="@id/petshop_title" />
 
-            <TextView
-                android:id="@+id/pet_title"
-                style="@style/bold_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/unfilled_pet"
-                app:layout_constraintStart_toStartOf="@id/service_title"
-                app:layout_constraintTop_toBottomOf="@id/service_title" />
+                <TextView
+                    android:id="@+id/service_name"
+                    style="@style/regular_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="Banho"
+                    app:layout_constraintStart_toEndOf="@id/service_title"
+                    app:layout_constraintTop_toTopOf="@id/service_title" />
 
-            <TextView
-                android:id="@+id/pet_name"
-                style="@style/regular_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fluffy"
-                app:layout_constraintStart_toEndOf="@id/pet_title"
-                app:layout_constraintTop_toTopOf="@id/pet_title" />
+                <TextView
+                    android:id="@+id/pet_title"
+                    style="@style/bold_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unfilled_pet"
+                    app:layout_constraintStart_toStartOf="@id/service_title"
+                    app:layout_constraintTop_toBottomOf="@id/service_title" />
 
-            <TextView
-                android:id="@+id/date_title"
-                style="@style/bold_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/unfilled_date"
-                app:layout_constraintStart_toStartOf="@id/pet_title"
-                app:layout_constraintTop_toBottomOf="@id/pet_title" />
+                <TextView
+                    android:id="@+id/pet_name"
+                    style="@style/regular_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="Fluffy"
+                    app:layout_constraintStart_toEndOf="@id/pet_title"
+                    app:layout_constraintTop_toTopOf="@id/pet_title" />
 
-            <TextView
-                android:id="@+id/date_name"
-                style="@style/regular_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="03/11/23"
-                app:layout_constraintStart_toEndOf="@id/date_title"
-                app:layout_constraintTop_toTopOf="@id/date_title" />
+                <TextView
+                    android:id="@+id/date_title"
+                    style="@style/bold_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unfilled_date"
+                    app:layout_constraintStart_toStartOf="@id/pet_title"
+                    app:layout_constraintTop_toBottomOf="@id/pet_title" />
 
-            <TextView
-                android:id="@+id/time_title"
-                style="@style/bold_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/unfilled_time"
-                app:layout_constraintStart_toStartOf="@id/date_title"
-                app:layout_constraintTop_toBottomOf="@id/date_title" />
+                <TextView
+                    android:id="@+id/date_name"
+                    style="@style/regular_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="03/11/23"
+                    app:layout_constraintStart_toEndOf="@id/date_title"
+                    app:layout_constraintTop_toTopOf="@id/date_title" />
 
-            <TextView
-                android:id="@+id/time_name"
-                style="@style/regular_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="09h30"
-                app:layout_constraintStart_toEndOf="@id/time_title"
-                app:layout_constraintTop_toTopOf="@id/time_title" />
+                <TextView
+                    android:id="@+id/time_title"
+                    style="@style/bold_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unfilled_time"
+                    app:layout_constraintStart_toStartOf="@id/date_title"
+                    app:layout_constraintTop_toBottomOf="@id/date_title" />
 
-            <TextView
-                android:id="@+id/price_title"
-                style="@style/bold_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/unfilled_price"
-                app:layout_constraintStart_toStartOf="@id/time_title"
-                app:layout_constraintTop_toBottomOf="@id/time_title" />
+                <TextView
+                    android:id="@+id/time_name"
+                    style="@style/regular_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="09h30"
+                    app:layout_constraintStart_toEndOf="@id/time_title"
+                    app:layout_constraintTop_toTopOf="@id/time_title" />
 
-            <TextView
-                android:id="@+id/price_name"
-                style="@style/regular_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="R$ 34,90"
-                app:layout_constraintStart_toEndOf="@id/price_title"
-                app:layout_constraintTop_toTopOf="@id/price_title" />
+                <TextView
+                    android:id="@+id/price_title"
+                    style="@style/bold_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unfilled_price"
+                    app:layout_constraintStart_toStartOf="@id/time_title"
+                    app:layout_constraintTop_toBottomOf="@id/time_title" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/price_name"
+                    style="@style/regular_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="R$ 34,90"
+                    app:layout_constraintStart_toEndOf="@id/price_title"
+                    app:layout_constraintTop_toTopOf="@id/price_title" />
 
-    </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
 
     <include layout="@layout/bottom_menu" />
 
