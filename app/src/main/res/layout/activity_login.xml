@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title_login_text_view"
         android:layout_alignStart="@id/email_edit_text"
-        android:text="E-mail" />
+        android:text="@string/email" />
 
 
     <EditText
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/email_edit_text"
         android:layout_alignStart="@id/email_edit_text"
-        android:text="Senha" />
+        android:text="@string/password" />
 
     <EditText
         android:id="@+id/password_edit_text"

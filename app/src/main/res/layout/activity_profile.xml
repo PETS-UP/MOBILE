@@ -22,7 +22,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="24dp"
         android:drawableTop="@drawable/baseline_edit_24"
-        android:text="Editar perfil"
+        android:text="@string/edit_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

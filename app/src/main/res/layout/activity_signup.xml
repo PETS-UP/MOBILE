@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/title_signup_text_view"
-        android:layout_alignLeft="@id/name_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
         android:text="@string/name" />
 
     <EditText
@@ -55,8 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/name_edit_text"
         android:layout_alignStart="@id/name_edit_text"
-        android:text="E-mail" />
-
+        android:text="@string/email" />
 
     <EditText
         android:id="@+id/email_edit_text"
@@ -76,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/email_edit_text"
         android:layout_alignStart="@id/email_edit_text"
-        android:text="Senha" />
+        android:text="@string/password" />
 
     <EditText
         android:id="@+id/password_edit_text"

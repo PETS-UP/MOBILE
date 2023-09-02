@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/arrow_back"
+        style="@style/arrow_back_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/profile_icon"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/profile_icon" />
+
+    <Button
+        android:id="@+id/save_button"
+        style="@style/vertical_button_with_icon"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:drawableTop="@drawable/baseline_save_24"
+        android:text="@string/save" />
+
+    <TextView
+        android:id="@+id/forms_name_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_icon"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="@string/name" />
+
+    <EditText
+        android:id="@+id/name_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_name_text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background" />
+
+    <TextView
+        android:id="@+id/forms_email_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="@string/email" />
+
+    <EditText
+        android:id="@+id/email_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_email_text_view"
+        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background" />
+
+    <TextView
+        android:id="@+id/forms_birth_date_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="Data de nascimento" />
+
+    <EditText
+        android:id="@+id/birth_date_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_birth_date_text_view"
+        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background" />
+
+    <TextView
+        android:id="@+id/forms_phone_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/birth_date_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="Telefone" />
+
+    <EditText
+        android:id="@+id/phone_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_phone_text_view"
+        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background" />
+
+    <TextView
+        android:id="@+id/forms_cpf_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phone_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="CPF" />
+
+    <EditText
+        android:id="@+id/cpf_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_cpf_text_view"
+        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background" />
+
+    <TextView
+        android:id="@+id/forms_cep_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cpf_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="CEP" />
+
+    <EditText
+        android:id="@+id/cep_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_cep_text_view"
+        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background" />
+
+    <TextView
+        android:id="@+id/forms_state_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cep_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="Estado" />
+
+    <EditText
+        android:id="@+id/state_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_state_text_view"
+        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background" />
+
+    <TextView
+        android:id="@+id/forms_city_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/state_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="Cidade" />
+
+    <EditText
+        android:id="@+id/city_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_city_text_view"
+        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background" />
+
+    <TextView
+        android:id="@+id/forms_district_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/city_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="Bairro" />
+
+    <EditText
+        android:id="@+id/district_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_district_text_view"
+        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background" />
+
+    <TextView
+        android:id="@+id/forms_street_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/district_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="Rua" />
+
+    <EditText
+        android:id="@+id/street_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_street_text_view"
+        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background" />
+
+    <TextView
+        android:id="@+id/forms_number_text_view"
+        style="@style/default_forms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/street_edit_text"
+        android:layout_alignStart="@id/name_edit_text"
+        android:text="Número" />
+
+    <EditText
+        android:id="@+id/number_edit_text"
+        style="@style/default_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forms_number_text_view"
+        android:layout_alignStart="@id/forms_email_text_view"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/default_edit_text_background" />
+
+    <include layout="@layout/bottom_menu" />
+
+</RelativeLayout>
