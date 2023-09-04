@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/arrow_back"
         style="@style/arrow_back_style"
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/pet_subtitle"
             style="@style/default_subtitle_text_view"
-            android:layout_width="372dp"
+            android:layout_width="364dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="Para qual pet deseja agendar este serviço?"
