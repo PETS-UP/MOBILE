@@ -8,7 +8,7 @@
     <ImageButton
         android:id="@+id/arrow_back"
         style="@style/arrow_back_style"
-        android:layout_width="wrap_content"
+        android:layout_width="48dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
             style="@style/default_subtitle_text_view"
             android:layout_width="372dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
             android:text="Selecione a data e horário do atendimento"
             android:textAlignment="center" />
 
@@ -33,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/booking_subtitle"
+            android:layout_marginStart="8dp"
             android:text="@string/date" />
 
         <TextView
@@ -47,16 +48,17 @@
         <Button
             android:id="@+id/date_button"
             style="@style/picker_button"
-            android:layout_width="wrap_content"
+            android:layout_width="168dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/date_text_view"
+            android:layout_alignStart="@id/date_text_view"
             android:drawableLeft="@drawable/baseline_calendar_month_24"
             android:text="dd/MM/yy" />
 
         <Button
             android:id="@+id/time_button"
             style="@style/picker_button"
-            android:layout_width="wrap_content"
+            android:layout_width="168dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/time_text_view"
             android:layout_marginStart="20dp"
@@ -67,15 +69,16 @@
         <Button
             android:id="@+id/return_button"
             style="@style/small_secondary_action_button"
-            android:layout_width="wrap_content"
+            android:layout_width="168dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/time_button"
+            android:layout_alignStart="@id/date_button"
             android:text="@string/go_back" />
 
         <Button
             android:id="@+id/continue_button"
             style="@style/small_main_action_button"
-            android:layout_width="wrap_content"
+            android:layout_width="168dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/time_button"
             android:layout_marginStart="20dp"
