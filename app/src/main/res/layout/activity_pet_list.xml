@@ -4,6 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/dog_image"
+            android:layout_width="160dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="240dp"
+            android:src="@drawable/dog_1" />
+
+        <TextView
+            android:id="@+id/message"
+            style="@style/empty_pet_list_text_view"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_pet_list_message"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/add_pet_button"
+            style="@style/main_action_alternate_button"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/add" />
+
+        <include layout="@layout/bottom_menu" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/section_title"
         style="@style/default_section_title_text_view"
