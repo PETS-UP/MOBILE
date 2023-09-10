@@ -34,4 +34,12 @@ class MenuBottom : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    fun navigateToProfile(view: View) {
+        val profileButton: View = findViewById(R.id.profile_button)
+        profileButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+    }
 }
