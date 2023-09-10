@@ -28,7 +28,7 @@ class PetGenderActivity : AppCompatActivity() {
         }
 
         val returnButton: Button = findViewById(R.id.return_button)
-        arrowBack.setOnClickListener {
+        returnButton.setOnClickListener {
             this.finish()
         }
     }
