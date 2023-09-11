@@ -4,11 +4,22 @@ import android.widget.EditText
 
 object ValidationObject {
     fun nameValidation(etName: EditText): Boolean {
-        return if (etName.text.toString().isEmpty()) {
-            etName.error = "Preencha o campo."
+        val name = etName.text.toString()
+        return if (name.isEmpty()) {
+            etName.error = "Por favor, preencha o campo."
             false
-        } else if (etName.text.toString().length < 3) {
+        } else if (name.length < 3) {
             etName.error = "Nome precisa ter ao menos 3 letras."
+            false
+        } else {
+            true
+        }
+    }
+
+    fun petNameValidation(etName: EditText): Boolean {
+        val petName = etName.text.toString()
+        return if (petName.isEmpty()) {
+            etName.error = "Por favor, digite um nome para o pet."
             false
         } else {
             true
@@ -17,13 +28,14 @@ object ValidationObject {
 
     fun emailValidation(etEmail: EditText): Boolean {
         val str: String = ".com"
-        return if (etEmail.text.toString().isEmpty()) {
+        val email = etEmail.text.toString()
+        return if (email.isEmpty()) {
             etEmail.error = "Preencha o campo."
             false
-        } else if (!etEmail.text.toString().contains('@') ||
-            !etEmail.text.toString().contains(str)
+        } else if (!email.contains('@') ||
+            !email.contains(str)
         ) {
-            etEmail.error = "Insira um e-mail válido!"
+            etEmail.error = "Insira um e-mail válido."
             false
         } else {
             true
@@ -31,31 +43,28 @@ object ValidationObject {
     }
 
     fun passwordValidation(etPassword: EditText): Boolean {
-        val str: String = ".com"
-        return if (etPassword.text.toString().isEmpty()) {
+        val password = etPassword.text.toString()
+        return if (password.isEmpty()) {
+            etPassword.error = "Por favor, digite uma senha."
             false
-        } else if (etPassword.text.toString().length >= 8 &&
-            etPassword.text.toString().length <= 15){
+        } else if (password.length in 8..15) {
             var ch: Char
             var capitalFlag = false
             var lowerCaseFlag = false
             var numberFlag = false
-            for (i in 0 until str.length) {
-                ch = str[i]
-                if (Character.isDigit(ch)) {
-                    numberFlag = true
-                } else if (Character.isUpperCase(ch)) {
-                    capitalFlag = true
-                } else if (Character.isLowerCase(ch)) {
-                    lowerCaseFlag = true
+            for (i in password.indices) {
+                ch = password[i]
+                when {
+                    Character.isDigit(ch) -> numberFlag = true
+                    Character.isUpperCase(ch) -> capitalFlag = true
+                    Character.isLowerCase(ch) -> lowerCaseFlag = true
                 }
                 if (numberFlag && capitalFlag && lowerCaseFlag) return true
             }
-            return false
-            etPassword.error = "Insira um e-mail válido!"
+            etPassword.error = "Por favor, digite uma senha válida."
             false
         } else {
-            etPassword.error = "A senha deve possuir entre 8 e 15 caracteres"
+            etPassword.error = "A senha deve possuir entre 8 e 15 caracteres."
             false
         }
     }
