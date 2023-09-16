@@ -5,24 +5,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import com.petsup.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    fun navigateToSignup(view: View) {
-        val signupButton: Button = findViewById(R.id.main_screen_signup_button)
-        signupButton.setOnClickListener {
+        binding.mainScreenSignupButton.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
-    }
 
-    fun navigateToLogin(view: View) {
-        val loginButton: Button = findViewById(R.id.main_screen_login_button)
-        loginButton.setOnClickListener {
+        binding.mainScreenLoginButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
