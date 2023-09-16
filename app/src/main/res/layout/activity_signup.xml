@@ -8,8 +8,7 @@
         android:id="@+id/arrow_back"
         style="@style/arrow_back_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="backToMain" />
+        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/petsup_icon"
@@ -125,7 +124,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/password_confirmation_edit_text"
                 android:layout_alignStart="@id/password_confirmation_edit_text"
-                android:onClick="signup"
                 android:text="@string/signup" />
 
             <Button

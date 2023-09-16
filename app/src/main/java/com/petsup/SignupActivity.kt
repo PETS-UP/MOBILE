@@ -7,26 +7,30 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.petsup.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySignupBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signup)
-    }
+        binding = ActivitySignupBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    fun signup(view: View) {
-        val signUpButton: Button = findViewById(R.id.signup_button)
-        signUpButton.setOnClickListener {
-            ValidationObject.nameValidation(findViewById(R.id.name_edit_text))
+        binding.signupButton.setOnClickListener {
+            ValidationObject.nameValidation(binding.nameEditText)
+            ValidationObject.emailValidation(binding.emailEditText)
+            ValidationObject.passwordValidation(binding.passwordEditText)
         }
-    }
 
-    fun backToMain(view: View) {
-        val arrowBack: ImageView = findViewById(R.id.arrow_back)
-        arrowBack.setOnClickListener {
+        binding.redirectToLoginButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.arrowBack.setOnClickListener {
             this.finish()
         }
     }
-
-
 }

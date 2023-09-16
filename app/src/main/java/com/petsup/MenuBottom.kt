@@ -4,11 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.petsup.databinding.BottomMenuBinding
 
 class MenuBottom : AppCompatActivity() {
+
+    private lateinit var binding: BottomMenuBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.bottom_menu)
+        binding = BottomMenuBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
     fun navigateToHome(view: View) {
