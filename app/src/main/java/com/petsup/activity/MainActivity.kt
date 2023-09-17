@@ -3,6 +3,8 @@ package com.petsup.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.petsup.LoginActivity
+import com.petsup.SignupActivity
 import com.petsup.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
