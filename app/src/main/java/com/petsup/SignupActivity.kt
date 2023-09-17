@@ -22,7 +22,7 @@ class SignupActivity : AppCompatActivity() {
             ValidationObject.confirmPasswordValidation(binding.passwordEditText,
                 binding.passwordConfirmationEditText)
 
-            if(ValidationObject.emailValidation(binding.emailEditText) &&
+            if (ValidationObject.emailValidation(binding.emailEditText) &&
                 ValidationObject.nameValidation(binding.nameEditText) &&
                 ValidationObject.passwordValidation(binding.passwordEditText) &&
                 ValidationObject.confirmPasswordValidation(binding.passwordEditText,
