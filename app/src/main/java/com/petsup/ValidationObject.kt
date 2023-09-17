@@ -30,12 +30,12 @@ object ValidationObject {
         val str: String = ".com"
         val email = etEmail.text.toString()
         return if (email.isEmpty()) {
-            etEmail.error = "Preencha o campo."
+            etEmail.error = "Por favor, preencha o campo."
             false
         } else if (!email.contains('@') ||
             !email.contains(str)
         ) {
-            etEmail.error = "Insira um e-mail válido."
+            etEmail.error = "Por favor, insira um e-mail válido."
             false
         } else {
             true
@@ -67,5 +67,13 @@ object ValidationObject {
             etPassword.error = "A senha deve possuir entre 8 e 15 caracteres."
             false
         }
+    }
+
+    fun confirmPasswordValidation(etPassword: EditText , etConfirmPassword: EditText): Boolean{
+        if (etPassword.text.toString() == etConfirmPassword.text.toString()){
+            return true
+        }
+        etConfirmPassword.error = "As senhas devem ser idênticas"
+        return false
     }
 }

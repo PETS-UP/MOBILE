@@ -19,14 +19,27 @@ class SignupActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.signupButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             ValidationObject.nameValidation(binding.nameEditText)
             ValidationObject.emailValidation(binding.emailEditText)
             ValidationObject.passwordValidation(binding.passwordEditText)
+            ValidationObject.confirmPasswordValidation(binding.passwordEditText,
+                binding.passwordConfirmationEditText)
+
+            if(ValidationObject.emailValidation(binding.emailEditText) &&
+                ValidationObject.nameValidation(binding.nameEditText) &&
+                ValidationObject.passwordValidation(binding.passwordEditText) &&
+                ValidationObject.confirmPasswordValidation(binding.passwordEditText,
+                    binding.passwordConfirmationEditText)){
+            startActivity(intent)
+            this.finish()
+            }
         }
 
         binding.redirectToLoginButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            this.finish()
         }
 
         binding.arrowBack.setOnClickListener {
