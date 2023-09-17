@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <ImageView
         android:id="@+id/petsup_full_logo"
@@ -31,7 +31,6 @@
         style="@style/main_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="navigateToLogin"
         android:text="@string/login" />
 
     <Button
@@ -39,7 +38,6 @@
         style="@style/main_action_alternate_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="navigateToSignup"
         android:text="CADASTRE-SE" />
 
 </LinearLayout>

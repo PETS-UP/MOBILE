@@ -32,9 +32,10 @@
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:onClick="addPet"
             android:text="@string/add" />
 
-        <include layout="@layout/bottom_menu" />
+        <include layout="@layout/activity_bottom_menu" />
 
     </LinearLayout>
 
@@ -68,6 +69,7 @@
         android:layout_marginTop="28dp"
         android:drawableTop="@drawable/baseline_add_24"
         android:text="@string/add_lower_case"
+        android:onClick="addPet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -125,7 +127,5 @@
         </androidx.cardview.widget.CardView>
 
     </ScrollView>
-
-    <include layout="@layout/bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
