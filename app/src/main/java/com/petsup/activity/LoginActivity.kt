@@ -1,9 +1,7 @@
-package com.petsup
+package com.petsup.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.petsup.databinding.ActivityLoginBinding
 
@@ -17,7 +15,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginButton.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, BottomMenuActivity::class.java)
             startActivity(intent)
         }
 

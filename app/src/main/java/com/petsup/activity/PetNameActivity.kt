@@ -1,4 +1,4 @@
-package com.petsup
+package com.petsup.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.petsup.R
+import com.petsup.`object`.ValidationObject
+import com.petsup.fragment.PetListFragment
 
 class PetNameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +21,7 @@ class PetNameActivity : AppCompatActivity() {
         confirmButton.setOnClickListener {
             val isValid = ValidationObject.petNameValidation(findViewById(R.id.name_edit_text))
             if (isValid) {
-                val intent = Intent(this, PetListActivity::class.java)
+                val intent = Intent(this, PetListFragment::class.java)
                 startActivity(intent)
             }
         }

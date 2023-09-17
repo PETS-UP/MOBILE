@@ -169,6 +169,6 @@
 
     </ScrollView>
 
-    <include layout="@layout/bottom_menu" />
+    <include layout="@layout/activity_bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
