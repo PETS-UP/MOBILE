@@ -35,7 +35,7 @@
             android:onClick="addPet"
             android:text="@string/add" />
 
-        <include layout="@layout/bottom_menu" />
+        <include layout="@layout/activity_bottom_menu" />
 
     </LinearLayout>
 
@@ -127,7 +127,5 @@
         </androidx.cardview.widget.CardView>
 
     </ScrollView>
-
-    <include layout="@layout/bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

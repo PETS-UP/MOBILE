@@ -2,10 +2,6 @@ package com.petsup
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.petsup.databinding.ActivitySignupBinding
 
@@ -26,13 +22,13 @@ class SignupActivity : AppCompatActivity() {
             ValidationObject.confirmPasswordValidation(binding.passwordEditText,
                 binding.passwordConfirmationEditText)
 
-            if(ValidationObject.emailValidation(binding.emailEditText) &&
+            if (ValidationObject.emailValidation(binding.emailEditText) &&
                 ValidationObject.nameValidation(binding.nameEditText) &&
                 ValidationObject.passwordValidation(binding.passwordEditText) &&
                 ValidationObject.confirmPasswordValidation(binding.passwordEditText,
                     binding.passwordConfirmationEditText)){
-            startActivity(intent)
-            this.finish()
+                startActivity(intent)
+                this.finish()
             }
         }
 
