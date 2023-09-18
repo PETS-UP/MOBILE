@@ -33,5 +33,4 @@
         app:layout_constraintTop_toBottomOf="@id/nav_host_fragment"
         app:menu="@menu/menu_item" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

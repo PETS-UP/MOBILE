@@ -39,12 +39,10 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/booking_card_1"
             style="@style/default_card_view"
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="136dp"
-            android:layout_marginStart="16dp"
-            android:minHeight="136dp"
-            app:layout_constraintStart_toStartOf="@id/section_title"
-            app:layout_constraintTop_toBottomOf="@id/section_title">
+            android:layout_marginHorizontal="16dp"
+            android:minHeight="136dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
