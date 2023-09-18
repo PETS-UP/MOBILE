@@ -39,8 +39,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/data_card_view"
         style="@style/default_card_view"
-        android:layout_width="344dp"
+        android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="@id/profile_name"
         app:layout_constraintTop_toBottomOf="@id/profile_name">
@@ -94,8 +95,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/pets_card_view"
         style="@style/default_card_view"
-        android:layout_width="344dp"
+        android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@id/data_card_view"
         app:layout_constraintTop_toBottomOf="@id/data_card_view">
@@ -149,8 +151,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/favorites_card_view"
         style="@style/default_card_view"
-        android:layout_width="344dp"
+        android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@id/pets_card_view"
         app:layout_constraintTop_toBottomOf="@id/pets_card_view">
