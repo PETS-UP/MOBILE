@@ -41,16 +41,8 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        binding = FragmentHomeBinding.inflate(layoutInflater)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-//        binding.petShopCardView1.setOnClickListener {
-//            val navController = findNavController()
-//            navController.navigate(R.layout.activity_petshop_detail.toInt())
-//        }
     }
 
     companion object {
