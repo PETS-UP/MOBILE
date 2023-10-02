@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.petsup.R
 import com.petsup.models.Petshop
@@ -24,12 +25,17 @@ class PetshopsAdapter(private val petshops: List<Petshop>) : RecyclerView.Adapte
         holder.cardTitle.text = petshop.nome
         holder.cardLocation.text = "${petshop.bairro}, ${petshop.cidade}"
         holder.gradeTextView.text = "4.5"
+
+        holder.itemView.setOnClickListener {
+            view -> view.findNavController().navigate(R.id.pet_shop_card_view)
+        }
     }
 
     class PetshopViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val petshopIcon: ImageView = itemView.findViewById(R.id.pet_shop_icon)
         val cardTitle: TextView = itemView.findViewById(R.id.card_title)
         val cardLocation: TextView = itemView.findViewById(R.id.card_location)
+        val cardStatus: TextView = itemView.findViewById(R.id.card_status)
         val gradeTextView: TextView = itemView.findViewById(R.id.grade_text_view)
     }
 }
