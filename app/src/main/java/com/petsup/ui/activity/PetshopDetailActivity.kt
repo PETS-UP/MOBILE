@@ -1,4 +1,4 @@
-package com.petsup.activity
+package com.petsup.ui.activity
 
 import android.content.Intent
 import android.os.Bundle

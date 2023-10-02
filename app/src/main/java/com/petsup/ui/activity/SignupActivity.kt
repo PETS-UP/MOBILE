@@ -1,9 +1,9 @@
-package com.petsup.activity
+package com.petsup.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.petsup.`object`.ValidationObject
+import com.petsup.ui.`object`.ValidationObject
 import com.petsup.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {

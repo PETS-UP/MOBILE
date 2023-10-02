@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pet_shop_card_view_1"
+        style="@style/default_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_marginHorizontal="17dp"
+        android:layout_marginVertical="16dp"
+        android:minHeight="104dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/pet_shop_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/petshop_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/card_title"
+                style="@style/default_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toEndOf="@id/pet_shop_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/card_location"
+                style="@style/gray_description_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/card_title"
+                app:layout_constraintTop_toBottomOf="@id/card_title" />
+
+            <TextView
+                android:id="@+id/card_services"
+                style="@style/gray_description_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/services"
+                app:layout_constraintStart_toStartOf="@id/card_location"
+                app:layout_constraintTop_toBottomOf="@id/card_location" />
+
+            <TextView
+                android:id="@+id/card_status"
+                style="@style/green_description_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/status_open"
+                app:layout_constraintStart_toStartOf="@id/card_services"
+                app:layout_constraintTop_toBottomOf="@id/card_services" />
+
+            <ImageView
+                android:id="@+id/grade_image_view"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="2dp"
+                android:src="@drawable/star_icon"
+                app:layout_constraintEnd_toStartOf="@id/grade_text_view"
+                app:layout_constraintTop_toTopOf="@id/card_title" />
+
+            <TextView
+                android:id="@+id/grade_text_view"
+                style="@style/grade_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/card_title" />
+
+            <ImageView
+                android:id="@+id/favorite_image_view"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/favorite_icon"
+                app:layout_constraintStart_toStartOf="@id/grade_text_view"
+                app:layout_constraintTop_toBottomOf="@id/grade_text_view" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
