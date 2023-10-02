@@ -1,18 +1,12 @@
-package com.petsup.activity
+package com.petsup.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.petsup.R
 import com.petsup.databinding.ActivityBottomMenuBinding
-import com.petsup.fragment.BookingListFragment
-import com.petsup.fragment.HomeFragment
-import com.petsup.fragment.PetListFragment
-import com.petsup.fragment.ProfileFragment
 
 class BottomMenuActivity : AppCompatActivity() {
 

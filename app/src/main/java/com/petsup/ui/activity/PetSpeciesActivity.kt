@@ -1,4 +1,4 @@
-package com.petsup.activity
+package com.petsup.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,16 +8,16 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.petsup.R
 
-class PetGenderActivity : AppCompatActivity() {
+class PetSpeciesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pet_gender)
+        setContentView(R.layout.activity_pet_species)
     }
 
     fun next(view: View) {
         val continueButton: Button = findViewById(R.id.continue_button)
         continueButton.setOnClickListener {
-            val intent = Intent(this, PetNameActivity::class.java)
+            val intent = Intent(this, PetGenderActivity::class.java)
             startActivity(intent)
         }
     }
