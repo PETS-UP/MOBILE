@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/home_nav"
-        android:name="com.petsup.fragment.HomeFragment"
+        android:name="com.petsup.ui.fragment.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/search_nav"
-        android:name="com.petsup.fragment.HomeFragment"
+        android:name="com.petsup.ui.fragment.HomeFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/my_pets_nav"
-        android:name="com.petsup.fragment.PetListFragment"
+        android:name="com.petsup.ui.fragment.PetListFragment"
         android:label="@string/mypets"
         tools:layout="@layout/fragment_pet_list" />
 
     <fragment
         android:id="@+id/calendar_nav"
-        android:name="com.petsup.fragment.BookingListFragment"
+        android:name="com.petsup.ui.fragment.BookingListFragment"
         android:label="@string/agenda"
         tools:layout="@layout/fragment_booking_list" />
 
     <fragment
         android:id="@+id/profile_nav"
-        android:name="com.petsup.fragment.ProfileFragment"
+        android:name="com.petsup.ui.fragment.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
 

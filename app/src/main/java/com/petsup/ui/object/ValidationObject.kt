@@ -1,4 +1,4 @@
-package com.petsup.`object`
+package com.petsup.ui.`object`
 
 import android.widget.EditText
 
