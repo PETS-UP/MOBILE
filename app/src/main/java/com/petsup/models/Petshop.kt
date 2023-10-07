@@ -1,5 +1,6 @@
 package com.petsup.models
 
+import java.io.Serializable
 import java.time.DayOfWeek
 import java.time.LocalTime
 
@@ -20,4 +21,4 @@ data class Petshop(
     val horaAbertura: LocalTime,
     val horaFechamento: LocalTime,
     val diasFuncionais: List<DayOfWeek>
-)
+) : Serializable
