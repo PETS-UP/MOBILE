@@ -1,5 +1,6 @@
 package com.petsup.ui.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.petsup.R
 import com.petsup.models.Petshop
+import com.petsup.ui.activity.PetshopDetailActivity
 
 class PetshopsAdapter(private val petshops: List<Petshop>) : RecyclerView.Adapter<PetshopsAdapter.PetshopViewHolder>() {
 
@@ -27,7 +29,9 @@ class PetshopsAdapter(private val petshops: List<Petshop>) : RecyclerView.Adapte
         holder.gradeTextView.text = "4.5"
 
         holder.itemView.setOnClickListener {
-            view -> view.findNavController().navigate(R.id.pet_shop_card_view)
+            val intent = Intent(it.context, PetshopDetailActivity::class.java)
+            intent.putExtra("petshop", petshop)
+            it.context.startActivity(intent)
         }
     }
 
