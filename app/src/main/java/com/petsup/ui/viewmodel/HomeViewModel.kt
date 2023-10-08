@@ -1,4 +1,4 @@
-package com.petsup.ui.fragment
+package com.petsup.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
