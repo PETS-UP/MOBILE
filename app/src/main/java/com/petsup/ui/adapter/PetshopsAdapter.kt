@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.petsup.R
 import com.petsup.models.Petshop
@@ -15,7 +14,7 @@ import com.petsup.ui.activity.PetshopDetailActivity
 class PetshopsAdapter(private val petshops: List<Petshop>) : RecyclerView.Adapter<PetshopsAdapter.PetshopViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetshopViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.petshop_item_adapter, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.adapter_petshop_item, parent, false)
         return PetshopViewHolder(itemView)
     }
 
