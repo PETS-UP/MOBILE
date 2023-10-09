@@ -29,6 +29,9 @@
         <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.BottomMenuActivity" />
         <activity android:name=".ui.activity.PetshopDetailActivity" />
+        <activity android:name=".ui.activity.PetSpeciesActivity" />
+        <activity android:name=".ui.activity.PetGenderActivity" />
+        <activity android:name=".ui.activity.PetNameActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

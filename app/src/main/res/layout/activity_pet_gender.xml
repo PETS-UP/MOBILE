@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@id/male_card_view" />
 
     <Button
-        android:id="@+id/confirm_button"
+        android:id="@+id/continue_button"
         style="@style/small_main_action_button"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
@@ -108,7 +108,5 @@
         android:onClick="next"
         app:layout_constraintStart_toEndOf="@id/return_button"
         app:layout_constraintTop_toTopOf="@id/return_button" />
-
-    <include layout="@layout/activity_bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -202,6 +202,4 @@
         app:layout_constraintStart_toStartOf="@id/money_button"
         app:layout_constraintTop_toTopOf="@id/return_button" />
 
-    <include layout="@layout/activity_bottom_menu" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

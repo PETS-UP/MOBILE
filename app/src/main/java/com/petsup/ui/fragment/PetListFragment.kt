@@ -1,5 +1,6 @@
 package com.petsup.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.petsup.databinding.FragmentPetListBinding
 import com.petsup.models.Pet
+import com.petsup.ui.activity.PetSpeciesActivity
 import com.petsup.ui.adapter.PetsAdapter
 import com.petsup.ui.viewmodel.PetListViewModel
 
@@ -20,6 +22,11 @@ class PetListFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         setObservers()
+
+        binding.addPetButton.setOnClickListener {
+            val intent = Intent(context, PetSpeciesActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onCreateView(
