@@ -26,36 +26,4 @@ class BottomMenuActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.bottomMenu, navController)
     }
-
-//    fun navigateToHome(view: View) {
-//        val homeButton: View = findViewById(R.id.home_nav)
-//        homeButton.setOnClickListener {
-//            val intent = Intent(this, HomeFragment::class.java)
-//            startActivity(intent)
-//        }
-//    }
-//
-//    fun navigateToMyPets(view: View) {
-//        val myPetsButton: View = findViewById(R.id.my_pets_nav)
-//        myPetsButton.setOnClickListener {
-//            val intent = Intent(this, PetListFragment::class.java)
-//            startActivity(intent)
-//        }
-//    }
-//
-//    fun navigateToBookingList(view: View) {
-//        val bookingListButton: View = findViewById(R.id.calendar_nav)
-//        bookingListButton.setOnClickListener {
-//            val intent = Intent(this, BookingListFragment::class.java)
-//            startActivity(intent)
-//        }
-//    }
-//
-//    fun navigateToProfile(view: View) {
-//        val profileButton: View = findViewById(R.id.profile_nav)
-//        profileButton.setOnClickListener {
-//            val intent = Intent(this, ProfileFragment::class.java)
-//            startActivity(intent)
-//        }
-//    }
 }
