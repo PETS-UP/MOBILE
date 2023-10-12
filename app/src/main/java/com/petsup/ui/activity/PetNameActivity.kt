@@ -19,28 +19,23 @@ class PetNameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPetNameBinding.inflate(layoutInflater)
         setContentView(binding.root)
-    }
 
-    fun confirm(view: View) {
-        val confirmButton: Button = findViewById(R.id.confirm_button)
-        confirmButton.setOnClickListener {
-            val isValid = ValidationObject.petNameValidation(binding.nameEditText)
-            if (isValid) {
-                val intent = Intent(this, PetListFragment::class.java)
-                startActivity(intent)
-            }
-        }
-    }
-
-    fun back(view: View) {
-        val arrowBack: ImageView = findViewById(R.id.arrow_back)
-        arrowBack.setOnClickListener {
+        binding.confirmButton.setOnClickListener {
             this.finish()
         }
 
-        val returnButton: Button = findViewById(R.id.return_button)
-        returnButton.setOnClickListener {
-            this.finish()
+        binding.returnButton.setOnClickListener {
+            back()
         }
+
+        binding.arrowBack.setOnClickListener {
+            back()
+        }
+    }
+
+    private fun back() {
+        val intent = Intent(this, PetGenderActivity::class.java)
+        startActivity(intent)
+        this.finish()
     }
 }

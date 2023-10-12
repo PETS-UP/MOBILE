@@ -17,6 +17,7 @@ class PetSpeciesActivity : AppCompatActivity() {
         binding.continueButton.setOnClickListener {
             val intent = Intent(this, PetGenderActivity::class.java)
             startActivity(intent)
+            this.finish()
         }
 
         binding.returnButton.setOnClickListener {
