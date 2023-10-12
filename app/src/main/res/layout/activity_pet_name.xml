@@ -40,7 +40,6 @@
         style="@style/default_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/forms_name_text_view"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:background="@drawable/default_edit_text_background"

@@ -17,14 +17,21 @@ class PetGenderActivity : AppCompatActivity() {
         binding.continueButton.setOnClickListener {
             val intent = Intent(this, PetNameActivity::class.java)
             startActivity(intent)
+            this.finish()
         }
 
         binding.returnButton.setOnClickListener {
-            this.finish()
+            back()
         }
 
         binding.arrowBack.setOnClickListener {
-            this.finish()
+            back()
         }
+    }
+
+    private fun back() {
+        val intent = Intent(this, PetSpeciesActivity::class.java)
+        startActivity(intent)
+        this.finish()
     }
 }
