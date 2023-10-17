@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.petsup.databinding.FragmentHomeBinding
-import com.petsup.models.Petshop
+import com.petsup.models.petshop.Petshop
 import com.petsup.ui.adapter.PetshopsAdapter
 import com.petsup.ui.viewmodel.HomeViewModel
 

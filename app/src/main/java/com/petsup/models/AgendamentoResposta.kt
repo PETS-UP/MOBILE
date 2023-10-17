@@ -3,7 +3,7 @@ package com.petsup.models
 import java.io.Serializable
 import java.time.LocalDateTime
 
-data class Agendamento(
+data class AgendamentoResposta (
     val id: Int,
     val dataHora: LocalDateTime,
     val nomeCliente: String,

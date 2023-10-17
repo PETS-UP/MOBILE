@@ -1,4 +1,4 @@
-package com.petsup.models
+package com.petsup.models.cliente
 
 import java.io.Serializable
 

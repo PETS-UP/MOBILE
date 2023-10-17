@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.petsup.R
-import com.petsup.models.Petshop
+import com.petsup.models.petshop.Petshop
 import com.petsup.ui.activity.PetshopDetailActivity
 
 class PetshopsAdapter(private val petshops: List<Petshop>) : RecyclerView.Adapter<PetshopsAdapter.PetshopViewHolder>() {

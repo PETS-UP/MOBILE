@@ -1,11 +1,9 @@
 package com.petsup.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.petsup.databinding.ActivityPetshopDetailBinding
-import com.petsup.models.Petshop
+import com.petsup.models.petshop.Petshop
 
 class PetshopDetailActivity : AppCompatActivity() {
 

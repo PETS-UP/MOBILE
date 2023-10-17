@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.petsup.api.Rest
-import com.petsup.models.Petshop
+import com.petsup.models.petshop.Petshop
 import com.petsup.services.PetshopService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
