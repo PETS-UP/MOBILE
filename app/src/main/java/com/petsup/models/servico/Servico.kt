@@ -1,4 +1,4 @@
-package com.petsup.models.petshop
+package com.petsup.models.servico
 
 import java.io.Serializable
 
