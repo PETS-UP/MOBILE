@@ -2,9 +2,7 @@ package com.petsup.models
 
 import java.io.Serializable
 
-data class Pet(
+data class Avaliacao (
     val id: Int,
-    val nome: String,
-    val sexo: String,
-    val especie: String
+    val nota: Double
 ) : Serializable
