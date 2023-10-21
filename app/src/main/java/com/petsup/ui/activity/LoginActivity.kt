@@ -17,12 +17,16 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.loginButton.setOnClickListener {
+            val email = binding.emailEditText.text.toString();
+            val password = binding.passwordEditText.text.toString();
+            tryLogin(email, password)
             val intent = Intent(this, BottomMenuActivity::class.java)
             startActivity(intent)
             this.finish()
@@ -37,8 +41,9 @@ class LoginActivity : AppCompatActivity() {
         binding.arrowBack.setOnClickListener {
             this.finish()
         }
+    }
 
-        fun tryLogin(username: String, password: String ){
+    private fun tryLogin(username: String, password: String) {
             val loginRequest = LoginRequest(username, password)
             Rest.getInstance()
                 .create(DonoPetService::class.java)
@@ -66,4 +71,4 @@ class LoginActivity : AppCompatActivity() {
                 )
         }
     }
-}
+
