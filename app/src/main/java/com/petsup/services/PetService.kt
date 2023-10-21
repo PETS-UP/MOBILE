@@ -14,15 +14,15 @@ interface PetService {
     @DELETE("/pets/{idPet}")
     fun deletePet(@Query("idPet") idPet: Int): Call<Unit>
 
-    @POST("/adicionar-pilha/{obj}")
+    @POST("/pets/adicionar-pilha/{obj}")
     fun addToStack(@Query("obj") obj: String): Call<Unit>
 
-    @GET("/pop-pilha")
+    @GET("/pets/pop-pilha")
     fun popFromStack(): Call<String>
 
-    @POST("/limpa-pilha")
+    @POST("/pets/limpa-pilha")
     fun clearStack(): Call<Unit>
 
-    @POST("/cadastrar-pilha")
+    @POST("/pets/cadastrar-pilha")
     fun postPet(): Call<Unit>
 }
