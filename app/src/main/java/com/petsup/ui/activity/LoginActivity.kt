@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.loginButton.setOnClickListener {
             val intent = Intent(this, BottomMenuActivity::class.java)
-            tryLogin()
+            tryLogin(binding.emailEditText.text.toString(), binding.passwordEditText.text.toString())
             startActivity(intent)
             this.finish()
         }
@@ -41,54 +41,54 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-//    private fun tryLogin(email: String, senha: String){
-//        val retIn = Rest.getInstance().create(ClienteService::class.java)
-//        val signInInfo = ClienteLogin(email, senha)
-//
-//        retIn.login(signInInfo).enqueue(object : Callback<ClienteToken> {
-//            override fun onFailure(call: Call<ClienteToken>, t: Throwable) {
-//                Toast.makeText(
-//                    this@LoginActivity,
-//                    t.message,
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//            override fun onResponse(call: Call<ClienteToken>, response: Response<ClienteToken>) {
-//                if (response.code() == 200) {
-//                    Toast.makeText(this@LoginActivity, "Login success!", Toast.LENGTH_SHORT).show()
-//                } else {
-//                    Toast.makeText(this@LoginActivity, "Login failed!", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        })
-//    }
+    private fun tryLogin(email: String, senha: String){
+        val retIn = Rest.getInstance().create(ClienteService::class.java)
+        val signInInfo = ClienteLogin(email, senha)
 
-    private fun tryLogin() {
-        val loginRequest = ClienteLogin(
-            "aluno@sptech.school.com", "1Sptechaluno@"
-        )
-        Rest.getInstance()
-            .create(ClienteService::class.java)
-            .login(loginRequest)
-            .enqueue(object : Callback<ClienteToken> {
-                override fun onResponse(
-                    call: Call<ClienteToken>,
-                    response: Response<ClienteToken>
-                ) {
-                    if (response.isSuccessful) {
-                        Toast.makeText(
-                            baseContext,
-                            response.body()?.token,
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
+        retIn.login(signInInfo).enqueue(object : Callback<ClienteToken> {
+            override fun onFailure(call: Call<ClienteToken>, t: Throwable) {
+                Toast.makeText(
+                    this@LoginActivity,
+                    t.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            override fun onResponse(call: Call<ClienteToken>, response: Response<ClienteToken>) {
+                if (response.code() == 200) {
+                    Toast.makeText(this@LoginActivity, "Login success!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@LoginActivity, "Login failed!", Toast.LENGTH_SHORT).show()
                 }
-
-                override fun onFailure(call: Call<ClienteToken>, t: Throwable) {
-                    println(t)
-                    Toast.makeText(baseContext, t.message, Toast.LENGTH_LONG).show()
-                }
-
-            })
+            }
+        })
     }
+
+//    private fun tryLogin() {
+//        val loginRequest = ClienteLogin(
+//            "aluno@sptech.school.com", "1Sptechaluno@"
+//        )
+//        Rest.getInstance()
+//            .create(ClienteService::class.java)
+//            .login(loginRequest)
+//            .enqueue(object : Callback<ClienteToken> {
+//                override fun onResponse(
+//                    call: Call<ClienteToken>,
+//                    response: Response<ClienteToken>
+//                ) {
+//                    if (response.isSuccessful) {
+//                        Toast.makeText(
+//                            baseContext,
+//                            response.body()?.token,
+//                            Toast.LENGTH_LONG
+//                        ).show()
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<ClienteToken>, t: Throwable) {
+//                    println(t)
+//                    Toast.makeText(baseContext, t.message, Toast.LENGTH_LONG).show()
+//                }
+//
+//            })
+//    }
 }
