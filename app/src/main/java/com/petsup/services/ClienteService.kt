@@ -2,10 +2,13 @@ package com.petsup.services
 
 import com.petsup.models.Avaliacao
 import com.petsup.models.cliente.ClienteDetalhes
+import com.petsup.models.cliente.ClienteLogin
+import com.petsup.models.cliente.ClienteToken
 import com.petsup.models.petshop.Petshop
 import com.petsup.models.petshop.PetshopAvaliacao
 import com.petsup.models.petshop.PetshopMediaPreco
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
@@ -17,8 +20,8 @@ interface ClienteService {
     @POST("/clientes")
     fun postCLiente(): Call<Unit>
 
-//    @POST("/clientes/login")
-//    fun login(): Call<ClienteTokenDto>
+    @POST("/clientes/login")
+    fun login(@Body loginRequest: ClienteLogin): Call<ClienteToken>
 
     @GET("/clientes")
     fun getClientes(): Call<List<ClienteDetalhes>>
