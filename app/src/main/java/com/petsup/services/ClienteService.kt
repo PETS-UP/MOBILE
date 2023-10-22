@@ -19,66 +19,66 @@ import retrofit2.http.Query
 import java.lang.reflect.Type
 
 interface ClienteService {
-    @POST("/api/clientes")
+    @POST("clientes")
     fun postCLiente(@Body signUpRequest: ClienteCadastro): Call<Unit>
 
-    @POST("/api/clientes/login")
+    @POST("clientes/login")
     fun login(@Body loginRequest: ClienteLogin): Call<ClienteToken>
 
-    @GET("/api/clientes")
+    @GET("clientes")
     fun getClientes(): Call<List<ClienteDetalhes>>
 
-    @GET("/api/clientes/{idCliente}")
+    @GET("clientes/{idCliente}")
     fun getClienteById(@Query("idCliente") idCliente: Int): Call<ClienteDetalhes>
 
     // obj na query tbm?
     //@RequestParam
-    @POST("/api/clientes/adicionar-pfp/{idCliente}/{obj}")
+    @POST("clientes/adicionar-pfp/{idCliente}/{obj}")
     fun postProfilePicture(@Query("idCliente") idCliente: Int,
                            @Query("obj") obj: String): Call<Boolean>
 
     // byte[] == ByteArray ???
-    @GET("/api/clientes/retornar-blob/{idCliente}")
+    @GET("clientes/retornar-blob/{idCliente}")
     fun getProfilePicture(@Query("idCliente") idCliente: Int): Call<ByteArray>
 
-    @GET("/api/clientes/retornar-imagem/{idCliente}")
+    @GET("clientes/retornar-imagem/{idCliente}")
     fun getImage(@Query("idCliente") idCliente: Int): Call<String>
 
-    @PUT("/api/clientes/atualizar-imagem/{idCliente}")
+    @PUT("clientes/atualizar-imagem/{idCliente}")
     fun updateImage(@Query("idCliente") idCliente: Int): Call<Boolean>
 
-    @DELETE("/api/clientes/deletar-imagem/{idCliente}")
+    @DELETE("clientes/deletar-imagem/{idCliente}")
     fun deleteImage(@Query("idCliente") idCliente: Int): Call<String>
 
-    @GET("/api/clientes/busca-email/{email}")
+    @GET("clientes/busca-email/{email}")
     fun getUserByEmail(@Query("email") email: String): Call<ClienteDetalhes>
 
-    @PATCH("/api/clientes/{idCliente}")
+    @PATCH("clientes/{idCliente}")
     fun updateClienteById(@Query("idCliente") idCliente: Int): Call<ClienteDetalhes>
 
-    @POST("/api/clientes/avaliar/{idCliente}/{idPetshop}")
+    @POST("clientes/avaliar/{idCliente}/{idPetshop}")
     fun postAvaliacao(
         @Query("idCliente") idCliente: Int,
         @Query("idPetshop") idPetshop: Int
     ): Call<Unit>
 
-    @GET("/api/clientes/avaliacao/{idCliente}/{idPetshop}")
+    @GET("clientes/avaliacao/{idCliente}/{idPetshop}")
     fun getAvaliacaoCliente(
         @Query("idCliente") idCliente: Int,
         @Query("idPetshop") idPetshop: Int
     ): Call<Avaliacao>
 
-    @GET("/api/clientes/ordenar-media-avaliacao")
+    @GET("clientes/ordenar-media-avaliacao")
     fun getPetshopsOrderByMedia(): Call<List<PetshopAvaliacao>>
 
-    @GET("/api/clientes/ordenar-media-preco")
+    @GET("clientes/ordenar-media-preco")
     fun getPetshopsOrderByPrecoAsc(): Call<List<PetshopMediaPreco>>
 
-    @PATCH("/api/clientes/latitude-longitude/{idCliente}/{latitude}/{longitude}")
+    @PATCH("clientes/latitude-longitude/{idCliente}/{latitude}/{longitude}")
     fun updateCurrentLocation(@Query("idCliente") idCliente: Int,
                                @Query("latitude") latitude: Double,
                                @Query("longitude") longitude: Double): Call<Unit>
 
-    @GET("/api/clientes/petshops-proximos/{idCliente}")
+    @GET("clientes/petshops-proximos/{idCliente}")
     fun getPetshopsByClienteBairro(@Query("idCliente") idCliente: Int): Call<List<Petshop>>
 }
