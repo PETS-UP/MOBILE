@@ -7,8 +7,8 @@ object Rest {
     fun getInstance(): Retrofit {
         return Retrofit
             .Builder()
-//            .baseUrl("ec2-54-211-207-232.compute-1.amazonaws.com:8080")
-            .baseUrl("http://localhost:8080")
+            //.baseUrl("https://ec2-54-211-207-232.compute-1.amazonaws.com:8080")
+            .baseUrl("http://seu.endereco.de.ip:8080")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
