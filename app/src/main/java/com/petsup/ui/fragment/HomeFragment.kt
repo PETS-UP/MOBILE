@@ -16,8 +16,8 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel = HomeViewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setObservers()
         getPetshops()
@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setObservers() {
-        viewModel.petshopList.observe(this) {
+        viewModel.petshopList.observe(viewLifecycleOwner) {
             initRecyclerView(it)
         }
     }

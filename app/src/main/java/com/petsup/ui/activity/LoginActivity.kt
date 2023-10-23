@@ -12,8 +12,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.widget.Toast
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Dispatchers
 
 class LoginActivity : AppCompatActivity() {
 
@@ -43,31 +41,54 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun tryLogin(email: String, senha: String){
+        val retIn = Rest.getInstance().create(ClienteService::class.java)
+        val signInInfo = ClienteLogin(email, senha)
 
-    fun tryLogin(username: String, password: String ){
-        val loginRequest = ClienteLogin(username, password)
-        Rest.getInstance()
-            .create(ClienteService::class.java)
-            .login(loginRequest)
-            .enqueue(object : Callback<ClienteToken>{
-                override fun onResponse(
-                    call: Call<ClienteToken>,
-                    response: Response<ClienteToken>
-                ) {
-                    if (response.isSuccessful) {
-                        //SharedPreferences
-                        val prefs =
-                            getSharedPreferences("AUTH", AppCompatActivity.MODE_PRIVATE)
-                        val editor = prefs.edit()
-                        editor.putString("TOKEN", response.body().toString())
-                        editor.apply()
-                    }
+        retIn.login(signInInfo).enqueue(object : Callback<ClienteToken> {
+            override fun onFailure(call: Call<ClienteToken>, t: Throwable) {
+                Toast.makeText(
+                    this@LoginActivity,
+                    t.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            override fun onResponse(call: Call<ClienteToken>, response: Response<ClienteToken>) {
+                if (response.code() == 200) {
+                    Toast.makeText(this@LoginActivity, "Login success!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@LoginActivity, "Login failed!", Toast.LENGTH_SHORT).show()
                 }
-
-                override fun onFailure(call: Call<ClienteToken>, t: Throwable) {
-                    println(t)
-                    Toast.makeText(baseContext, t.message, Toast.LENGTH_LONG).show()
-                }
-            })
+            }
+        })
     }
+
+//    private fun tryLogin() {
+//        val loginRequest = ClienteLogin(
+//            "aluno@sptech.school.com", "1Sptechaluno@"
+//        )
+//        Rest.getInstance()
+//            .create(ClienteService::class.java)
+//            .login(loginRequest)
+//            .enqueue(object : Callback<ClienteToken> {
+//                override fun onResponse(
+//                    call: Call<ClienteToken>,
+//                    response: Response<ClienteToken>
+//                ) {
+//                    if (response.isSuccessful) {
+//                        Toast.makeText(
+//                            baseContext,
+//                            response.body()?.token,
+//                            Toast.LENGTH_LONG
+//                        ).show()
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<ClienteToken>, t: Throwable) {
+//                    println(t)
+//                    Toast.makeText(baseContext, t.message, Toast.LENGTH_LONG).show()
+//                }
+//
+//            })
+//    }
 }
