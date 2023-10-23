@@ -12,6 +12,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -26,59 +27,71 @@ interface ClienteService {
     fun login(@Body loginRequest: ClienteLogin): Call<ClienteToken>
 
     @GET("clientes")
-    fun getClientes(): Call<List<ClienteDetalhes>>
+    fun getClientes(@Header("Authorization") header:String): Call<List<ClienteDetalhes>>
 
     @GET("clientes/{idCliente}")
-    fun getClienteById(@Query("idCliente") idCliente: Int): Call<ClienteDetalhes>
+    fun getClienteById(@Query("idCliente") idCliente: Int,
+                       @Header("Authorization") header:String): Call<ClienteDetalhes>
 
     // obj na query tbm?
     //@RequestParam
     @POST("clientes/adicionar-pfp/{idCliente}/{obj}")
     fun postProfilePicture(@Query("idCliente") idCliente: Int,
-                           @Query("obj") obj: String): Call<Boolean>
+                           @Query("obj") obj: String,
+                           @Header("Authorization") header:String): Call<Boolean>
 
     // byte[] == ByteArray ???
     @GET("clientes/retornar-blob/{idCliente}")
-    fun getProfilePicture(@Query("idCliente") idCliente: Int): Call<ByteArray>
+    fun getProfilePicture(@Query("idCliente") idCliente: Int,
+                          @Header("Authorization") header:String): Call<ByteArray>
 
     @GET("clientes/retornar-imagem/{idCliente}")
-    fun getImage(@Query("idCliente") idCliente: Int): Call<String>
+    fun getImage(@Query("idCliente") idCliente: Int,
+                 @Header("Authorization") header:String): Call<String>
 
     @PUT("clientes/atualizar-imagem/{idCliente}")
-    fun updateImage(@Query("idCliente") idCliente: Int): Call<Boolean>
+    fun updateImage(@Query("idCliente") idCliente: Int,
+        @Header("Authorization") header:String): Call<Boolean>
 
     @DELETE("clientes/deletar-imagem/{idCliente}")
-    fun deleteImage(@Query("idCliente") idCliente: Int): Call<String>
+    fun deleteImage(@Query("idCliente") idCliente: Int,
+                    @Header("Authorization") header:String): Call<String>
 
     @GET("clientes/busca-email/{email}")
-    fun getUserByEmail(@Query("email") email: String): Call<ClienteDetalhes>
+    fun getUserByEmail(@Query("email") email: String,
+                       @Header("Authorization") header:String): Call<ClienteDetalhes>
 
     @PATCH("clientes/{idCliente}")
-    fun updateClienteById(@Query("idCliente") idCliente: Int): Call<ClienteDetalhes>
+    fun updateClienteById(@Query("idCliente") idCliente: Int,
+                          @Header("Authorization") header:String): Call<ClienteDetalhes>
 
     @POST("clientes/avaliar/{idCliente}/{idPetshop}")
     fun postAvaliacao(
         @Query("idCliente") idCliente: Int,
-        @Query("idPetshop") idPetshop: Int
+        @Query("idPetshop") idPetshop: Int,
+        @Header("Authorization") header:String
     ): Call<Unit>
 
     @GET("clientes/avaliacao/{idCliente}/{idPetshop}")
     fun getAvaliacaoCliente(
         @Query("idCliente") idCliente: Int,
-        @Query("idPetshop") idPetshop: Int
+        @Query("idPetshop") idPetshop: Int,
+        @Header("Authorization") header:String
     ): Call<Avaliacao>
 
     @GET("clientes/ordenar-media-avaliacao")
-    fun getPetshopsOrderByMedia(): Call<List<PetshopAvaliacao>>
+    fun getPetshopsOrderByMedia(@Header("Authorization") header:String): Call<List<PetshopAvaliacao>>
 
     @GET("clientes/ordenar-media-preco")
-    fun getPetshopsOrderByPrecoAsc(): Call<List<PetshopMediaPreco>>
+    fun getPetshopsOrderByPrecoAsc(@Header("Authorization") header:String): Call<List<PetshopMediaPreco>>
 
     @PATCH("clientes/latitude-longitude/{idCliente}/{latitude}/{longitude}")
     fun updateCurrentLocation(@Query("idCliente") idCliente: Int,
                                @Query("latitude") latitude: Double,
-                               @Query("longitude") longitude: Double): Call<Unit>
+                               @Query("longitude") longitude: Double,
+                              @Header("Authorization") header:String): Call<Unit>
 
     @GET("clientes/petshops-proximos/{idCliente}")
-    fun getPetshopsByClienteBairro(@Query("idCliente") idCliente: Int): Call<List<Petshop>>
+    fun getPetshopsByClienteBairro(@Query("idCliente") idCliente: Int,
+                                   @Header("Authorization") header:String): Call<List<Petshop>>
 }

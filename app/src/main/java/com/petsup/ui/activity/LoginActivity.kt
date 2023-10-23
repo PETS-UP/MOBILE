@@ -12,10 +12,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.widget.Toast
+import com.petsup.api.SessionManager
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var sessionManager: SessionManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,9 +43,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun tryLogin(email: String, senha: String){
+    fun tryLogin(email: String, senha: String){
         val retIn = Rest.getInstance().create(ClienteService::class.java)
         val signInInfo = ClienteLogin(email, senha)
+        sessionManager = SessionManager(this)
 
         retIn.login(signInInfo).enqueue(object : Callback<ClienteToken> {
             override fun onFailure(call: Call<ClienteToken>, t: Throwable) {
@@ -54,7 +57,11 @@ class LoginActivity : AppCompatActivity() {
                 ).show()
             }
             override fun onResponse(call: Call<ClienteToken>, response: Response<ClienteToken>) {
-                if (response.code() == 200) {
+                val loginResponse = response.body()
+                if (response.code() == 200 && loginResponse?.token != null) {
+                    sessionManager.saveAuthToken(loginResponse.token)
+
+                    // Agora que você tem o token, você pode usá-lo para fazer outra solicitação
                     Toast.makeText(this@LoginActivity, "Login success!", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this@LoginActivity, "Login failed!", Toast.LENGTH_SHORT).show()
@@ -62,6 +69,21 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
+
+//    private fun fetchPosts() {
+//
+//        // Pass the token as parameter
+//        Rest.getInstance().fetchPosts(token = "Bearer ${sessionManager.fetchAuthToken()}")
+//            .enqueue(object : Callback<PostsResponse> {
+//                override fun onFailure(call: Callback<PostsResponse>, t: Throwable) {
+//                    // Error fetching posts
+//                }
+//
+//                override fun onResponse(call: Call<PostsResponse>, response: Response<PostsResponse>) {
+//                    // Handle function to display posts
+//                }
+//            })
+//    }
 
 //    private fun tryLogin() {
 //        val loginRequest = ClienteLogin(
