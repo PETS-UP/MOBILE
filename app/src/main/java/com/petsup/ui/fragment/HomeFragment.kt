@@ -1,5 +1,6 @@
 package com.petsup.ui.fragment
 
+import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,10 +12,10 @@ import com.petsup.models.petshop.Petshop
 import com.petsup.ui.adapter.PetshopsAdapter
 import com.petsup.ui.viewmodel.HomeViewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment (application: Application): Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel = HomeViewModel()
+    private val viewModel = HomeViewModel(application)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
