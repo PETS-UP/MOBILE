@@ -33,6 +33,23 @@
         android:id="@+id/profile_nav"
         android:name="com.petsup.ui.fragment.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_nav_to_my_pets_nav"
+            app:destination="@id/my_pets_nav" />
+        <action
+            android:id="@+id/action_profile_nav_to_profile_data_nav"
+            app:destination="@id/profile_data_nav" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile_data_nav"
+        android:name="com.petsup.ui.fragment.ProfileDataFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile_data" >
+        <action
+            android:id="@+id/action_profile_data_nav_to_profile_nav"
+            app:destination="@id/profile_nav" />
+    </fragment>
 
 </navigation>
