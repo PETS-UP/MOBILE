@@ -24,10 +24,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginButton.setOnClickListener {
-            val intent = Intent(this, BottomMenuActivity::class.java)
             tryLogin(binding.emailEditText.text.toString(), binding.passwordEditText.text.toString())
-            startActivity(intent)
-            this.finish()
         }
 
         binding.redirectToSignupButton.setOnClickListener {
@@ -55,6 +52,9 @@ class LoginActivity : AppCompatActivity() {
             }
             override fun onResponse(call: Call<ClienteToken>, response: Response<ClienteToken>) {
                 if (response.code() == 200) {
+                    val intent = Intent(baseContext, BottomMenuActivity::class.java)
+                    startActivity(intent)
+                    finish()
                     Toast.makeText(this@LoginActivity, "Login success!", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this@LoginActivity, "Login failed!", Toast.LENGTH_SHORT).show()
