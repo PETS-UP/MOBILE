@@ -100,64 +100,14 @@
         app:layout_constraintStart_toStartOf="@+id/petshop_icon"
         app:layout_constraintTop_toBottomOf="@id/petshop_description" />
 
-    <ScrollView
-        android:id="@+id/scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/service_subtitle">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/service_card_view_1"
-            style="@style/default_card_view"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="16dp"
-            android:minHeight="80dp"
-            app:layout_constraintStart_toStartOf="@id/service_subtitle"
-            app:layout_constraintTop_toBottomOf="@id/service_subtitle">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/card_title_1"
-                    style="@style/default_card_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Banho"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/card_price_1"
-                    style="@style/default_card_subtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="R$ 34,90"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/card_title_1" />
-
-                <TextView
-                    android:id="@+id/card_description_1"
-                    style="@style/default_description_text_view"
-                    android:layout_width="336dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/shorter_lorem_ipsum"
-                    app:layout_constraintStart_toStartOf="@id/card_title_1"
-                    app:layout_constraintTop_toBottomOf="@id/card_title_1" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@id/service_subtitle"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/return_button"
@@ -167,7 +117,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/go_back"
         app:layout_constraintStart_toStartOf="@id/service_subtitle"
-        app:layout_constraintTop_toBottomOf="@id/scroll_view" />
+        app:layout_constraintTop_toBottomOf="@id/recycler_view" />
 
     <Button
         android:id="@+id/continue_button"
