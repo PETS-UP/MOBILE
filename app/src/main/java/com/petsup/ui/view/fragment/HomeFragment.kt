@@ -1,4 +1,4 @@
-package com.petsup.ui.fragment
+package com.petsup.ui.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.petsup.databinding.FragmentHomeBinding
 import com.petsup.models.petshop.Petshop
-import com.petsup.ui.adapter.PetshopsAdapter
+import com.petsup.ui.view.adapter.PetshopsAdapter
 import com.petsup.ui.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {

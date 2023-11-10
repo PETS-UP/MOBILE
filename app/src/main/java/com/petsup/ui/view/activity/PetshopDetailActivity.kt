@@ -1,5 +1,6 @@
-package com.petsup.ui.activity
+package com.petsup.ui.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -7,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.petsup.databinding.ActivityPetshopDetailBinding
 import com.petsup.models.petshop.Petshop
 import com.petsup.models.servico.ServicoResposta
-import com.petsup.ui.adapter.ServicesAdapter
+import com.petsup.ui.view.adapter.ServicesAdapter
 import com.petsup.ui.viewmodel.PetshopDetailViewModel
 
 class PetshopDetailActivity : AppCompatActivity() {
@@ -25,7 +26,9 @@ class PetshopDetailActivity : AppCompatActivity() {
         setObservers()
 
         binding.continueButton.setOnClickListener {
-
+            val intent = Intent(this, DatetimeSelectionActivity::class.java)
+            startActivity(intent)
+            this.finish()
         }
     }
 

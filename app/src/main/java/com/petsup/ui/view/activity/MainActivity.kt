@@ -1,4 +1,4 @@
-package com.petsup.ui.activity
+package com.petsup.ui.view.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
