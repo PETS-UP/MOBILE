@@ -18,5 +18,6 @@ data class ClienteDetalhes (
     val dataNasc: LocalDate?,
     val cpf: String?,
     val longitude: Double?,
-    val latitude: Double?
+    val latitude: Double?,
+    val imagemPerfil: String?
 ) : Serializable
