@@ -1,4 +1,4 @@
-package com.petsup.ui.fragment
+package com.petsup.ui.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

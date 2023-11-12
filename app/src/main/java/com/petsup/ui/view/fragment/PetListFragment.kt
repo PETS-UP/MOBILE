@@ -1,4 +1,4 @@
-package com.petsup.ui.fragment
+package com.petsup.ui.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.petsup.databinding.FragmentPetListBinding
 import com.petsup.models.pet.PetCadastro
-import com.petsup.ui.activity.PetSpeciesActivity
-import com.petsup.ui.adapter.PetsAdapter
+import com.petsup.ui.view.activity.PetSpeciesActivity
+import com.petsup.ui.view.adapter.PetsAdapter
 import com.petsup.ui.viewmodel.PetListViewModel
 
 class PetListFragment : Fragment() {

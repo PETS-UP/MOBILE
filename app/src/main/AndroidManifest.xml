@@ -17,7 +17,7 @@
         android:theme="@style/Theme.PetsUp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".ui.view.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,13 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.SignupActivity" />
-        <activity android:name=".ui.activity.LoginActivity" />
-        <activity android:name=".ui.activity.BottomMenuActivity" />
-        <activity android:name=".ui.activity.PetshopDetailActivity" />
-        <activity android:name=".ui.activity.PetSpeciesActivity" />
-        <activity android:name=".ui.activity.PetGenderActivity" />
-        <activity android:name=".ui.activity.PetNameActivity" />
+        <activity android:name=".ui.view.activity.SignupActivity" />
+        <activity android:name=".ui.view.activity.LoginActivity" />
+        <activity android:name=".ui.view.activity.BottomMenuActivity" />
+        <activity android:name=".ui.view.activity.PetshopDetailActivity" />
+        <activity android:name=".ui.view.activity.PetSpeciesActivity" />
+        <activity android:name=".ui.view.activity.PetGenderActivity" />
+        <activity android:name=".ui.view.activity.PetNameActivity" />
+        <activity android:name=".ui.view.activity.PetSelectionActivity" />
+        <activity android:name=".ui.view.activity.DatetimeSelectionActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
