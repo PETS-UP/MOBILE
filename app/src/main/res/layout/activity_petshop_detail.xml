@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ImageButton
         android:id="@+id/arrow_back"
@@ -26,7 +27,7 @@
         style="@style/default_title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fofinho Pet shop"
+        tools:text="Fofinho Pet shop"
         app:layout_constraintStart_toEndOf="@id/petshop_icon"
         app:layout_constraintTop_toTopOf="@id/petshop_icon" />
 
@@ -46,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="4.5"
+        tools:text="4.5"
         app:layout_constraintStart_toEndOf="@id/grade_image_view"
         app:layout_constraintTop_toBottomOf="@id/petshop_name" />
 
@@ -55,7 +56,7 @@
         style="@style/gray_description_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cerqueira César, São Paulo\nContato - (11) 94598-2534"
+        tools:text="Cerqueira César, São Paulo\nContato - (11) 94598-2534"
         app:layout_constraintStart_toStartOf="@id/petshop_name"
         app:layout_constraintTop_toBottomOf="@id/grade_text_view" />
 
@@ -64,7 +65,7 @@
         style="@style/green_description_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aberto até 21h00"
+        tools:text="Aberto"
         app:layout_constraintStart_toStartOf="@id/petshop_name"
         app:layout_constraintTop_toBottomOf="@id/petshop_info" />
 
@@ -78,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/petshop_name" />
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/petshop_description"
         style="@style/default_description_text_view"
         android:layout_width="match_parent"
@@ -87,7 +88,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/lorem_ipsum"
         app:layout_constraintStart_toStartOf="@id/petshop_icon"
-        app:layout_constraintTop_toBottomOf="@id/petshop_icon" />
+        app:layout_constraintTop_toBottomOf="@id/petshop_icon" /> -->
 
     <TextView
         android:id="@+id/service_subtitle"
@@ -98,16 +99,15 @@
         android:layout_marginTop="24dp"
         android:text="Selecione um serviço"
         app:layout_constraintStart_toStartOf="@+id/petshop_icon"
-        app:layout_constraintTop_toBottomOf="@id/petshop_description" />
+        app:layout_constraintTop_toBottomOf="@id/petshop_icon" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/service_subtitle"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/service_subtitle" />
 
     <Button
         android:id="@+id/return_button"

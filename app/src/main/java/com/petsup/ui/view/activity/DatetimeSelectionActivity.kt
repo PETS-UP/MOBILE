@@ -1,4 +1,6 @@
 package com.petsup.ui.view.activity
 
-class DatetimeSelectionActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class DatetimeSelectionActivity : AppCompatActivity() {
 }

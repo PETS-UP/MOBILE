@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.petsup.databinding.ActivityPetshopDetailBinding
 import com.petsup.models.petshop.Petshop
 import com.petsup.models.servico.ServicoResposta
-import com.petsup.ui.model.PetshopDetailViewHolder
 import com.petsup.ui.`object`.FormatterObject
 import com.petsup.ui.view.adapter.ServicesAdapter
 import com.petsup.ui.viewmodel.PetshopDetailViewModel
@@ -34,6 +33,20 @@ class PetshopDetailActivity : AppCompatActivity() {
             startActivity(intent)
             this.finish()
         }
+
+        binding.arrowBack.setOnClickListener {
+            this.finish()
+        }
+
+        binding.returnButton.setOnClickListener {
+            this.finish()
+        }
+
+        binding.petshopIcon.setImageURI(Uri.parse(petshop.imagemPerfil))
+        binding.petshopName.text = petshop.nome
+        binding.gradeTextView.text = String.format("%.1f", petshop.nota)
+        binding.petshopInfo.text = "${petshop.rua}, ${petshop.numero}\nContato - ${FormatterObject.formatPhoneNumber(petshop.telefone)}"
+        binding.petshopStatus.text = FormatterObject.formatStatus(petshop.isOpen)
     }
 
     private fun initRecyclerView(services: List<ServicoResposta>) {
@@ -46,13 +59,5 @@ class PetshopDetailActivity : AppCompatActivity() {
         viewModel.serviceList.observe(this, Observer {
             initRecyclerView(it)
         })
-    }
-
-    fun bindViewHolder(holder: PetshopDetailViewHolder) {
-        holder.petshopIcon.setImageURI(Uri.parse(petshop.imagemPerfil))
-        holder.petshopName.text = petshop.nome
-        holder.petshopGrade.text = String.format("%.1f", petshop.nota)
-        holder.petshopInfo.text = "${petshop.rua}, ${petshop.numero}\nContato - ${FormatterObject.formatPhoneNumber(petshop.telefone)}"
-        holder.petshopStatus.text = FormatterObject.formatStatus(petshop.isOpen)
     }
 }
