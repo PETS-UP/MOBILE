@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface PetService {
     @GET("pets")
-    fun listPets(@Query("idCliente") idCliente: Int): Call<List<PetCadastro>>
+    fun listPets(@Query("idCliente") idCliente: Int): Call<List<PetResposta>>
 
     @GET("pets/{idPet}")
     fun getPetById(@Query("idPet") idPet: Int): Call<PetResposta>
