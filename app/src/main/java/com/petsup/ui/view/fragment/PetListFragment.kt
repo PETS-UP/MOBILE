@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.petsup.databinding.FragmentPetListBinding
-import com.petsup.models.pet.PetCadastro
+import com.petsup.models.pet.PetResposta
 import com.petsup.ui.view.activity.PetSpeciesActivity
 import com.petsup.ui.view.adapter.PetsAdapter
 import com.petsup.ui.viewmodel.PetListViewModel
@@ -38,14 +38,14 @@ class PetListFragment : Fragment() {
     }
 
     private fun setObservers() {
-        viewModel.petCadastroList.observe(this) {
+        viewModel.petRespostaViewModel.observe(this) {
             initRecyclerView(it)
         }
     }
 
-    private fun initRecyclerView(petCadastros: List<PetCadastro>) {
+    private fun initRecyclerView(petResposta: List<PetResposta>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = PetsAdapter(petCadastros)
+        binding.recyclerView.adapter = PetsAdapter(petResposta)
     }
 }

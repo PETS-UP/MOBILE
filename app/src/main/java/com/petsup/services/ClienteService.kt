@@ -18,7 +18,8 @@ import retrofit2.http.PUT
 import retrofit2.http.Query
 import java.lang.reflect.Type
 
-interface ClienteService {
+interface
+ClienteService {
     @POST("clientes")
     fun postCLiente(@Body signUpRequest: ClienteCadastro): Call<Unit>
 
