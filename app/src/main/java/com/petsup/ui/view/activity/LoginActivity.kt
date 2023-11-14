@@ -53,6 +53,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ClienteToken>, response: Response<ClienteToken>) {
                 if (response.code() == 200) {
                     val intent = Intent(baseContext, BottomMenuActivity::class.java)
+                    intent.putExtra("email", email)
                     startActivity(intent)
                     finish()
                     Toast.makeText(this@LoginActivity, "Login success!", Toast.LENGTH_SHORT).show()
