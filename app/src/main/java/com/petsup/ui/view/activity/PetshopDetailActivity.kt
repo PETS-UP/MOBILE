@@ -30,6 +30,7 @@ class PetshopDetailActivity : AppCompatActivity() {
 
         binding.continueButton.setOnClickListener {
             val intent = Intent(this, DatetimeSelectionActivity::class.java)
+            intent.putExtra("idPetshop", petshop)
             startActivity(intent)
             this.finish()
         }
@@ -60,4 +61,6 @@ class PetshopDetailActivity : AppCompatActivity() {
             initRecyclerView(it)
         })
     }
+
+    private fun getServicos(idPetshop: Int) = viewModel.getServices(petshop.id)
 }

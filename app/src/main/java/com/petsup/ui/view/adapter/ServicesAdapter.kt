@@ -31,9 +31,7 @@ class ServicesAdapter(private val services: List<ServicoResposta>) : RecyclerVie
 
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, BookingConfirmationActivity::class.java)
-            intent.putExtra("idServico", service.id)
-            intent.putExtra("servico", service.nome)
-            intent.putExtra("preco", service.preco)
+            intent.putExtra("servico", service)
         }
     }
 }

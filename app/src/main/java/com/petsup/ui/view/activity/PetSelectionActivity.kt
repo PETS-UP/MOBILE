@@ -20,8 +20,12 @@ class PetSelectionActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setObservers()
+        getPets()
 
         binding.continueButton.setOnClickListener {
+            val finalIntent = Intent(this, BookingConfirmationActivity::class.java)
+            finalIntent.putExtra()
+
             val intent = Intent(this, DatetimeSelectionActivity::class.java)
             startActivity(intent)
             this.finish()
@@ -49,4 +53,6 @@ class PetSelectionActivity : AppCompatActivity() {
             initRecyclerView(it)
         })
     }
+
+    private fun getPets(idCliente: Int) = viewModel.getPets(idCliente)
 }

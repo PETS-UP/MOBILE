@@ -24,10 +24,7 @@ class PetsSelectionAdapter(private val pets: List<PetResposta>) : RecyclerView.A
 
         holder.petButton.setOnClickListener {
             val intent = Intent(it.context, BookingConfirmationActivity::class.java)
-            intent.putExtra("idPet", pet.id)
-            intent.putExtra("pet", pet.nome)
-            intent.putExtra("especie", pet.especie)
-            intent.putExtra("sexo", pet.sexo)
+            intent.putExtra("pet", pet)
         }
     }
 

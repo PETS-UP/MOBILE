@@ -22,6 +22,7 @@ class PetListFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         setObservers()
+        getPets()
 
         binding.addPetButton.setOnClickListener {
             val intent = Intent(context, PetSpeciesActivity::class.java)
@@ -48,4 +49,6 @@ class PetListFragment : Fragment() {
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.adapter = PetsAdapter(petCadastros)
     }
+
+    private fun getPets(idCliente: Int) = viewModel.listPets(idCliente)
 }
