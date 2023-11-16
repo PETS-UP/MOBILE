@@ -27,6 +27,7 @@ class PetshopDetailActivity : AppCompatActivity() {
         petshop = intent.getSerializableExtra("petshop") as Petshop
 
         setObservers()
+        getServicos(petshop.id)
 
         binding.continueButton.setOnClickListener {
             val intent = Intent(this, DatetimeSelectionActivity::class.java)
@@ -45,7 +46,7 @@ class PetshopDetailActivity : AppCompatActivity() {
 
         binding.petshopIcon.setImageURI(Uri.parse(petshop.imagemPerfil))
         binding.petshopName.text = petshop.nome
-        binding.gradeTextView.text = String.format("%.1f", petshop.nota)
+        binding.gradeTextView.text = FormatterObject.formatGrade(petshop.nota)
         binding.petshopInfo.text = "${petshop.rua}, ${petshop.numero}\nContato - ${FormatterObject.formatPhoneNumber(petshop.telefone)}"
         binding.petshopStatus.text = FormatterObject.formatStatus(petshop.isOpen)
     }

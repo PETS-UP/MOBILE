@@ -1,7 +1,6 @@
 package com.petsup.ui.`object`
 
 import java.text.SimpleDateFormat
-import java.util.Locale
 
 object FormatterObject {
     fun formatPhoneNumber(phoneNumber: String): String {
@@ -32,5 +31,20 @@ object FormatterObject {
         val formatter = SimpleDateFormat("HH'h'mm")
 
         return formatter.format(timestamp)
+    }
+
+    fun formatServiceName(service: String): String {
+        return service
+            .lowercase()
+            .split("_")
+            .joinToString(" ") { it.replaceFirstChar { it.uppercase() } }
+    }
+
+    fun formatServicePrice(price: Double): String {
+        return "R$ " + String.format("%.2f", price)
+    }
+
+    fun formatGrade(grade: Double): String {
+        return String.format("%.1f", grade)
     }
 }
