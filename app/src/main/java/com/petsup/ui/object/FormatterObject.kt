@@ -1,6 +1,7 @@
 package com.petsup.ui.`object`
 
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
 
 object FormatterObject {
     fun formatPhoneNumber(phoneNumber: String): String {
@@ -27,10 +28,22 @@ object FormatterObject {
         return formatter.format(timestamp)
     }
 
+    fun formatDate(date: LocalDateTime): String {
+        val formatter = SimpleDateFormat("dd/MM/yy")
+
+        return formatter.format(date)
+    }
+
     fun formatTime(timestamp: Long): String {
         val formatter = SimpleDateFormat("HH'h'mm")
 
         return formatter.format(timestamp)
+    }
+
+    fun formatTime(time: LocalDateTime): String {
+        val formatter = SimpleDateFormat("HH'h'mm")
+
+        return formatter.format(time)
     }
 
     fun formatServiceName(service: String): String {

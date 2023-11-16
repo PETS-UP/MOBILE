@@ -5,49 +5,47 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.petsup.R
+import com.petsup.databinding.FragmentBookingListBinding
+import com.petsup.databinding.FragmentHomeBinding
+import com.petsup.models.AgendamentoResposta
+import com.petsup.models.petshop.Petshop
+import com.petsup.ui.view.adapter.BookingsAdapter
+import com.petsup.ui.view.adapter.PetshopsAdapter
+import com.petsup.ui.viewmodel.BookingListViewModel
+import com.petsup.ui.viewmodel.HomeViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BookingListFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var binding: FragmentBookingListBinding
+    private val viewModel = BookingListViewModel()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        setObservers()
+        getAgendamentos(/*TODO*/ 1)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_booking_list, container, false)
+        binding = FragmentBookingListBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun setObservers() {
+        viewModel.bookingList.observe(viewLifecycleOwner) {
+            initRecyclerView(it)
+        }
     }
+
+    private fun initRecyclerView(agendamentos: List<AgendamentoResposta>) {
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.adapter = BookingsAdapter(agendamentos)
+    }
+
+    private fun getAgendamentos(idCliente: Int) = viewModel.getAgendamentos(idCliente)
 }

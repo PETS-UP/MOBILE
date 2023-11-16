@@ -18,4 +18,6 @@ class BookingListViewModel : ViewModel() {
     fun getAgendamentos(idCliente : Int) = viewModelScope.launch(Dispatchers.IO){
         _bookingList.postValue(Rest.getInstance().create<AgendamentoService>().getAgendamentosCliente(idCliente).execute().body())
     }
+
+
 }
