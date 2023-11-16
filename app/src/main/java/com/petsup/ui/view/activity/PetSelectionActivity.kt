@@ -1,5 +1,6 @@
 package com.petsup.ui.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -17,6 +18,26 @@ class PetSelectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPetSelectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setObservers()
+        getPets()
+
+        binding.continueButton.setOnClickListener {
+            val finalIntent = Intent(this, BookingConfirmationActivity::class.java)
+            finalIntent.putExtra()
+
+            val intent = Intent(this, DatetimeSelectionActivity::class.java)
+            startActivity(intent)
+            this.finish()
+        }
+
+        binding.returnButton.setOnClickListener {
+            this.finish()
+        }
+
+        binding.arrowBack.setOnClickListener {
+            this.finish()
+        }
     }
 
     private fun initRecyclerView(pets: List<PetResposta>) {
@@ -32,4 +53,6 @@ class PetSelectionActivity : AppCompatActivity() {
             initRecyclerView(it)
         })
     }
+
+    private fun getPets(idCliente: Int) = viewModel.getPets(idCliente)
 }

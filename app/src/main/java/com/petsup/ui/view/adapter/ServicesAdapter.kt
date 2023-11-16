@@ -8,6 +8,7 @@ import com.petsup.R
 import com.petsup.models.servico.ServicoResposta
 import com.petsup.ui.view.activity.BookingConfirmationActivity
 import com.petsup.ui.model.ServiceViewHolder
+import com.petsup.ui.`object`.FormatterObject
 
 class ServicesAdapter(private val services: List<ServicoResposta>) : RecyclerView.Adapter<ServiceViewHolder>() {
 
@@ -21,19 +22,13 @@ class ServicesAdapter(private val services: List<ServicoResposta>) : RecyclerVie
     override fun onBindViewHolder(holder: ServiceViewHolder, position: Int) {
         val service = services[position]
 
-        holder.cardTitle.text = service.nome
-            .lowercase()
-            .split("_")
-            .joinToString(" ") { it.replaceFirstChar { it.uppercase() } }
-
-        holder.cardPrice.text = "R$ " + service.preco.toString()
+        holder.cardTitle.text = FormatterObject.formatServiceName(service.nome)
+        holder.cardPrice.text = FormatterObject.formatServicePrice(service.preco)
         holder.cardDescription.text = service.descricao
 
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, BookingConfirmationActivity::class.java)
-            intent.putExtra("idServico", service.id)
-            intent.putExtra("servico", service.nome)
-            intent.putExtra("preco", service.preco)
+            intent.putExtra("servico", service)
         }
     }
 }
