@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ImageButton
         android:id="@+id/arrow_back"
@@ -53,7 +54,7 @@
                 style="@style/regular_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fofinho Pet shop"
+                tools:text="Fofinho Pet shop"
                 app:layout_constraintStart_toEndOf="@id/petshop_title"
                 app:layout_constraintTop_toTopOf="@id/petshop_title" />
 
@@ -71,7 +72,7 @@
                 style="@style/regular_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Banho"
+                tools:text="Banho"
                 app:layout_constraintStart_toEndOf="@id/service_title"
                 app:layout_constraintTop_toTopOf="@id/service_title" />
 
@@ -89,7 +90,7 @@
                 style="@style/regular_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fluffy"
+                tools:text="Fluffy"
                 app:layout_constraintStart_toEndOf="@id/pet_title"
                 app:layout_constraintTop_toTopOf="@id/pet_title" />
 
@@ -107,7 +108,7 @@
                 style="@style/regular_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="03/11/23"
+                tools:text="03/11/23"
                 app:layout_constraintStart_toEndOf="@id/date_title"
                 app:layout_constraintTop_toTopOf="@id/date_title" />
 
@@ -125,7 +126,7 @@
                 style="@style/regular_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="09h30"
+                tools:text="09h30"
                 app:layout_constraintStart_toEndOf="@id/time_title"
                 app:layout_constraintTop_toTopOf="@id/time_title" />
 
@@ -144,7 +145,7 @@
                 style="@style/regular_price_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="R$ 34,90"
+                tools:text="R$ 34,90"
                 app:layout_constraintStart_toEndOf="@id/price_title"
                 app:layout_constraintTop_toTopOf="@id/price_title" />
 
@@ -152,36 +153,36 @@
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/payment_method_title"
-        style="@style/default_subtitle_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Forma de pagamento"
-        app:layout_constraintStart_toStartOf="@id/confirmation_card"
-        app:layout_constraintTop_toBottomOf="@id/confirmation_card" />
+<!--    <TextView-->
+<!--        android:id="@+id/payment_method_title"-->
+<!--        style="@style/default_subtitle_text_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:text="Forma de pagamento"-->
+<!--        app:layout_constraintStart_toStartOf="@id/confirmation_card"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/confirmation_card" />-->
 
-    <Button
-        android:id="@+id/pix_button"
-        style="@style/payment_button"
-        android:layout_width="168dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawableTop="@drawable/pix_logo"
-        app:layout_constraintStart_toStartOf="@id/payment_method_title"
-        app:layout_constraintTop_toBottomOf="@id/payment_method_title" />
+<!--    <Button-->
+<!--        android:id="@+id/pix_button"-->
+<!--        style="@style/payment_button"-->
+<!--        android:layout_width="168dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:drawableTop="@drawable/pix_logo"-->
+<!--        app:layout_constraintStart_toStartOf="@id/payment_method_title"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/payment_method_title" />-->
 
-    <Button
-        android:id="@+id/money_button"
-        style="@style/payment_button"
-        android:layout_width="168dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Pagar no local"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@id/pix_button"
-        app:layout_constraintTop_toTopOf="@id/pix_button" />
+<!--    <Button-->
+<!--        android:id="@+id/money_button"-->
+<!--        style="@style/payment_button"-->
+<!--        android:layout_width="168dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:text="Pagar no local"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintStart_toEndOf="@id/pix_button"-->
+<!--        app:layout_constraintTop_toTopOf="@id/pix_button" />-->
 
     <Button
         android:id="@+id/return_button"
@@ -190,8 +191,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/go_back"
-        app:layout_constraintStart_toStartOf="@id/pix_button"
-        app:layout_constraintTop_toBottomOf="@id/pix_button" />
+        app:layout_constraintStart_toStartOf="@id/confirmation_card"
+        app:layout_constraintTop_toBottomOf="@id/confirmation_card" />
 
     <Button
         android:id="@+id/confirm_button"
@@ -199,7 +200,7 @@
         android:layout_width="168dp"
         android:layout_height="wrap_content"
         android:text="@string/confirm"
-        app:layout_constraintStart_toStartOf="@id/money_button"
+        app:layout_constraintEnd_toEndOf="@id/confirmation_card"
         app:layout_constraintTop_toTopOf="@id/return_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
