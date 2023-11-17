@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.petsup.R
-import com.petsup.models.pet.PetCadastro
+import com.petsup.models.pet.PetResposta
 import com.petsup.ui.model.PetViewHolder
 
-class PetsAdapter(private val petCadastros: List<PetCadastro>) : RecyclerView.Adapter<PetViewHolder>() {
+class PetsAdapter(private val petCadastros: List<PetResposta>) : RecyclerView.Adapter<PetViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.adapter_pet_item, parent, false)
