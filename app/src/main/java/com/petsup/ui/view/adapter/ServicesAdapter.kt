@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.petsup.R
 import com.petsup.models.servico.ServicoResposta
-import com.petsup.ui.view.activity.BookingConfirmationActivity
 import com.petsup.ui.model.ServiceViewHolder
 import com.petsup.ui.`object`.FormatterObject
+import com.petsup.ui.view.activity.PetSelectionActivity
 
 class ServicesAdapter(private val services: List<ServicoResposta>) : RecyclerView.Adapter<ServiceViewHolder>() {
 
@@ -27,7 +27,7 @@ class ServicesAdapter(private val services: List<ServicoResposta>) : RecyclerVie
         holder.cardDescription.text = service.descricao
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, BookingConfirmationActivity::class.java)
+            val intent = Intent(it.context, PetSelectionActivity::class.java)
             intent.putExtra("servico", service)
         }
     }

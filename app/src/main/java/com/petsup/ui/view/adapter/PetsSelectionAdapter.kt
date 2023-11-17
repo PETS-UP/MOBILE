@@ -8,6 +8,7 @@ import com.petsup.R
 import com.petsup.models.pet.PetResposta
 import com.petsup.ui.model.PetSelectionViewHolder
 import com.petsup.ui.view.activity.BookingConfirmationActivity
+import com.petsup.ui.view.activity.DatetimeSelectionActivity
 
 class PetsSelectionAdapter(private val pets: List<PetResposta>) : RecyclerView.Adapter<PetSelectionViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetSelectionViewHolder {
@@ -22,8 +23,8 @@ class PetsSelectionAdapter(private val pets: List<PetResposta>) : RecyclerView.A
 
         holder.petButton.text = pet.nome
 
-        holder.petButton.setOnClickListener {
-            val intent = Intent(it.context, BookingConfirmationActivity::class.java)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(it.context, DatetimeSelectionActivity::class.java)
             intent.putExtra("pet", pet)
         }
     }
