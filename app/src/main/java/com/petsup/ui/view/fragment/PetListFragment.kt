@@ -23,9 +23,16 @@ class PetListFragment : Fragment() {
     private lateinit var binding: FragmentPetListBinding
     private val viewModel = PetListViewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentPetListBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setObservers()
         getPets()
 
@@ -35,30 +42,26 @@ class PetListFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentPetListBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
     private fun setObservers() {
-        viewModel.petRespostaViewModel.observe(this) {
-            initRecyclerView(it)
+        viewModel.petList.observe(viewLifecycleOwner) {
+            if (it != null) {
+                initRecyclerView(it)
+            }
         }
     }
 
-    private fun initRecyclerView(petResposta: List<PetResposta>) {
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = PetsAdapter(petResposta)
+    private fun initRecyclerView(pets: List<PetResposta>) {
+
+        if (pets.isNotEmpty()) {
+            binding.recyclerView.layoutManager = LinearLayoutManager(context)
+            binding.recyclerView.setHasFixedSize(true)
+            binding.recyclerView.adapter = PetsAdapter(pets)
+        }
     }
 
     //private fun getPets(idCliente: Int) = viewModel.listPets(idCliente)
     private fun getPets(){
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        sharedPref.getString("SerializableUSER", )
-        viewModel.listPets()
+        viewModel.listPets(sharedPref.getInt("idCliente", 0))
     }
 }

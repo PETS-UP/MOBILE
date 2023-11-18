@@ -1,5 +1,6 @@
 package com.petsup.ui.view.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,9 +11,10 @@ import com.petsup.models.pet.PetResposta
 import com.petsup.ui.view.adapter.PetsSelectionAdapter
 import com.petsup.ui.viewmodel.PetSelectionViewModel
 
-class PetSelectionActivity : AppCompatActivity() {
+class PetSelectionActivity(context: Context) : AppCompatActivity() {
     private lateinit var binding: ActivityPetSelectionBinding
     private val viewModel = PetSelectionViewModel()
+    val sharedPreferences = context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +22,11 @@ class PetSelectionActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setObservers()
-        getPets()
+        getPets(sharedPreferences.getInt("idCliente", 0))
 
         binding.continueButton.setOnClickListener {
             val finalIntent = Intent(this, BookingConfirmationActivity::class.java)
-            finalIntent.putExtra()
+//            finalIntent.putExtra()
 
             val intent = Intent(this, DatetimeSelectionActivity::class.java)
             startActivity(intent)
