@@ -23,7 +23,7 @@ class ServicesAdapter(private val services: List<ServicoResposta>) : RecyclerVie
         val service = services[position]
 
         holder.cardTitle.text = FormatterObject.formatServiceName(service.nome)
-        holder.cardPrice.text = FormatterObject.formatServicePrice(service.preco)
+        holder.cardPrice.text = service.preco
         holder.cardDescription.text = service.descricao
 
         holder.itemView.setOnClickListener {

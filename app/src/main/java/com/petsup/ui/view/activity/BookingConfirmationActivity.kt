@@ -75,7 +75,7 @@ class BookingConfirmationActivity : AppCompatActivity() {
                     binding.petName.text = pet.nome
                     binding.dateName.text = intent.getStringExtra("date")
                     binding.timeName.text = intent.getStringExtra("time")
-                    binding.priceName.text = FormatterObject.formatServicePrice(servico.preco)
+                    binding.priceName.text = servico.preco
 
                     binding.confirmButton.setOnClickListener {
                         viewModel.postAgendamento(dateTime, idCliente, petshop.id, pet.id!!, servico.id)

@@ -13,17 +13,18 @@ import com.petsup.models.servico.ServicoResposta
 import com.petsup.ui.view.adapter.PetsSelectionAdapter
 import com.petsup.ui.viewmodel.PetSelectionViewModel
 
-class PetSelectionActivity(context: Context) : AppCompatActivity() {
+class PetSelectionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPetSelectionBinding
     private val viewModel = PetSelectionViewModel()
     private lateinit var petshop: Petshop
     private lateinit var servico: ServicoResposta
-    val sharedPreferences = context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPetSelectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
         petshop = intent.getSerializableExtra("petshop") as Petshop
         servico = intent.getSerializableExtra("servico") as ServicoResposta

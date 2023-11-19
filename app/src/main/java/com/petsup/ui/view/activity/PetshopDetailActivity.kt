@@ -30,7 +30,7 @@ class PetshopDetailActivity : AppCompatActivity() {
         getServicos(petshop.id)
 
         binding.continueButton.setOnClickListener {
-            val intent = Intent(this, DatetimeSelectionActivity::class.java)
+            val intent = Intent(this, PetSelectionActivity::class.java)
             intent.putExtra("petshop", petshop)
             startActivity(intent)
             this.finish()
