@@ -31,7 +31,7 @@ class PetshopDetailActivity : AppCompatActivity() {
 
         binding.continueButton.setOnClickListener {
             val intent = Intent(this, DatetimeSelectionActivity::class.java)
-            intent.putExtra("idPetshop", petshop)
+            intent.putExtra("petshop", petshop)
             startActivity(intent)
             this.finish()
         }

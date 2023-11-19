@@ -1,206 +1,315 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/arrow_back"
-        style="@style/arrow_back_style"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/booking_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/confirmation_title"
-        style="@style/purple_subtitle_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="16dp"
-        android:text="Confirmar agendamento"
-        android:textColor="@color/purple"
-        app:layout_constraintStart_toStartOf="@id/arrow_back"
-        app:layout_constraintTop_toBottomOf="@id/arrow_back" />
+        <ImageButton
+            android:id="@+id/arrow_back"
+            style="@style/arrow_back_style"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/confirmation_card"
-        style="@style/default_card_view"
-        android:layout_width="352dp"
-        android:layout_height="156dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@id/confirmation_title"
-        app:layout_constraintTop_toBottomOf="@id/confirmation_title">
+        <TextView
+            android:id="@+id/confirmation_title"
+            style="@style/purple_subtitle_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="16dp"
+            android:text="Confirmar agendamento"
+            android:textColor="@color/purple"
+            app:layout_constraintStart_toStartOf="@id/arrow_back"
+            app:layout_constraintTop_toBottomOf="@id/arrow_back" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/confirmation_card"
+            style="@style/default_card_view"
+            android:layout_width="352dp"
+            android:layout_height="156dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@id/confirmation_title"
+            app:layout_constraintTop_toBottomOf="@id/confirmation_title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/petshop_title"
+                    style="@style/bold_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/unfilled_petshop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/petshop_name"
+                    style="@style/regular_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/petshop_title"
+                    app:layout_constraintTop_toTopOf="@id/petshop_title"
+                    tools:text="Fofinho Pet shop" />
+
+                <TextView
+                    android:id="@+id/service_title"
+                    style="@style/bold_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unfilled_service"
+                    app:layout_constraintStart_toStartOf="@id/petshop_title"
+                    app:layout_constraintTop_toBottomOf="@id/petshop_title" />
+
+                <TextView
+                    android:id="@+id/service_name"
+                    style="@style/regular_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/service_title"
+                    app:layout_constraintTop_toTopOf="@id/service_title"
+                    tools:text="Banho" />
+
+                <TextView
+                    android:id="@+id/pet_title"
+                    style="@style/bold_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unfilled_pet"
+                    app:layout_constraintStart_toStartOf="@id/service_title"
+                    app:layout_constraintTop_toBottomOf="@id/service_title" />
+
+                <TextView
+                    android:id="@+id/pet_name"
+                    style="@style/regular_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/pet_title"
+                    app:layout_constraintTop_toTopOf="@id/pet_title"
+                    tools:text="Fluffy" />
+
+                <TextView
+                    android:id="@+id/date_title"
+                    style="@style/bold_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unfilled_date"
+                    app:layout_constraintStart_toStartOf="@id/pet_title"
+                    app:layout_constraintTop_toBottomOf="@id/pet_title" />
+
+                <TextView
+                    android:id="@+id/date_name"
+                    style="@style/regular_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/date_title"
+                    app:layout_constraintTop_toTopOf="@id/date_title"
+                    tools:text="03/11/23" />
+
+                <TextView
+                    android:id="@+id/time_title"
+                    style="@style/bold_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unfilled_time"
+                    app:layout_constraintStart_toStartOf="@id/date_title"
+                    app:layout_constraintTop_toBottomOf="@id/date_title" />
+
+                <TextView
+                    android:id="@+id/time_name"
+                    style="@style/regular_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/time_title"
+                    app:layout_constraintTop_toTopOf="@id/time_title"
+                    tools:text="09h30" />
+
+                <TextView
+                    android:id="@+id/price_title"
+                    style="@style/bold_price_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/unfilled_price"
+                    app:layout_constraintStart_toStartOf="@id/time_title"
+                    app:layout_constraintTop_toBottomOf="@id/time_title" />
+
+                <TextView
+                    android:id="@+id/price_name"
+                    style="@style/regular_price_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/price_title"
+                    app:layout_constraintTop_toTopOf="@id/price_title"
+                    tools:text="R$ 34,90" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!--    <TextView-->
+        <!--        android:id="@+id/payment_method_title"-->
+        <!--        style="@style/default_subtitle_text_view"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginTop="16dp"-->
+        <!--        android:text="Forma de pagamento"-->
+        <!--        app:layout_constraintStart_toStartOf="@id/confirmation_card"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/confirmation_card" />-->
+
+        <!--    <Button-->
+        <!--        android:id="@+id/pix_button"-->
+        <!--        style="@style/payment_button"-->
+        <!--        android:layout_width="168dp"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginTop="8dp"-->
+        <!--        android:drawableTop="@drawable/pix_logo"-->
+        <!--        app:layout_constraintStart_toStartOf="@id/payment_method_title"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/payment_method_title" />-->
+
+        <!--    <Button-->
+        <!--        android:id="@+id/money_button"-->
+        <!--        style="@style/payment_button"-->
+        <!--        android:layout_width="168dp"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginStart="16dp"-->
+        <!--        android:text="Pagar no local"-->
+        <!--        android:textColor="@color/black"-->
+        <!--        app:layout_constraintStart_toEndOf="@id/pix_button"-->
+        <!--        app:layout_constraintTop_toTopOf="@id/pix_button" />-->
+
+        <Button
+            android:id="@+id/return_button"
+            style="@style/small_secondary_action_button"
+            android:layout_width="168dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/go_back"
+            app:layout_constraintStart_toStartOf="@id/confirmation_card"
+            app:layout_constraintTop_toBottomOf="@id/confirmation_card" />
+
+        <Button
+            android:id="@+id/confirm_button"
+            style="@style/small_main_action_button"
+            android:layout_width="168dp"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm"
+            app:layout_constraintEnd_toEndOf="@id/confirmation_card"
+            app:layout_constraintTop_toTopOf="@id/return_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/booking_success"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageButton
+            android:id="@+id/success_close_button"
+            style="@style/close_icon_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/success_icon"
+                style="@style/booking_closing_icon"
+                android:layout_width="176dp"
+                android:layout_height="176dp"
+                android:src="@drawable/baseline_check_circle_outline_24" />
 
             <TextView
-                android:id="@+id/petshop_title"
-                style="@style/bold_text_view"
-                android:layout_width="wrap_content"
+                android:id="@+id/success_message"
+                style="@style/empty_pet_list_text_view"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/unfilled_petshop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="@string/success_booking_message"
+                android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/petshop_name"
-                style="@style/regular_text_view"
+            <Button
+                android:id="@+id/success_return_button"
+                style="@style/secondary_action_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Fofinho Pet shop"
-                app:layout_constraintStart_toEndOf="@id/petshop_title"
-                app:layout_constraintTop_toTopOf="@id/petshop_title" />
+                android:layout_marginTop="24dp"
+                android:text="@string/back_to_start" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/booking_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageButton
+            android:id="@+id/error_close_button"
+            style="@style/close_icon_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/error_icon"
+                style="@style/booking_closing_icon"
+                android:layout_width="176dp"
+                android:layout_height="176dp"
+                android:src="@drawable/cancel_icon" />
 
             <TextView
-                android:id="@+id/service_title"
-                style="@style/bold_text_view"
+                android:id="@+id/error_message"
+                style="@style/empty_pet_list_text_view"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/error_booking_message"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/retry_button"
+                style="@style/main_action_alternate_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/unfilled_service"
-                app:layout_constraintStart_toStartOf="@id/petshop_title"
-                app:layout_constraintTop_toBottomOf="@id/petshop_title" />
+                android:layout_marginTop="24dp"
+                android:text="@string/retry" />
 
-            <TextView
-                android:id="@+id/service_name"
-                style="@style/regular_text_view"
+            <Button
+                android:id="@+id/error_return_button"
+                style="@style/secondary_action_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Banho"
-                app:layout_constraintStart_toEndOf="@id/service_title"
-                app:layout_constraintTop_toTopOf="@id/service_title" />
+                android:layout_marginTop="8dp"
+                android:text="@string/back_to_start" />
 
-            <TextView
-                android:id="@+id/pet_title"
-                style="@style/bold_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/unfilled_pet"
-                app:layout_constraintStart_toStartOf="@id/service_title"
-                app:layout_constraintTop_toBottomOf="@id/service_title" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/pet_name"
-                style="@style/regular_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Fluffy"
-                app:layout_constraintStart_toEndOf="@id/pet_title"
-                app:layout_constraintTop_toTopOf="@id/pet_title" />
-
-            <TextView
-                android:id="@+id/date_title"
-                style="@style/bold_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/unfilled_date"
-                app:layout_constraintStart_toStartOf="@id/pet_title"
-                app:layout_constraintTop_toBottomOf="@id/pet_title" />
-
-            <TextView
-                android:id="@+id/date_name"
-                style="@style/regular_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="03/11/23"
-                app:layout_constraintStart_toEndOf="@id/date_title"
-                app:layout_constraintTop_toTopOf="@id/date_title" />
-
-            <TextView
-                android:id="@+id/time_title"
-                style="@style/bold_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/unfilled_time"
-                app:layout_constraintStart_toStartOf="@id/date_title"
-                app:layout_constraintTop_toBottomOf="@id/date_title" />
-
-            <TextView
-                android:id="@+id/time_name"
-                style="@style/regular_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="09h30"
-                app:layout_constraintStart_toEndOf="@id/time_title"
-                app:layout_constraintTop_toTopOf="@id/time_title" />
-
-            <TextView
-                android:id="@+id/price_title"
-                style="@style/bold_price_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/unfilled_price"
-                app:layout_constraintStart_toStartOf="@id/time_title"
-                app:layout_constraintTop_toBottomOf="@id/time_title" />
-
-            <TextView
-                android:id="@+id/price_name"
-                style="@style/regular_price_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="R$ 34,90"
-                app:layout_constraintStart_toEndOf="@id/price_title"
-                app:layout_constraintTop_toTopOf="@id/price_title" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-<!--    <TextView-->
-<!--        android:id="@+id/payment_method_title"-->
-<!--        style="@style/default_subtitle_text_view"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="Forma de pagamento"-->
-<!--        app:layout_constraintStart_toStartOf="@id/confirmation_card"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/confirmation_card" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/pix_button"-->
-<!--        style="@style/payment_button"-->
-<!--        android:layout_width="168dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:drawableTop="@drawable/pix_logo"-->
-<!--        app:layout_constraintStart_toStartOf="@id/payment_method_title"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/payment_method_title" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/money_button"-->
-<!--        style="@style/payment_button"-->
-<!--        android:layout_width="168dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:text="Pagar no local"-->
-<!--        android:textColor="@color/black"-->
-<!--        app:layout_constraintStart_toEndOf="@id/pix_button"-->
-<!--        app:layout_constraintTop_toTopOf="@id/pix_button" />-->
-
-    <Button
-        android:id="@+id/return_button"
-        style="@style/small_secondary_action_button"
-        android:layout_width="168dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/go_back"
-        app:layout_constraintStart_toStartOf="@id/confirmation_card"
-        app:layout_constraintTop_toBottomOf="@id/confirmation_card" />
-
-    <Button
-        android:id="@+id/confirm_button"
-        style="@style/small_main_action_button"
-        android:layout_width="168dp"
-        android:layout_height="wrap_content"
-        android:text="@string/confirm"
-        app:layout_constraintEnd_toEndOf="@id/confirmation_card"
-        app:layout_constraintTop_toTopOf="@id/return_button" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
