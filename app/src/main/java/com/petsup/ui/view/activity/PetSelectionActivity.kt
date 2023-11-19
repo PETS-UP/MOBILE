@@ -17,7 +17,6 @@ class PetSelectionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPetSelectionBinding
     private val viewModel = PetSelectionViewModel()
     private lateinit var petshop: Petshop
-    private lateinit var servico: ServicoResposta
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +26,6 @@ class PetSelectionActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
         petshop = intent.getSerializableExtra("petshop") as Petshop
-        servico = intent.getSerializableExtra("servico") as ServicoResposta
 
         setObservers()
         getPets(sharedPreferences.getInt("idCliente", 0))
@@ -35,7 +33,6 @@ class PetSelectionActivity : AppCompatActivity() {
         binding.continueButton.setOnClickListener {
             val intent = Intent(this, DatetimeSelectionActivity::class.java)
             intent.putExtra("petshop", petshop)
-            intent.putExtra("servico", servico)
             startActivity(intent)
             this.finish()
         }
@@ -60,7 +57,7 @@ class PetSelectionActivity : AppCompatActivity() {
             layoutManager = GridLayoutManager(baseContext, 2)
         }
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = PetsSelectionAdapter(pets)
+        binding.recyclerView.adapter = PetsSelectionAdapter(pets, this)
     }
 
     private fun setObservers() {

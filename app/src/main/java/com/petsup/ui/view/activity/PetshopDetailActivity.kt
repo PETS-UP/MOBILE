@@ -54,7 +54,7 @@ class PetshopDetailActivity : AppCompatActivity() {
     private fun initRecyclerView(services: List<ServicoResposta>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(baseContext)
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = ServicesAdapter(services)
+        binding.recyclerView.adapter = ServicesAdapter(services, this)
     }
 
     private fun setObservers() {

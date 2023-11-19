@@ -19,16 +19,12 @@ class DatetimeSelectionActivity : AppCompatActivity(), DatePickerDialog.OnDateSe
     private lateinit var binding: ActivityDatetimeSelectionBinding
     private val calendar = Calendar.getInstance()
     private lateinit var petshop: Petshop
-    private lateinit var pet: PetResposta
-    private lateinit var servico: ServicoResposta
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDatetimeSelectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
         petshop = intent.getSerializableExtra("petshop") as Petshop
-        pet = intent.getSerializableExtra("pet") as PetResposta
-        servico = intent.getSerializableExtra("servico") as ServicoResposta
 
         binding.continueButton.setOnClickListener {
             val intent = Intent(this, BookingConfirmationActivity::class.java)
@@ -36,8 +32,6 @@ class DatetimeSelectionActivity : AppCompatActivity(), DatePickerDialog.OnDateSe
             intent.putExtra("time", FormatterObject.formatTime(calendar.timeInMillis))
             intent.putExtra("datetime", FormatterObject.formatDateTime(calendar.timeInMillis))
             intent.putExtra("petshop", petshop)
-            intent.putExtra("pet", pet)
-            intent.putExtra("servico", servico)
             startActivity(intent)
             this.finish()
         }
@@ -45,16 +39,12 @@ class DatetimeSelectionActivity : AppCompatActivity(), DatePickerDialog.OnDateSe
         binding.returnButton.setOnClickListener {
             val intent = Intent(this, PetSelectionActivity::class.java)
             intent.putExtra("petshop", petshop)
-            intent.putExtra("pet", pet)
-            intent.putExtra("servico", servico)
             this.finish()
         }
 
         binding.arrowBack.setOnClickListener {
             val intent = Intent(this, PetSelectionActivity::class.java)
             intent.putExtra("petshop", petshop)
-            intent.putExtra("pet", pet)
-            intent.putExtra("servico", servico)
             this.finish()
         }
 
