@@ -30,6 +30,7 @@ class BookingConfirmationActivity : AppCompatActivity() {
     private lateinit var pet: PetResposta
     private lateinit var servico: ServicoResposta
     private lateinit var dateTime: String
+    private var idCliente: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +39,9 @@ class BookingConfirmationActivity : AppCompatActivity() {
         AndroidThreeTen.init(this)
         setObservers()
 
+        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
+
+        idCliente = sharedPref.getInt("idCliente", 0)
         petshop = intent.getSerializableExtra("petshop") as Petshop
         pet = intent.getSerializableExtra("pet") as PetResposta
         servico = intent.getSerializableExtra("servico") as ServicoResposta
@@ -80,7 +84,7 @@ class BookingConfirmationActivity : AppCompatActivity() {
                     binding.confirmButton.setOnClickListener {
                         val formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
                         val formattedDateTime = LocalDateTime.parse(dateTime, formatter)
-
+                        viewModel.postAgendamento(formattedDateTime, idCliente, petshop.id, pet.id!!, servico.id)
                     }
 
                     binding.returnButton.setOnClickListener {
@@ -125,9 +129,5 @@ class BookingConfirmationActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    fun postAgendamento(dataHora: java.time.LocalDateTime, idCliente: Int, idPetshop: Int, idPet: Int, idServico: Int) {
-        viewModel.postAgendamento()
     }
 }
