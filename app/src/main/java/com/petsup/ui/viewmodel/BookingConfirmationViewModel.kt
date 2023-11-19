@@ -19,7 +19,7 @@ class BookingConfirmationViewModel : ViewModel() {
         Rest.getInstance().create(AgendamentoService::class.java)
     }
 
-    fun postAgendamento(dataHora: org.threeten.bp.LocalDateTime, idCliente: Int, idPetshop: Int, idPet: Int, idServico: Int) {
+    fun postAgendamento(dataHora: String, idCliente: Int, idPetshop: Int, idPet: Int, idServico: Int) {
         val request = api.postAgendamento(dataHora, idCliente, idPetshop, idPet, idServico)
 
         request.enqueue(object : Callback<Unit> {

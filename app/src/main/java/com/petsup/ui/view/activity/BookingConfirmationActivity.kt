@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.jakewharton.threetenabp.AndroidThreeTen
 import com.petsup.databinding.ActivityBookingConfirmationBinding
 import com.petsup.models.pet.PetResposta
 import com.petsup.models.petshop.Petshop
@@ -13,8 +12,6 @@ import com.petsup.models.servico.ServicoResposta
 import com.petsup.ui.model.BookingConfirmationViewHolder
 import com.petsup.ui.`object`.FormatterObject
 import com.petsup.ui.viewmodel.BookingConfirmationViewModel
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.format.DateTimeFormatter
 
 class BookingConfirmationActivity : AppCompatActivity() {
 
@@ -36,7 +33,6 @@ class BookingConfirmationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        AndroidThreeTen.init(this)
         setObservers()
 
         val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
@@ -82,9 +78,7 @@ class BookingConfirmationActivity : AppCompatActivity() {
                     binding.priceName.text = FormatterObject.formatServicePrice(servico.preco)
 
                     binding.confirmButton.setOnClickListener {
-                        val formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
-                        val formattedDateTime = LocalDateTime.parse(dateTime, formatter)
-                        viewModel.postAgendamento(formattedDateTime, idCliente, petshop.id, pet.id!!, servico.id)
+                        viewModel.postAgendamento(dateTime, idCliente, petshop.id, pet.id!!, servico.id)
                     }
 
                     binding.returnButton.setOnClickListener {

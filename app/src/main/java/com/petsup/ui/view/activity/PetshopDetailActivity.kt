@@ -63,5 +63,5 @@ class PetshopDetailActivity : AppCompatActivity() {
         })
     }
 
-    private fun getServicos(idPetshop: Int) = viewModel.getServices(petshop.id)
+    private fun getServicos(idPetshop: Int) = viewModel.getServices(idPetshop)
 }

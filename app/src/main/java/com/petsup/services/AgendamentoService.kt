@@ -7,9 +7,9 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface AgendamentoService {
-    @POST("agendamentos")
+    @POST("agendamentos/v2")
     fun postAgendamento(
-        @Query("dataHora") dataHora: org.threeten.bp.LocalDateTime,
+        @Query("dataHora") dataHora: String,
         @Query("idCliente") idCliente: Int,
         @Query("idPetshop") idPetshop: Int,
         @Query("idPet") idPet: Int,
