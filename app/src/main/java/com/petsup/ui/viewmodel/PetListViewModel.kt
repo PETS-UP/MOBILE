@@ -13,7 +13,7 @@ import retrofit2.create
 
 class PetListViewModel : ViewModel() {
     private var _petList = MutableLiveData<List<PetResposta>>()
-    val petRespostaViewModel: LiveData<List<PetResposta>> = _petList
+    val petList: LiveData<List<PetResposta>> = _petList
 
     fun listPets(idCliente: Int) = viewModelScope.launch(Dispatchers.IO) {
         _petList.postValue(Rest.getInstance().create<PetService>().listPets(idCliente).execute().body())
