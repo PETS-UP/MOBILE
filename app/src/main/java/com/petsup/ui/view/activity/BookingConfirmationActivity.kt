@@ -1,9 +1,11 @@
 package com.petsup.ui.view.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.jakewharton.threetenabp.AndroidThreeTen
 import com.petsup.databinding.ActivityBookingConfirmationBinding
 import com.petsup.models.pet.PetResposta
 import com.petsup.models.petshop.Petshop
@@ -11,6 +13,8 @@ import com.petsup.models.servico.ServicoResposta
 import com.petsup.ui.model.BookingConfirmationViewHolder
 import com.petsup.ui.`object`.FormatterObject
 import com.petsup.ui.viewmodel.BookingConfirmationViewModel
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
 
 class BookingConfirmationActivity : AppCompatActivity() {
 
@@ -25,15 +29,19 @@ class BookingConfirmationActivity : AppCompatActivity() {
     private lateinit var petshop: Petshop
     private lateinit var pet: PetResposta
     private lateinit var servico: ServicoResposta
+    private lateinit var dateTime: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        AndroidThreeTen.init(this)
         setObservers()
 
         petshop = intent.getSerializableExtra("petshop") as Petshop
         pet = intent.getSerializableExtra("pet") as PetResposta
         servico = intent.getSerializableExtra("servico") as ServicoResposta
+        dateTime = intent.getStringExtra("datetime")!!
     }
 
     private fun setObservers() {
@@ -70,7 +78,9 @@ class BookingConfirmationActivity : AppCompatActivity() {
                     binding.priceName.text = FormatterObject.formatServicePrice(servico.preco)
 
                     binding.confirmButton.setOnClickListener {
-                        TODO()
+                        val formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
+                        val formattedDateTime = LocalDateTime.parse(dateTime, formatter)
+
                     }
 
                     binding.returnButton.setOnClickListener {
@@ -115,5 +125,9 @@ class BookingConfirmationActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    fun postAgendamento(dataHora: java.time.LocalDateTime, idCliente: Int, idPetshop: Int, idPet: Int, idServico: Int) {
+        viewModel.postAgendamento()
     }
 }
