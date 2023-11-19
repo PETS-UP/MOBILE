@@ -1,6 +1,7 @@
 package com.petsup.ui.viewmodel
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,10 +31,10 @@ class BottomMenuViewModel(private val context: Context) : ViewModel() {
         )
     }
 
-    fun getUserByEmail(email: String): LiveData<ClienteDetalhes> {
+    fun getUserByEmail(email: String) {
         var clienteDetalhes: ClienteDetalhes
-        viewModelScope.launch {
-            val request = api.getUserByEmail(email)
+        viewModelScope.launch(Dispatchers.IO) {
+            api.getUserByEmail(email)
                 .enqueue(object : Callback<ClienteDetalhes> {
                     override fun onResponse(
                         call: Call<ClienteDetalhes>,
@@ -43,21 +44,15 @@ class BottomMenuViewModel(private val context: Context) : ViewModel() {
                             clienteDetalhes = response.body()!!
                             clienteDetalhes?.let {
                                 saveToSharedPreferences(it)
-                                _cliente.postValue(it)
                             }
-//
-//                            saveToSharedPreferences(clienteDetalhes)
-//                            _cliente.postValue(clienteDetalhes)
                         }
                     }
-
                     override fun onFailure(call: Call<ClienteDetalhes>, t: Throwable) {
-                        print("erro API")
+                        Log.d("BBBBBBBBBBB", "Erro na requisição de email $t")
                     }
 
                 })
         }
-        return _cliente
     }
 
     private fun saveToSharedPreferences(clienteDetalhes: ClienteDetalhes) {
