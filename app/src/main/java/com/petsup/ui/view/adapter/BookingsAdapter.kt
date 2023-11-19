@@ -7,6 +7,7 @@ import com.petsup.R
 import com.petsup.models.AgendamentoResposta
 import com.petsup.ui.model.BookingViewHolder
 import com.petsup.ui.model.PetViewHolder
+import com.petsup.ui.`object`.FormatterObject
 
 class BookingsAdapter(private val petsBooking : List<AgendamentoResposta>) : RecyclerView.Adapter<BookingViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookingViewHolder {
@@ -22,8 +23,8 @@ class BookingsAdapter(private val petsBooking : List<AgendamentoResposta>) : Rec
         holder.petshopName.text = booking.nomePetshop
         holder.serviceName.text = booking.servico
         holder.petName.text = booking.nomePet
-        //holder.dateName.text = booking.dataHora.
-        //holder.timeName.text
+        holder.dateName.text = FormatterObject.formatDate(booking.dataHora)
+        holder.timeName.text = FormatterObject.formatTime(booking.dataHora)
         holder.priceName.text = booking.preco.toString()
     }
 }

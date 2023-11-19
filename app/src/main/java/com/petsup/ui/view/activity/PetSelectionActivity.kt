@@ -1,5 +1,6 @@
 package com.petsup.ui.view.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -12,11 +13,13 @@ import com.petsup.models.servico.ServicoResposta
 import com.petsup.ui.view.adapter.PetsSelectionAdapter
 import com.petsup.ui.viewmodel.PetSelectionViewModel
 
-class PetSelectionActivity : AppCompatActivity() {
+class PetSelectionActivity(context: Context) : AppCompatActivity() {
     private lateinit var binding: ActivityPetSelectionBinding
     private val viewModel = PetSelectionViewModel()
     private lateinit var petshop: Petshop
     private lateinit var servico: ServicoResposta
+    val sharedPreferences = context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPetSelectionBinding.inflate(layoutInflater)
@@ -26,7 +29,7 @@ class PetSelectionActivity : AppCompatActivity() {
         servico = intent.getSerializableExtra("servico") as ServicoResposta
 
         setObservers()
-        getPets()
+        getPets(sharedPreferences.getInt("idCliente", 0))
 
         binding.continueButton.setOnClickListener {
             val intent = Intent(this, DatetimeSelectionActivity::class.java)
