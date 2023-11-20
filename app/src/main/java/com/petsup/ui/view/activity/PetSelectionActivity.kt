@@ -16,8 +16,8 @@ import com.petsup.ui.viewmodel.PetSelectionViewModel
 class PetSelectionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPetSelectionBinding
     private val viewModel = PetSelectionViewModel()
-
     private lateinit var petshop: Petshop
+    private lateinit var servico: ServicoResposta
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,32 +27,12 @@ class PetSelectionActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
         petshop = intent.getSerializableExtra("petshop") as Petshop
+        servico = intent.getSerializableExtra("servico") as ServicoResposta
 
         setObservers()
         getPets(sharedPreferences.getInt("idCliente", 0))
 
-        binding.continueButton.setOnClickListener {
-
-            val finalIntent = Intent(this, BookingConfirmationActivity::class.java)
-//            finalIntent.putExtra()
-
-            val intent = Intent(this, DatetimeSelectionActivity::class.java)
-            intent.putExtra("petshop", petshop)
-            startActivity(intent)
-            this.finish()
-        }
-
-        binding.returnButton.setOnClickListener {
-            val intent = Intent(this, PetshopDetailActivity::class.java)
-            intent.putExtra("petshop", petshop)
-            startActivity(intent)
-            this.finish()
-        }
-
         binding.arrowBack.setOnClickListener {
-            val intent = Intent(this, PetshopDetailActivity::class.java)
-            intent.putExtra("petshop", petshop)
-            startActivity(intent)
             this.finish()
         }
     }
@@ -62,7 +42,7 @@ class PetSelectionActivity : AppCompatActivity() {
             layoutManager = GridLayoutManager(baseContext, 2)
         }
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = PetsSelectionAdapter(pets, this)
+        binding.recyclerView.adapter = PetsSelectionAdapter(pets, petshop, servico)
     }
 
     private fun setObservers() {
