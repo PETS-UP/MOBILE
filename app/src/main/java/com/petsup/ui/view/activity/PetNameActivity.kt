@@ -18,6 +18,7 @@ class PetNameActivity : AppCompatActivity() {
 
         binding.confirmButton.setOnClickListener {
             viewModel.postPetStack(binding.nameEditText.text.toString())
+            viewModel.postPet()
 
             val intent = Intent(this, BottomMenuActivity::class.java)
             startActivity(intent)
