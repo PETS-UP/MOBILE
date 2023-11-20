@@ -5,6 +5,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,7 +62,8 @@ class PetListFragment : Fragment() {
 
     //private fun getPets(idCliente: Int) = viewModel.listPets(idCliente)
     private fun getPets(){
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val sharedPref = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        Log.d("CCCCCCC", "${sharedPref.getInt("idCliente", 0)}")
         viewModel.listPets(sharedPref.getInt("idCliente", 0))
     }
 }

@@ -2,6 +2,7 @@ package com.petsup.ui.view.activity
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -28,11 +29,7 @@ class BottomMenuActivity : AppCompatActivity() {
         viewModel = BottomMenuViewModel(this)
 
         val email = intent.getStringExtra("email")
-        viewModel.cliente.observe(this) {
-            if (email != null) {
-                getUserByEmail(email)
-            }
-        }
+        getUserByEmail(email!!)
         initNavigation()
     }
 
