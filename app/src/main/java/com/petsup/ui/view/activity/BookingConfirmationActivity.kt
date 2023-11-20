@@ -54,8 +54,6 @@ class BookingConfirmationActivity : AppCompatActivity() {
         sexoPet = sharedPref.getString("sexoPet", "").toString()
         especiePet = sharedPref.getString("especiePet", "").toString()
 
-        Log.d("DDDDDDDDDDDDDDDD", "${sharedPref.getInt("idCliente", 0)}")
-
         petshop = intent.getSerializableExtra("petshop") as Petshop
         dateTime = intent.getStringExtra("datetime")!!
 
@@ -89,7 +87,7 @@ class BookingConfirmationActivity : AppCompatActivity() {
                     binding.bookingSuccess.isVisible = false
 
                     binding.petshopName.text = petshop.nome
-                    binding.serviceName.text = nomeServico
+                    binding.serviceName.text = FormatterObject.formatServiceName(nomeServico)
                     binding.petName.text = nomePet
                     binding.dateName.text = intent.getStringExtra("date")
                     binding.timeName.text = intent.getStringExtra("time")

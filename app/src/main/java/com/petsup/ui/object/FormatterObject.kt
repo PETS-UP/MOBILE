@@ -17,7 +17,7 @@ object FormatterObject {
     }
 
     fun formatDateTime(timestamp: Long): String {
-        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
 
         return formatter.format(timestamp)
     }
