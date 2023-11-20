@@ -3,6 +3,7 @@ package com.petsup.ui.view.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.petsup.databinding.ActivityBookingConfirmationBinding
@@ -41,7 +42,7 @@ class BookingConfirmationActivity : AppCompatActivity() {
 
         setObservers()
 
-        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
+        val sharedPref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
         idCliente = sharedPref.getInt("idCliente", 0)
         idServico = sharedPref.getInt("idServico", 0)
@@ -86,7 +87,7 @@ class BookingConfirmationActivity : AppCompatActivity() {
                     binding.bookingSuccess.isVisible = false
 
                     binding.petshopName.text = petshop.nome
-                    binding.serviceName.text = nomeServico
+                    binding.serviceName.text = FormatterObject.formatServiceName(nomeServico)
                     binding.petName.text = nomePet
                     binding.dateName.text = intent.getStringExtra("date")
                     binding.timeName.text = intent.getStringExtra("time")
