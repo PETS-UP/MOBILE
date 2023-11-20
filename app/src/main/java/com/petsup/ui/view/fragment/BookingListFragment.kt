@@ -1,5 +1,6 @@
 package com.petsup.ui.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,9 +23,9 @@ class BookingListFragment : Fragment() {
     private val viewModel = BookingListViewModel()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val sharedPref = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        getAgendamentos(sharedPref.getInt("idCliente", 0))
         setObservers()
-        getAgendamentos(2)
     }
 
     override fun onCreateView(
