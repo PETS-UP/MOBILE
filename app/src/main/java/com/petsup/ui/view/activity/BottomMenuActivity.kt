@@ -28,8 +28,13 @@ class BottomMenuActivity : AppCompatActivity() {
 
         viewModel = BottomMenuViewModel(this)
 
-        val email = intent.getStringExtra("email")
-        getUserByEmail(email!!)
+        val sharedPref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+
+        if(sharedPref.getString("emailCliente", "").isNullOrBlank()){
+            val email = intent.getStringExtra("email")
+            getUserByEmail(email!!)
+        }
+
         initNavigation()
     }
 
