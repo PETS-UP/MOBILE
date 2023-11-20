@@ -38,8 +38,8 @@ class PetListFragment : Fragment() {
         getPets()
 
         binding.addPetButton.setOnClickListener {
-            val intent = Intent(context, PetSpeciesActivity::class.java)
-            startActivity(intent)
+            val intent = Intent(requireActivity(), PetSpeciesActivity::class.java)
+            requireActivity().startActivity(intent)
         }
     }
 

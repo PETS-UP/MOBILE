@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.petsup.databinding.ActivityPetNameBinding
+import com.petsup.ui.viewmodel.PetAddViewModel
 
 class PetNameActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPetNameBinding
+    private val viewModel = PetAddViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,6 +17,10 @@ class PetNameActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.confirmButton.setOnClickListener {
+            viewModel.postPetStack(binding.nameEditText.text.toString())
+
+            val intent = Intent(this, BottomMenuActivity::class.java)
+            startActivity(intent)
             this.finish()
         }
 
@@ -28,8 +34,7 @@ class PetNameActivity : AppCompatActivity() {
     }
 
     private fun back() {
-        val intent = Intent(this, PetGenderActivity::class.java)
-        startActivity(intent)
+        viewModel.popFromStack()
         this.finish()
     }
 }
