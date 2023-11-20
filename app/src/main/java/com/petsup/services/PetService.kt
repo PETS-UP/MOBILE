@@ -10,43 +10,43 @@ import retrofit2.http.PUT
 import retrofit2.http.Query
 
 interface PetService {
-    @GET("/pets")
-    fun listPets(@Query("idCliente") idCliente: Int): Call<List<PetCadastro>>
+    @GET("pets")
+    fun listPets(@Query("idCliente") idCliente: Int): Call<List<PetResposta>>
 
-    @GET("/pets/{idPet}")
+    @GET("pets/{idPet}")
     fun getPetById(@Query("idPet") idPet: Int): Call<PetResposta>
 
-    @POST("/pets/adicionar-pilha/{obj}")
+    @POST("adicionar-pilha/{obj}")
     fun addToStack(@Query("obj") obj: String): Call<Unit>
 
-    @GET("/pets/pop-pilha")
+    @GET("pop-pilha")
     fun popFromStack(): Call<String>
 
-    @POST("/pets/limpa-pilha")
+    @POST("limpa-pilha")
     fun clearStack(): Call<Unit>
 
-    @POST("/pets/cadastrar-pilha")
+    @POST("cadastrar-pilha")
     fun postPet(): Call<Unit>
 
-    @DELETE("/pets/{idPet}")
+    @DELETE("pets/{idPet}")
     fun deletePet(@Query("idPet") idPet: Int): Call<Unit>
 
     // obj na query tbm?
     //@RequestParam
-    @POST("/clientes/adicionar-pfp/{idPet}/{obj}")
+    @POST("clientes/adicionar-pfp/{idPet}/{obj}")
     fun postProfilePicture(@Query("idPet") idPet: Int,
                            @Query("obj") obj: String): Call<Boolean>
 
     // byte[] == ByteArray ???
-    @GET("/clientes/retornar-blob/{idPet}")
+    @GET("clientes/retornar-blob/{idPet}")
     fun getProfilePicture(@Query("idPet") idPet: Int): Call<ByteArray>
 
-    @GET("/clientes/retornar-imagem/{idPet}")
+    @GET("clientes/retornar-imagem/{idPet}")
     fun getImage(@Query("idPet") idPet: Int): Call<String>
 
-    @PUT("/clientes/atualizar-imagem/{idPet}")
+    @PUT("clientes/atualizar-imagem/{idPet}")
     fun updateImage(@Query("idPet") idPet: Int): Call<Boolean>
 
-    @DELETE("/clientes/deletar-imagem/{idPet}")
+    @DELETE("clientes/deletar-imagem/{idPet}")
     fun deleteImage(@Query("idPet") idPet: Int): Call<String>
 }

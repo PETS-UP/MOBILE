@@ -18,7 +18,10 @@ data class Petshop(
     val numero: String,
     val cnpj: String,
     val razaoSocial: String,
-    val horaAbertura: LocalTime,
-    val horaFechamento: LocalTime,
+    val horaAbertura: String,
+    val horaFechamento: String,
     val diasFuncionais: List<DayOfWeek>,
+    val nota: Double,
+    val isOpen: Boolean,
+    val imagemPerfil: String
 ) : Serializable

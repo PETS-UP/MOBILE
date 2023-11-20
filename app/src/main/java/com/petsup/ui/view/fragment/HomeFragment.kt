@@ -1,4 +1,4 @@
-package com.petsup.ui.fragment
+package com.petsup.ui.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.petsup.databinding.FragmentHomeBinding
 import com.petsup.models.petshop.Petshop
-import com.petsup.ui.adapter.PetshopsAdapter
+import com.petsup.ui.view.adapter.PetshopsAdapter
 import com.petsup.ui.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
@@ -16,8 +16,8 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel = HomeViewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setObservers()
         getPetshops()
@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setObservers() {
-        viewModel.petshopList.observe(this) {
+        viewModel.petshopList.observe(viewLifecycleOwner) {
             initRecyclerView(it)
         }
     }

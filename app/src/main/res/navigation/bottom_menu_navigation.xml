@@ -7,32 +7,49 @@
 
     <fragment
         android:id="@+id/home_nav"
-        android:name="com.petsup.ui.fragment.HomeFragment"
+        android:name="com.petsup.ui.view.fragment.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/search_nav"
-        android:name="com.petsup.ui.fragment.HomeFragment"
+        android:name="com.petsup.ui.view.fragment.HomeFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/my_pets_nav"
-        android:name="com.petsup.ui.fragment.PetListFragment"
+        android:name="com.petsup.ui.view.fragment.PetListFragment"
         android:label="@string/mypets"
         tools:layout="@layout/fragment_pet_list" />
 
     <fragment
         android:id="@+id/calendar_nav"
-        android:name="com.petsup.ui.fragment.BookingListFragment"
+        android:name="com.petsup.ui.view.fragment.BookingListFragment"
         android:label="@string/agenda"
         tools:layout="@layout/fragment_booking_list" />
 
     <fragment
         android:id="@+id/profile_nav"
-        android:name="com.petsup.ui.fragment.ProfileFragment"
+        android:name="com.petsup.ui.view.fragment.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_nav_to_my_pets_nav"
+            app:destination="@id/my_pets_nav" />
+        <action
+            android:id="@+id/action_profile_nav_to_profile_data_nav"
+            app:destination="@id/profile_data_nav" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile_data_nav"
+        android:name="com.petsup.ui.view.fragment.ProfileDataFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile_data" >
+        <action
+            android:id="@+id/action_profile_data_nav_to_profile_nav"
+            app:destination="@id/profile_nav" />
+    </fragment>
 
 </navigation>

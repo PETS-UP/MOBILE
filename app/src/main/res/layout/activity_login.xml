@@ -66,7 +66,8 @@
         android:layout_alignStart="@id/forms_password_text_view"
         android:layout_marginBottom="12dp"
         android:background="@drawable/default_edit_text_background"
-        android:hint="@string/hidden_password" />
+        android:hint="@string/hidden_password"
+        android:inputType="textPassword" />
 
     <TextView
         android:id="@+id/forgot_password_text_view"

@@ -15,8 +15,9 @@ data class ClienteDetalhes (
     val bairro: String?,
     val rua: String?,
     val numero: String?,
-    val dataNasc: LocalDate?,
+    val dataNasc: String?,
     val cpf: String?,
     val longitude: Double?,
-    val latitude: Double?
+    val latitude: Double?,
+    val imagemPerfil: String?
 ) : Serializable

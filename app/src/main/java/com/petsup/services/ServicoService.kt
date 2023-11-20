@@ -8,9 +8,9 @@ import retrofit2.http.Query
 interface ServicoService {
 
     //@RequestParam
-    @GET("/servicos")
+    @GET("servicos")
     fun getServicosByIdPetshop(@Query("idPetshop") idPetshop: Int): Call<List<ServicoResposta>>
 
-    @GET("/servicos/{idServico}")
+    @GET("servicos/{idServico}")
     fun getServicoById(@Query("idServico") idServico: Int): Call<ServicoResposta>
 }

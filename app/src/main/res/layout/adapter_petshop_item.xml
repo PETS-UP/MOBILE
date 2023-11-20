@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pet_shop_card_view"
     style="@style/default_card_view"
     android:layout_width="match_parent"
@@ -33,7 +34,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@id/pet_shop_icon"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="PetsUp Pet Shop" />
 
         <TextView
             android:id="@+id/card_location"
@@ -41,25 +43,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/card_title"
-            app:layout_constraintTop_toBottomOf="@id/card_title" />
+            app:layout_constraintTop_toBottomOf="@id/card_title"
+            tools:text="Cerqueira César" />
 
         <TextView
             android:id="@+id/card_services"
             style="@style/gray_description_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/services"
             app:layout_constraintStart_toStartOf="@id/card_location"
-            app:layout_constraintTop_toBottomOf="@id/card_location" />
+            app:layout_constraintTop_toBottomOf="@id/card_location"
+            tools:text="@string/services" />
 
         <TextView
             android:id="@+id/card_status"
             style="@style/green_description_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/status_open"
             app:layout_constraintStart_toStartOf="@id/card_services"
-            app:layout_constraintTop_toBottomOf="@id/card_services" />
+            app:layout_constraintTop_toBottomOf="@id/card_services"
+            tools:text="@string/status_open" />
 
         <ImageView
             android:id="@+id/grade_image_view"
@@ -79,7 +82,8 @@
             android:layout_marginTop="2dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/card_title" />
+            app:layout_constraintTop_toTopOf="@id/card_title"
+            tools:text="4.5" />
 
         <ImageView
             android:id="@+id/favorite_image_view"
