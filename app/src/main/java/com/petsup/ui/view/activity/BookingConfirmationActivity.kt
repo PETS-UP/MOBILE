@@ -55,6 +55,8 @@ class BookingConfirmationActivity : AppCompatActivity() {
 
         petshop = intent.getSerializableExtra("petshop") as Petshop
         dateTime = intent.getStringExtra("datetime")!!
+
+        viewModel.updateViewStateToContent()
     }
 
     private fun setObservers() {
