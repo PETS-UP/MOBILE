@@ -19,12 +19,17 @@ class DatetimeSelectionActivity : AppCompatActivity(), DatePickerDialog.OnDateSe
     private lateinit var binding: ActivityDatetimeSelectionBinding
     private val calendar = Calendar.getInstance()
     private lateinit var petshop: Petshop
+    private lateinit var servico: ServicoResposta
+    private lateinit var pet: PetResposta
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDatetimeSelectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         petshop = intent.getSerializableExtra("petshop") as Petshop
+        servico = intent.getSerializableExtra("servico") as ServicoResposta
+        pet = intent.getSerializableExtra("pet") as PetResposta
 
         binding.continueButton.setOnClickListener {
             val intent = Intent(this, BookingConfirmationActivity::class.java)
@@ -32,19 +37,16 @@ class DatetimeSelectionActivity : AppCompatActivity(), DatePickerDialog.OnDateSe
             intent.putExtra("time", FormatterObject.formatTime(calendar.timeInMillis))
             intent.putExtra("datetime", FormatterObject.formatDateTime(calendar.timeInMillis))
             intent.putExtra("petshop", petshop)
+            intent.putExtra("servico", servico)
+            intent.putExtra("pet", pet)
             startActivity(intent)
-            this.finish()
         }
 
         binding.returnButton.setOnClickListener {
-            val intent = Intent(this, PetSelectionActivity::class.java)
-            intent.putExtra("petshop", petshop)
             this.finish()
         }
 
         binding.arrowBack.setOnClickListener {
-            val intent = Intent(this, PetSelectionActivity::class.java)
-            intent.putExtra("petshop", petshop)
             this.finish()
         }
 
@@ -71,6 +73,7 @@ class DatetimeSelectionActivity : AppCompatActivity(), DatePickerDialog.OnDateSe
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         calendar.set(year, month, dayOfMonth)
+        binding.dateButton.text = FormatterObject.formatDate(calendar.timeInMillis)
     }
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
@@ -78,5 +81,6 @@ class DatetimeSelectionActivity : AppCompatActivity(), DatePickerDialog.OnDateSe
             set(java.util.Calendar.HOUR_OF_DAY, hourOfDay)
             set(java.util.Calendar.MINUTE, minute)
         }
+        binding.timeButton.text = FormatterObject.formatTime(calendar.timeInMillis)
     }
 }
