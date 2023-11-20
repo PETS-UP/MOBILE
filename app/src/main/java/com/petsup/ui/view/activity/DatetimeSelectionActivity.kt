@@ -57,6 +57,16 @@ class DatetimeSelectionActivity : AppCompatActivity(), DatePickerDialog.OnDateSe
                 calendar.get(Calendar.DAY_OF_MONTH)
             ).show()
         }
+
+        binding.timeButton.setOnClickListener {
+            TimePickerDialog(
+                this,
+                this,
+                calendar.get(java.util.Calendar.HOUR_OF_DAY),
+                calendar.get(java.util.Calendar.MINUTE),
+                true
+            ).show()
+        }
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
