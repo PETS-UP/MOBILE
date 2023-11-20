@@ -15,6 +15,7 @@ import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 import retrofit2.http.Query
 import java.lang.reflect.Type
 
@@ -52,7 +53,7 @@ ClienteService {
     fun deleteImage(@Query("idCliente") idCliente: Int): Call<String>
 
     @GET("clientes/busca-email/{email}")
-    fun getUserByEmail(@Query("email") email: String): Call<ClienteDetalhes>
+    fun getUserByEmail(@Path("email") email: String): Call<ClienteDetalhes>
 
     @PATCH("clientes/{idCliente}")
     fun updateClienteById(@Query("idCliente") idCliente: Int): Call<ClienteDetalhes>

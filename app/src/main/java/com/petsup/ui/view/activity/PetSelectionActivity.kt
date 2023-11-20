@@ -16,6 +16,7 @@ import com.petsup.ui.viewmodel.PetSelectionViewModel
 class PetSelectionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPetSelectionBinding
     private val viewModel = PetSelectionViewModel()
+
     private lateinit var petshop: Petshop
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +32,10 @@ class PetSelectionActivity : AppCompatActivity() {
         getPets(sharedPreferences.getInt("idCliente", 0))
 
         binding.continueButton.setOnClickListener {
+
+            val finalIntent = Intent(this, BookingConfirmationActivity::class.java)
+//            finalIntent.putExtra()
+
             val intent = Intent(this, DatetimeSelectionActivity::class.java)
             intent.putExtra("petshop", petshop)
             startActivity(intent)
