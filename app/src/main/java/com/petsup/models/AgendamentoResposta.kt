@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 
 data class AgendamentoResposta (
     val id: Int,
-    val dataHora: LocalDateTime,
+    val dataHora: String,
     val nomeCliente: String,
     val emailCliente: String,
     val nomePetshop: String,
@@ -13,5 +13,5 @@ data class AgendamentoResposta (
     val especie: String,
     val sexo: String,
     val servico: String,
-    val preco: Double
+    val preco: String
 ) : Serializable

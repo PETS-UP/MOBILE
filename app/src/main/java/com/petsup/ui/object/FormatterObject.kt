@@ -28,10 +28,8 @@ object FormatterObject {
         return formatter.format(timestamp)
     }
 
-    fun formatDate(date: LocalDateTime): String {
-        val formatter = SimpleDateFormat("dd/MM/yy")
-
-        return formatter.format(date)
+    fun formatDate(date: String): String {
+        return date.split(" ")[0]
     }
 
     fun formatTime(timestamp: Long): String {
@@ -40,10 +38,8 @@ object FormatterObject {
         return formatter.format(timestamp)
     }
 
-    fun formatTime(time: LocalDateTime): String {
-        val formatter = SimpleDateFormat("HH'h'mm")
-
-        return formatter.format(time)
+    fun formatTime(time: String): String {
+        return time.split(" ")[1]
     }
 
     fun formatServiceName(service: String): String {
@@ -51,6 +47,12 @@ object FormatterObject {
             .lowercase()
             .split("_")
             .joinToString(" ") { it.replaceFirstChar { it.uppercase() } }
+    }
+
+    fun formatPrice(preco: String): String {
+        val precoFormatado = preco.toDouble()
+
+        return "R$ " + String.format("%.2f", precoFormatado)
     }
 
     fun formatGrade(grade: Double): String {

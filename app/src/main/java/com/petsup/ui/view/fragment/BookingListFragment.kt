@@ -24,7 +24,7 @@ class BookingListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setObservers()
-        getAgendamentos(/*TODO*/ 1)
+        getAgendamentos(2)
     }
 
     override fun onCreateView(
@@ -37,7 +37,9 @@ class BookingListFragment : Fragment() {
 
     private fun setObservers() {
         viewModel.bookingList.observe(viewLifecycleOwner) {
-            initRecyclerView(it)
+            if (it != null) {
+                initRecyclerView(it)
+            }
         }
     }
 

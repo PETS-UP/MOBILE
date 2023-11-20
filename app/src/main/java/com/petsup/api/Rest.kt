@@ -8,7 +8,7 @@ object Rest {
         return Retrofit
             .Builder()
             //.baseUrl("https://ec2-54-211-207-232.compute-1.amazonaws.com:8080")
-            .baseUrl("http://192.168.69.236:8080/api/")
+            .baseUrl("http://10.0.2.2:8081/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
