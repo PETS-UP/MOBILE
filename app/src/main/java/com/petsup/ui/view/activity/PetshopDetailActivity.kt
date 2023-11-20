@@ -30,7 +30,7 @@ class PetshopDetailActivity : AppCompatActivity() {
         getServicos(petshop.id)
 
         binding.continueButton.setOnClickListener {
-            val intent = Intent(this, DatetimeSelectionActivity::class.java)
+            val intent = Intent(this, PetSelectionActivity::class.java)
             intent.putExtra("petshop", petshop)
             startActivity(intent)
             this.finish()
@@ -54,7 +54,7 @@ class PetshopDetailActivity : AppCompatActivity() {
     private fun initRecyclerView(services: List<ServicoResposta>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(baseContext)
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = ServicesAdapter(services)
+        binding.recyclerView.adapter = ServicesAdapter(services, this)
     }
 
     private fun setObservers() {
@@ -63,5 +63,5 @@ class PetshopDetailActivity : AppCompatActivity() {
         })
     }
 
-    private fun getServicos(idPetshop: Int) = viewModel.getServices(petshop.id)
+    private fun getServicos(idPetshop: Int) = viewModel.getServices(idPetshop)
 }

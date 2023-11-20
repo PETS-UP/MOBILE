@@ -1,5 +1,6 @@
 package com.petsup.ui.view.adapter
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import com.petsup.ui.model.PetSelectionViewHolder
 import com.petsup.ui.view.activity.BookingConfirmationActivity
 import com.petsup.ui.view.activity.DatetimeSelectionActivity
 
-class PetsSelectionAdapter(private val pets: List<PetResposta>) : RecyclerView.Adapter<PetSelectionViewHolder>() {
+class PetsSelectionAdapter(private val pets: List<PetResposta>, private val context: Context) : RecyclerView.Adapter<PetSelectionViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetSelectionViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.adapter_pet_selection_item, parent, false)
         return PetSelectionViewHolder(itemView)
@@ -24,8 +25,15 @@ class PetsSelectionAdapter(private val pets: List<PetResposta>) : RecyclerView.A
         holder.petButton.text = pet.nome
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, DatetimeSelectionActivity::class.java)
-            intent.putExtra("pet", pet)
+            val sharedPref = context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+            val editor = sharedPref.edit()
+
+            editor.putInt("idPet", pet.id)
+            editor.putString("nomePet", pet.nome)
+            editor.putString("sexoPet", pet.sexo)
+            editor.putString("especiePet", pet.especie)
+
+            editor.apply()
         }
     }
 
