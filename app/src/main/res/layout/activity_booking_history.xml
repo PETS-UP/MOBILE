@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/section_title"
@@ -64,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="Fofinho Pet shop"
+                    tools:text="Fofinho Pet shop"
                     app:layout_constraintStart_toEndOf="@id/petshop_title"
                     app:layout_constraintTop_toTopOf="@id/petshop_title" />
 
@@ -83,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="Banho"
+                    tools:text="Banho"
                     app:layout_constraintStart_toEndOf="@id/service_title"
                     app:layout_constraintTop_toTopOf="@id/service_title" />
 
@@ -102,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="Fluffy"
+                    tools:text="Fluffy"
                     app:layout_constraintStart_toEndOf="@id/pet_title"
                     app:layout_constraintTop_toTopOf="@id/pet_title" />
 
@@ -121,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="22/06/23"
+                    tools:text="22/06/23"
                     app:layout_constraintStart_toEndOf="@id/date_title"
                     app:layout_constraintTop_toTopOf="@id/date_title" />
 
@@ -140,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="11h00"
+                    tools:text="11h00"
                     app:layout_constraintStart_toEndOf="@id/time_title"
                     app:layout_constraintTop_toTopOf="@id/time_title" />
 
@@ -159,7 +160,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="R$ 34,90"
+                    tools:text="R$ 34,90"
                     app:layout_constraintStart_toEndOf="@id/price_title"
                     app:layout_constraintTop_toTopOf="@id/price_title" />
 

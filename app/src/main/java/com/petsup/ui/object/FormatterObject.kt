@@ -53,10 +53,6 @@ object FormatterObject {
             .joinToString(" ") { it.replaceFirstChar { it.uppercase() } }
     }
 
-    fun formatServicePrice(price: Double): String {
-        return "R$ " + String.format("%.2f", price)
-    }
-
     fun formatGrade(grade: Double): String {
         return String.format("%.1f", grade)
     }

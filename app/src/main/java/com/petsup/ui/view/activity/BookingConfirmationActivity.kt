@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.jakewharton.threetenabp.AndroidThreeTen
 import com.petsup.databinding.ActivityBookingConfirmationBinding
 import com.petsup.models.pet.PetResposta
 import com.petsup.models.petshop.Petshop
@@ -13,8 +12,6 @@ import com.petsup.models.servico.ServicoResposta
 import com.petsup.ui.model.BookingConfirmationViewHolder
 import com.petsup.ui.`object`.FormatterObject
 import com.petsup.ui.viewmodel.BookingConfirmationViewModel
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.format.DateTimeFormatter
 
 class BookingConfirmationActivity : AppCompatActivity() {
 
@@ -27,20 +24,36 @@ class BookingConfirmationActivity : AppCompatActivity() {
     }
 
     private lateinit var petshop: Petshop
-    private lateinit var pet: PetResposta
-    private lateinit var servico: ServicoResposta
     private lateinit var dateTime: String
+    private var idCliente = 0
+    private var idServico = 0
+    private var nomeServico = ""
+    private var precoServico = ""
+    private var descricaoServico = ""
+    private var idPet = 0
+    private var nomePet = ""
+    private var sexoPet = ""
+    private var especiePet = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        AndroidThreeTen.init(this)
         setObservers()
 
+        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
+
+        idCliente = sharedPref.getInt("idCliente", 0)
+        idServico = sharedPref.getInt("idServico", 0)
+        nomeServico = sharedPref.getString("nomeServico", "").toString()
+        precoServico = sharedPref.getString("precoServico", "").toString()
+        descricaoServico = sharedPref.getString("descricaoServico", "").toString()
+        idPet = sharedPref.getInt("idPet", 0)
+        nomePet = sharedPref.getString("nomePet", "").toString()
+        sexoPet = sharedPref.getString("sexoPet", "").toString()
+        especiePet = sharedPref.getString("especiePet", "").toString()
+
         petshop = intent.getSerializableExtra("petshop") as Petshop
-        pet = intent.getSerializableExtra("pet") as PetResposta
-        servico = intent.getSerializableExtra("servico") as ServicoResposta
         dateTime = intent.getStringExtra("datetime")!!
     }
 
@@ -71,23 +84,19 @@ class BookingConfirmationActivity : AppCompatActivity() {
                     binding.bookingSuccess.isVisible = false
 
                     binding.petshopName.text = petshop.nome
-                    binding.serviceName.text = servico.nome
-                    binding.petName.text = pet.nome
+                    binding.serviceName.text = nomeServico
+                    binding.petName.text = nomePet
                     binding.dateName.text = intent.getStringExtra("date")
                     binding.timeName.text = intent.getStringExtra("time")
-                    binding.priceName.text = FormatterObject.formatServicePrice(servico.preco)
+                    binding.priceName.text = precoServico
 
                     binding.confirmButton.setOnClickListener {
-                        val formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
-                        val formattedDateTime = LocalDateTime.parse(dateTime, formatter)
-
+                        viewModel.postAgendamento(dateTime, idCliente, petshop.id, idPet, idServico)
                     }
 
                     binding.returnButton.setOnClickListener {
                         val intent = Intent(this, DatetimeSelectionActivity::class.java)
                         intent.putExtra("petshop", petshop)
-                        intent.putExtra("pet", pet)
-                        intent.putExtra("servico", servico)
                         startActivity(intent)
                         this.finish()
                     }
@@ -95,8 +104,6 @@ class BookingConfirmationActivity : AppCompatActivity() {
                     binding.arrowBack.setOnClickListener {
                         val intent = Intent(this, DatetimeSelectionActivity::class.java)
                         intent.putExtra("petshop", petshop)
-                        intent.putExtra("pet", pet)
-                        intent.putExtra("servico", servico)
                         startActivity(intent)
                         this.finish()
                     }
@@ -125,9 +132,5 @@ class BookingConfirmationActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    fun postAgendamento(dataHora: java.time.LocalDateTime, idCliente: Int, idPetshop: Int, idPet: Int, idServico: Int) {
-        viewModel.postAgendamento()
     }
 }

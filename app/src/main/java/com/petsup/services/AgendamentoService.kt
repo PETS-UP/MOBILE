@@ -5,12 +5,11 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
-import java.time.LocalDateTime
 
 interface AgendamentoService {
-    @POST("agendamentos")
+    @POST("agendamentos/v2")
     fun postAgendamento(
-        @Query("dataHora") dataHora: LocalDateTime,
+        @Query("dataHora") dataHora: String,
         @Query("idCliente") idCliente: Int,
         @Query("idPetshop") idPetshop: Int,
         @Query("idPet") idPet: Int,
