@@ -21,10 +21,10 @@ class BookingsAdapter(private val petsBooking : List<AgendamentoResposta>) : Rec
         val booking = petsBooking[position]
 
         holder.petshopName.text = booking.nomePetshop
-        holder.serviceName.text = booking.servico
+        holder.serviceName.text = FormatterObject.formatServiceName(booking.servico)
         holder.petName.text = booking.nomePet
         holder.dateName.text = FormatterObject.formatDate(booking.dataHora)
         holder.timeName.text = FormatterObject.formatTime(booking.dataHora)
-        holder.priceName.text = booking.preco.toString()
+        holder.priceName.text = FormatterObject.formatPrice(booking.preco)
     }
 }
