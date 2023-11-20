@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.petsup.R
+import com.petsup.models.petshop.Petshop
 import com.petsup.models.servico.ServicoResposta
 import com.petsup.ui.model.ServiceViewHolder
 import com.petsup.ui.`object`.FormatterObject
 import com.petsup.ui.view.activity.PetSelectionActivity
 
-class ServicesAdapter(private val services: List<ServicoResposta>, private val context: Context) : RecyclerView.Adapter<ServiceViewHolder>() {
+class ServicesAdapter(
+    private val services: List<ServicoResposta>,
+    private val petshop: Petshop
+) : RecyclerView.Adapter<ServiceViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.adapter_service_item, parent, false)
         return ServiceViewHolder(itemView)
@@ -27,15 +31,10 @@ class ServicesAdapter(private val services: List<ServicoResposta>, private val c
         holder.cardDescription.text = service.descricao
 
         holder.itemView.setOnClickListener {
-            val sharedPref = context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
-            val editor = sharedPref.edit()
-
-            editor.putInt("idServico", service.id)
-            editor.putString("nomeServico", service.nome)
-            editor.putString("precoServico", service.preco)
-            editor.putString("descricaoServico", service.descricao)
-
-            editor.apply()
+            val intent = Intent(it.context, PetSelectionActivity::class.java)
+            intent.putExtra("petshop", petshop)
+            intent.putExtra("servico", service)
+            it.context.startActivity(intent)
         }
     }
 }

@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/pet_subtitle"
             style="@style/default_subtitle_text_view"
-            android:layout_width="364dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="Para qual pet deseja agendar este serviço?"
@@ -33,25 +33,6 @@
             android:layout_below="@id/pet_subtitle">
 
         </androidx.recyclerview.widget.RecyclerView>
-
-        <Button
-            android:id="@+id/return_button"
-            style="@style/small_secondary_action_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/recycler_view"
-            android:layout_marginStart="10dp"
-            android:text="@string/go_back" />
-
-        <Button
-            android:id="@+id/continue_button"
-            style="@style/small_main_action_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/recycler_view"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@id/return_button"
-            android:text="@string/go_forward" />
 
     </RelativeLayout>
 
