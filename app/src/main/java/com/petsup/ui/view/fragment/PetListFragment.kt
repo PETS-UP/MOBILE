@@ -87,8 +87,4 @@ class PetListFragment : Fragment() {
         Log.d("CCCCCCC", "${sharedPref.getInt("idCliente", 0)}")
         viewModel.listPets(sharedPref.getInt("idCliente", 0))
     }
-
-    private fun deletePets(idPet: Int) {
-        viewModel.deletePet(idPet)
-    }
 }
