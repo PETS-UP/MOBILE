@@ -64,8 +64,8 @@ class PetListFragment : Fragment() {
                     binding.emptyPetList.isVisible = false
 
                     binding.addButton.setOnClickListener {
-                        val intent = Intent(requireActivity(), PetSpeciesActivity::class.java)
-                        requireActivity().startActivity(intent)
+                        val intent = Intent(context, PetSpeciesActivity::class.java)
+                        it.context.startActivity(intent)
                     }
                 }
             }

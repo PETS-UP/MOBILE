@@ -21,15 +21,15 @@ class PetAddViewModel: ViewModel() {
     }
 
     fun postPetStack(obj: String) = viewModelScope.launch(Dispatchers.IO) {
-        api.addToStack(obj)
+        api.addToStack(obj).execute()
     }
 
     fun popFromStack() = viewModelScope.launch(Dispatchers.IO) {
-        api.popFromStack()
+        api.popFromStack().execute()
     }
 
     fun clearStack() = viewModelScope.launch(Dispatchers.IO) {
-        api.clearStack()
+        api.clearStack().execute()
     }
 
     fun postPet(idCliente: Int) = viewModelScope.launch(Dispatchers.IO) {

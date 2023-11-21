@@ -17,7 +17,7 @@ class PetSpeciesActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.dogCardView.setOnClickListener {
-            viewModel.postPetStack("cachorro")
+            viewModel.postPetStack("CACHORRO")
 
             val intent = Intent(this, PetGenderActivity::class.java)
             startActivity(intent)
@@ -25,7 +25,7 @@ class PetSpeciesActivity : AppCompatActivity() {
         }
 
         binding.catCardView.setOnClickListener {
-            viewModel.postPetStack("gato")
+            viewModel.postPetStack("GATO")
 
             val intent = Intent(this, PetGenderActivity::class.java)
             startActivity(intent)
@@ -33,7 +33,7 @@ class PetSpeciesActivity : AppCompatActivity() {
         }
 
         binding.rabbitCardView.setOnClickListener {
-            viewModel.postPetStack("coelho")
+            viewModel.postPetStack("COELHO")
 
             val intent = Intent(this, PetGenderActivity::class.java)
             startActivity(intent)
@@ -41,7 +41,7 @@ class PetSpeciesActivity : AppCompatActivity() {
         }
 
         binding.rodentCardView.setOnClickListener {
-            viewModel.postPetStack("roedor")
+            viewModel.postPetStack("ROEDOR")
 
             val intent = Intent(this, PetGenderActivity::class.java)
             startActivity(intent)
