@@ -60,7 +60,7 @@ class PetListViewModel : ViewModel() {
                             if (pet.id == idPet) {
                                 iterator.remove()
                                 _petList.postValue(this)
-                                return
+                                break
                             }
                         }
                         if (this.isEmpty()) {

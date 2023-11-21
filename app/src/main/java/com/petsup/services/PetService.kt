@@ -27,7 +27,7 @@ interface PetService {
     fun clearStack(): Call<Unit>
 
     @POST("cadastrar-pilha")
-    fun postPet(): Call<Unit>
+    fun postPet(@Query("idCliente") idCliente: Int): Call<Unit>
 
     @DELETE("pets/{idPet}")
     fun deletePet(@Path("idPet") idPet: Int): Call<Unit>

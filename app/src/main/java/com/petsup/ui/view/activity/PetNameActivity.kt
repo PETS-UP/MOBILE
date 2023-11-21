@@ -1,5 +1,6 @@
 package com.petsup.ui.view.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -16,9 +17,13 @@ class PetNameActivity : AppCompatActivity() {
         binding = ActivityPetNameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val sharedPref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val idCliente = sharedPref.getInt("idCliente", 0)
+
         binding.confirmButton.setOnClickListener {
             viewModel.postPetStack(binding.nameEditText.text.toString())
-            viewModel.postPet()
+            viewModel.postPet(idCliente)
+            viewModel.clearStack()
 
             val intent = Intent(this, BottomMenuActivity::class.java)
             startActivity(intent)
