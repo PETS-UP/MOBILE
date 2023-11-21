@@ -36,9 +36,7 @@ class PetListViewModel : ViewModel() {
             ) {
                 if (response.isSuccessful) {
                     _petList.value = response.body()
-                    _state.value = if (response.body()!!
-                            .isEmpty()
-                    ) PetListViewHolder.EmptyPetList() else PetListViewHolder.PetList()
+                    _state.value = if (response.body()?.isEmpty() == true) PetListViewHolder.EmptyPetList() else PetListViewHolder.PetList()
                 }
             }
 
