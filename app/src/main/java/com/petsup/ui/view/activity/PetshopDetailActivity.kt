@@ -6,6 +6,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
 import com.petsup.databinding.ActivityPetshopDetailBinding
 import com.petsup.models.petshop.Petshop
 import com.petsup.models.servico.ServicoResposta
@@ -33,7 +36,7 @@ class PetshopDetailActivity : AppCompatActivity() {
             this.finish()
         }
 
-        binding.petshopIcon.setImageURI(Uri.parse(petshop.imagemPerfil))
+        Glide.with(this).load(petshop.imagemPerfil).apply(RequestOptions.bitmapTransform(CircleCrop())).into(binding.petshopIcon)
         binding.petshopName.text = petshop.nome
         binding.gradeTextView.text = FormatterObject.formatGrade(petshop.nota)
         binding.petshopInfo.text = "${petshop.rua}, ${petshop.numero}\nContato - ${FormatterObject.formatPhoneNumber(petshop.telefone)}"

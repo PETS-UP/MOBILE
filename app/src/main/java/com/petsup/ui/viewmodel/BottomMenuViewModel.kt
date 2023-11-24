@@ -32,7 +32,6 @@ class BottomMenuViewModel(private val context: Context) : ViewModel() {
     }
 
     fun getUserByEmail(email: String) {
-        var clienteDetalhes: ClienteDetalhes
         viewModelScope.launch(Dispatchers.IO) {
             api.getUserByEmail(email)
                 .enqueue(object : Callback<ClienteDetalhes> {
@@ -41,9 +40,9 @@ class BottomMenuViewModel(private val context: Context) : ViewModel() {
                         response: Response<ClienteDetalhes>
                     ) {
                         if (response.isSuccessful) {
-                            clienteDetalhes = response.body()!!
-                            clienteDetalhes?.let {
+                            response.body()?.let {
                                 saveToSharedPreferences(it)
+                                Log.i("PERFIL", it.toString())
                             }
                         }
                     }
@@ -62,6 +61,7 @@ class BottomMenuViewModel(private val context: Context) : ViewModel() {
         editor.putInt("idCliente", clienteDetalhes.id)
         editor.putString("nomeCliente", clienteDetalhes.nome)
         editor.putString("emailCliente", clienteDetalhes.email)
+        editor.putString("imagemPerfilCliente", clienteDetalhes.imagemPerfil)
 
         editor.apply()
     }

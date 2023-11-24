@@ -17,7 +17,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -63,33 +62,4 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
-
-//    private fun tryLogin() {
-//        val loginRequest = ClienteLogin(
-//            "aluno@sptech.school.com", "1Sptechaluno@"
-//        )
-//        Rest.getInstance()
-//            .create(ClienteService::class.java)
-//            .login(loginRequest)
-//            .enqueue(object : Callback<ClienteToken> {
-//                override fun onResponse(
-//                    call: Call<ClienteToken>,
-//                    response: Response<ClienteToken>
-//                ) {
-//                    if (response.isSuccessful) {
-//                        Toast.makeText(
-//                            baseContext,
-//                            response.body()?.token,
-//                            Toast.LENGTH_LONG
-//                        ).show()
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<ClienteToken>, t: Throwable) {
-//                    println(t)
-//                    Toast.makeText(baseContext, t.message, Toast.LENGTH_LONG).show()
-//                }
-//
-//            })
-//    }
 }

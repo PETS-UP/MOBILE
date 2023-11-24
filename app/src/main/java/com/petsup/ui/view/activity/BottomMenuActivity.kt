@@ -30,7 +30,7 @@ class BottomMenuActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
-        if(sharedPref.getString("emailCliente", "").isNullOrBlank()){
+        if (sharedPref.getString("emailCliente", "").isNullOrBlank()) {
             val email = intent.getStringExtra("email")
             getUserByEmail(email!!)
         }

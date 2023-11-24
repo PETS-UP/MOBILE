@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
     private fun initRecyclerView(petshops: List<Petshop>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = PetshopsAdapter(petshops)
+        binding.recyclerView.adapter = PetshopsAdapter(petshops, requireContext())
     }
 
     private fun getPetshops() = viewModel.getPetshops()
