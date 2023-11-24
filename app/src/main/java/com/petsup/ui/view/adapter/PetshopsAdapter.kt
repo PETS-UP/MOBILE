@@ -1,10 +1,14 @@
 package com.petsup.ui.view.adapter
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
 import com.petsup.R
 import com.petsup.models.petshop.Petshop
 import com.petsup.ui.view.activity.PetshopDetailActivity
@@ -12,7 +16,7 @@ import com.petsup.ui.model.PetshopViewHolder
 import com.petsup.ui.`object`.FormatterObject
 import com.petsup.ui.view.activity.BookingConfirmationActivity
 
-class PetshopsAdapter(private val petshops: List<Petshop>) : RecyclerView.Adapter<PetshopViewHolder>() {
+class PetshopsAdapter(private val petshops: List<Petshop>, private val context: Context) : RecyclerView.Adapter<PetshopViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetshopViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.adapter_petshop_item, parent, false)
@@ -24,11 +28,11 @@ class PetshopsAdapter(private val petshops: List<Petshop>) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: PetshopViewHolder, position: Int) {
         val petshop = petshops[position]
 
-        holder.petshopIcon.setImageURI(petshop.imagemPerfil.toUri())
+        Glide.with(context).load(petshop.imagemPerfil).into(holder.petshopIcon)
         holder.cardTitle.text = petshop.nome
         holder.cardLocation.text = "${petshop.rua}, ${petshop.numero}"
         holder.cardStatus.text = FormatterObject.formatStatus(petshop.isOpen)
-        holder.gradeTextView.text = "4.5"
+        holder.gradeTextView.text = FormatterObject.formatGrade(petshop.nota)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, PetshopDetailActivity::class.java)
