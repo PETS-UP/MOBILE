@@ -32,7 +32,7 @@ class PetshopsAdapter(private val petshops: List<Petshop>, private val context: 
         holder.cardTitle.text = petshop.nome
         holder.cardLocation.text = "${petshop.rua}, ${petshop.numero}"
         holder.cardStatus.text = FormatterObject.formatStatus(petshop.isOpen)
-        holder.gradeTextView.text = "4.5"
+        holder.gradeTextView.text = FormatterObject.formatGrade(petshop.nota)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, PetshopDetailActivity::class.java)
