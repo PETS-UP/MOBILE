@@ -16,21 +16,33 @@ class PetGenderActivity : AppCompatActivity() {
         binding = ActivityPetGenderBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.maleCardView.setOnClickListener {
+        setObservers()
+        setupOnClick()
+    }
+
+    private fun setObservers() = with(viewModel) {
+        step.observe(this@PetGenderActivity) {
+            val intent = Intent(this@PetGenderActivity, PetNameActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setupOnClick() = with(binding) {
+        maleCardView.setOnClickListener {
             viewModel.postPetStack("M")
-            val intent = Intent(this, PetNameActivity::class.java)
+            val intent = Intent(this@PetGenderActivity, PetNameActivity::class.java)
             startActivity(intent)
         }
 
-        binding.femaleCardView.setOnClickListener {
+        femaleCardView.setOnClickListener {
             viewModel.postPetStack("F")
-            val intent = Intent(this, PetNameActivity::class.java)
+            val intent = Intent(this@PetGenderActivity, PetNameActivity::class.java)
             startActivity(intent)
         }
 
-        binding.arrowBack.setOnClickListener {
+        arrowBack.setOnClickListener {
             viewModel.popFromStack()
-            this.finish()
+            this@PetGenderActivity.finish()
         }
     }
 }

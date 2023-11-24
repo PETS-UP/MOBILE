@@ -16,42 +16,36 @@ class PetSpeciesActivity : AppCompatActivity() {
         binding = ActivityPetSpeciesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.dogCardView.setOnClickListener {
-            viewModel.postPetStack("CACHORRO")
+        setObservers()
+        setupOnClick()
+    }
 
-            val intent = Intent(this, PetGenderActivity::class.java)
+    private fun setObservers() = with(viewModel) {
+        step.observe(this@PetSpeciesActivity) {
+            val intent = Intent(this@PetSpeciesActivity, PetGenderActivity::class.java)
             startActivity(intent)
-            this.finish()
-        }
-
-        binding.catCardView.setOnClickListener {
-            viewModel.postPetStack("GATO")
-
-            val intent = Intent(this, PetGenderActivity::class.java)
-            startActivity(intent)
-            this.finish()
-        }
-
-        binding.rabbitCardView.setOnClickListener {
-            viewModel.postPetStack("COELHO")
-
-            val intent = Intent(this, PetGenderActivity::class.java)
-            startActivity(intent)
-            this.finish()
-        }
-
-        binding.rodentCardView.setOnClickListener {
-            viewModel.postPetStack("ROEDOR")
-
-            val intent = Intent(this, PetGenderActivity::class.java)
-            startActivity(intent)
-            this.finish()
-        }
-
-        binding.arrowBack.setOnClickListener {
-            this.finish()
         }
     }
 
+    private fun setupOnClick() = with(binding) {
+        dogCardView.setOnClickListener {
+            viewModel.postPetStack("CACHORRO")
+        }
 
+        catCardView.setOnClickListener {
+            viewModel.postPetStack("GATO")
+        }
+
+        rabbitCardView.setOnClickListener {
+            viewModel.postPetStack("COELHO")
+        }
+
+        rodentCardView.setOnClickListener {
+            viewModel.postPetStack("ROEDOR")
+        }
+
+        arrowBack.setOnClickListener {
+            this@PetSpeciesActivity.finish()
+        }
+    }
 }

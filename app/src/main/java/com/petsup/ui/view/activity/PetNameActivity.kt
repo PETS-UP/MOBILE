@@ -12,29 +12,47 @@ class PetNameActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPetNameBinding
     private val viewModel = PetAddViewModel()
 
+    private val sharedPref by lazy {
+        getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
+
+    private val idCliente by lazy {
+        sharedPref.getInt("idCliente", 0)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPetNameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
-        val idCliente = sharedPref.getInt("idCliente", 0)
+        setObservers()
+        setupOnClick()
+    }
 
-        binding.confirmButton.setOnClickListener {
-            viewModel.postPetStack(binding.nameEditText.text.toString())
+    private fun setObservers() = with(viewModel) {
+        step.observe(this@PetNameActivity) {
             viewModel.postPet(idCliente)
-            viewModel.clearStack()
-
-            val intent = Intent(this, BottomMenuActivity::class.java)
-            startActivity(intent)
-            this.finish()
         }
 
-        binding.returnButton.setOnClickListener {
+        lastStep.observe(this@PetNameActivity) {
+            clearStack()
+            val intent = Intent(this@PetNameActivity, BottomMenuActivity::class.java)
+            startActivity(intent)
+            this@PetNameActivity.finish()
+        }
+    }
+
+    private fun setupOnClick() = with(binding) {
+        confirmButton.setOnClickListener {
+            val name = nameEditText.text.toString()
+            viewModel.postPetStack(name)
+        }
+
+        returnButton.setOnClickListener {
             back()
         }
 
-        binding.arrowBack.setOnClickListener {
+        arrowBack.setOnClickListener {
             back()
         }
     }

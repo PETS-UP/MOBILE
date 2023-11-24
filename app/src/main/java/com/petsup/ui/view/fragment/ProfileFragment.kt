@@ -13,9 +13,6 @@ import com.petsup.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
     lateinit var binding : FragmentProfileBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +31,5 @@ class ProfileFragment : Fragment() {
         editButton.setOnClickListener{
             it.findNavController().navigate(R.id.action_profile_nav_to_profile_data_nav)
         }
-
     }
-
 }
