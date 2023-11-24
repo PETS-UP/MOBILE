@@ -16,14 +16,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/edit_button"
+        android:id="@+id/logout_button"
         style="@style/vertical_button_with_icon"
         android:layout_width="104dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="24dp"
-        android:drawableTop="@drawable/baseline_edit_24"
-        android:text="@string/edit_profile"
+        android:drawableTop="@drawable/baseline_exit_to_app_24"
+        android:text="@string/logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,6 +48,7 @@
         app:layout_constraintTop_toBottomOf="@id/profile_name">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/data_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -104,6 +105,7 @@
         app:layout_constraintTop_toBottomOf="@id/data_card_view">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pets_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -160,6 +162,7 @@
         app:layout_constraintTop_toBottomOf="@id/pets_card_view">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/favorites_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -204,17 +207,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/logout_button"
-        style="@style/vertical_button_with_icon"
-        android:layout_width="104dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="32dp"
-        android:drawableTop="@drawable/baseline_exit_to_app_24"
-        android:text="@string/logout"
-        app:layout_constraintTop_toBottomOf="@id/favorites_card_view"
-        app:layout_constraintStart_toStartOf="@id/edit_button"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

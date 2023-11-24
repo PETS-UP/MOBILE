@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -72,18 +73,17 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setOnClick() = with(binding) {
-        editButton.setOnClickListener{
-//            it.findNavController().navigate(R.id.action_profile_nav_to_profile_data_nav)
+        dataLayout.setOnClickListener {
             val intent = Intent(context, ProfileDataActivity::class.java)
             startActivity(intent)
+        }
+
+        petsLayout.setOnClickListener {
+            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.action_profile_nav_to_my_pets_nav)
         }
     }
 
     private fun displayUserInfo() = with(binding) {
-        Log.i("IMAGEM PERFIL", sharedPrefs.getString("imagemPerfilCliente", "")!!)
-        Log.i("NOME PERFIL", sharedPrefs.getString("nomeCliente", "")!!)
-        Log.i("EMAIL PERFIL", sharedPrefs.getString("emailCliente", "")!!)
-        Log.i("ID CLIENTE PERFIL", sharedPrefs.getInt("idCliente", 0).toString())
         Glide.with(requireContext()).load(sharedPrefs.getString("imagemPerfilCliente", "")).apply(
             RequestOptions.bitmapTransform(
                 CircleCrop()
