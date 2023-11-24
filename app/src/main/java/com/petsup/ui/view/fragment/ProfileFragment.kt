@@ -1,5 +1,6 @@
 package com.petsup.ui.view.fragment
 
+import android.content.Intent
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
@@ -16,6 +17,8 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.petsup.R
 import com.petsup.databinding.FragmentProfileBinding
+import com.petsup.ui.view.activity.BottomMenuActivity
+import com.petsup.ui.view.activity.ProfileDataActivity
 import kotlin.system.exitProcess
 
 class ProfileFragment : Fragment() {
@@ -70,7 +73,9 @@ class ProfileFragment : Fragment() {
 
     private fun setOnClick() = with(binding) {
         editButton.setOnClickListener{
-            it.findNavController().navigate(R.id.action_profile_nav_to_profile_data_nav)
+//            it.findNavController().navigate(R.id.action_profile_nav_to_profile_data_nav)
+            val intent = Intent(context, ProfileDataActivity::class.java)
+            startActivity(intent)
         }
     }
 
