@@ -48,7 +48,7 @@ class ProfileDataViewModel : ViewModel() {
                         response: Response<ClienteDetalhes>
                     ) {
                         if (response.isSuccessful) {
-                            _profileData.value = response.body()!!
+                            _profileData.postValue(response.body()!!)
                         }
                     }
 

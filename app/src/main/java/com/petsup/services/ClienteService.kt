@@ -31,7 +31,7 @@ ClienteService {
     fun getClientes(): Call<List<ClienteDetalhes>>
 
     @GET("clientes/{idCliente}")
-    fun getClienteById(@Query("idCliente") idCliente: Int): Call<ClienteDetalhes>
+    fun getClienteById(@Path("idCliente") idCliente: Int): Call<ClienteDetalhes>
 
     // obj na query tbm?
     //@RequestParam
