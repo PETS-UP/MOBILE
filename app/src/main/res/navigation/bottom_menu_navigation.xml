@@ -44,9 +44,9 @@
 
     <fragment
         android:id="@+id/profile_data_nav"
-        android:name="com.petsup.ui.view.fragment.ProfileDataFragment"
+        android:name="com.petsup.ui.view.activity.ProfileDataActivity"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile_data" >
+        tools:layout="@layout/activity_profile_data" >
         <action
             android:id="@+id/action_profile_data_nav_to_profile_nav"
             app:destination="@id/profile_nav" />

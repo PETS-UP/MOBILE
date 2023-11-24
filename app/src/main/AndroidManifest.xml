@@ -35,6 +35,7 @@
         <activity android:name=".ui.view.activity.PetSelectionActivity" />
         <activity android:name=".ui.view.activity.DatetimeSelectionActivity" />
         <activity android:name=".ui.view.activity.BookingConfirmationActivity" />
+        <activity android:name=".ui.view.activity.ProfileDataActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

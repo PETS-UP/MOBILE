@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,14 +16,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/edit_button"
+        android:id="@+id/logout_button"
         style="@style/vertical_button_with_icon"
         android:layout_width="104dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="24dp"
-        android:drawableTop="@drawable/baseline_edit_24"
-        android:text="@string/edit_profile"
+        android:drawableTop="@drawable/baseline_exit_to_app_24"
+        android:text="@string/logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,9 +33,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Ana Beatriz"
         app:layout_constraintStart_toStartOf="@id/profile_icon"
-        app:layout_constraintTop_toBottomOf="@id/profile_icon" />
+        app:layout_constraintTop_toBottomOf="@id/profile_icon"
+        tools:text="Ana Beatriz" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/data_card_view"
@@ -47,6 +48,7 @@
         app:layout_constraintTop_toBottomOf="@id/profile_name">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/data_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -103,6 +105,7 @@
         app:layout_constraintTop_toBottomOf="@id/data_card_view">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pets_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -159,6 +162,7 @@
         app:layout_constraintTop_toBottomOf="@id/pets_card_view">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/favorites_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

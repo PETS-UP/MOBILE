@@ -5,9 +5,10 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/empty_pet_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -32,53 +33,56 @@
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:onClick="addPet"
             android:text="@string/add" />
-
-        <include layout="@layout/activity_bottom_menu" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/section_title"
-        style="@style/default_section_title_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/mypets"
-        android:textColor="@color/purple"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/search_button"
-        style="@style/vertical_button_with_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableTop="@drawable/baseline_search_24"
-        android:text="@string/search"
-        app:layout_constraintEnd_toStartOf="@id/add_button"
-        app:layout_constraintTop_toTopOf="@id/add_button" />
-
-    <Button
-        android:id="@+id/add_button"
-        style="@style/vertical_button_with_icon"
-        android:layout_width="92dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:drawableTop="@drawable/baseline_add_24"
-        android:text="@string/add_lower_case"
-        android:onClick="addPet"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pet_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/section_title" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/section_title"
+            style="@style/default_section_title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/mypets"
+            android:textColor="@color/purple"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/search_button"
+            style="@style/vertical_button_with_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/baseline_search_24"
+            android:text="@string/search"
+            app:layout_constraintEnd_toStartOf="@id/add_button"
+            app:layout_constraintTop_toTopOf="@id/add_button" />
+
+        <Button
+            android:id="@+id/add_button"
+            style="@style/vertical_button_with_icon"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:drawableTop="@drawable/baseline_add_24"
+            android:text="@string/add_lower_case"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
