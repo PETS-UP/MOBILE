@@ -23,5 +23,6 @@ data class Petshop(
     val diasFuncionais: List<DayOfWeek>,
     val nota: Double,
     val isOpen: Boolean,
-    val imagemPerfil: String
+    val imagemPerfil: String,
+    val media: Double?
 ) : Serializable

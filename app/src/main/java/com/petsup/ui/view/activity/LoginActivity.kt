@@ -1,5 +1,6 @@
 package com.petsup.ui.view.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -12,10 +13,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.widget.Toast
+import com.petsup.ui.viewmodel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+
+    private val viewModel by lazy {
+        LoginViewModel(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,8 +57,9 @@ class LoginActivity : AppCompatActivity() {
             }
             override fun onResponse(call: Call<ClienteToken>, response: Response<ClienteToken>) {
                 if (response.code() == 200) {
+                    getUserByEmail(email)
+
                     val intent = Intent(baseContext, BottomMenuActivity::class.java)
-                    intent.putExtra("email", email)
                     startActivity(intent)
                     finish()
                     Toast.makeText(this@LoginActivity, "Login success!", Toast.LENGTH_SHORT).show()
@@ -62,4 +69,6 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun getUserByEmail(email: String) = viewModel.getUserByEmail(email)
 }

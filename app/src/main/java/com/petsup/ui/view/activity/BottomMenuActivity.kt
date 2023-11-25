@@ -27,14 +27,6 @@ class BottomMenuActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = BottomMenuViewModel(this)
-
-        val sharedPref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
-
-        if (sharedPref.getString("emailCliente", "").isNullOrBlank()) {
-            val email = intent.getStringExtra("email")
-            getUserByEmail(email!!)
-        }
-
         initNavigation()
     }
 
@@ -45,6 +37,5 @@ class BottomMenuActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.bottomMenu, navController)
     }
 
-    private fun getUserByEmail(email: String) = viewModel.getUserByEmail(email)
 
 }
