@@ -10,6 +10,8 @@ import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
@@ -26,6 +28,7 @@ import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationSettingsStatusCodes
+import com.petsup.R
 import com.petsup.databinding.FragmentHomeBinding
 import com.petsup.models.petshop.Petshop
 import com.petsup.models.petshop.PetshopExibicao
@@ -78,34 +81,43 @@ class HomeFragment : Fragment() {
         }
 
         setObservers()
+        setOnClick()
         getPetshops()
+    }
 
-        val filterButton = binding.filterButton
+    private fun setOnClick() = with(binding) {
+        filterButton.setOnClickListener {
+            showPopup(it)
+        }
+    }
 
-//        filterButton.setOnClickListener {
-//            PopupMenu(context, filterButton).apply {
-//                menuInflater.inflate(R.menu.petshop_filter_menu, this.menu)
-//                setOnMenuItemClickListener {
-//                    when (it.itemId) {
-//                        R.id.filter_distance -> {
-//
-//                        }
-//                        R.id.filter_price -> {
-//
-//                        }
-//                        R.id.filter_rating -> {
-//
-//                        }
-//                        R.id.filter_favorite -> {
-//
-//                        }
-//                        else -> {
-//
-//                        }
-//                    }
-//                }
-//            }
-//        }
+    private fun showPopup(view: View) {
+        val idCliente = sharedPrefs.getInt("idCliente", 0)
+
+        val popup = PopupMenu(context, view)
+        popup.inflate(R.menu.petshop_filter_menu)
+
+        popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
+
+            when (item!!.itemId) {
+                R.id.filter_distance -> {
+                    Toast.makeText(requireContext(), item.title, Toast.LENGTH_SHORT).show()
+                }
+                R.id.filter_price -> {
+                    Toast.makeText(requireContext(), item.title, Toast.LENGTH_SHORT).show()
+                }
+                R.id.filter_rating -> {
+                    Toast.makeText(requireContext(), item.title, Toast.LENGTH_SHORT).show()
+                }
+                R.id.filter_favorite -> {
+                    Toast.makeText(requireContext(), item.title, Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            true
+        })
+
+        popup.show()
     }
 
     override fun onCreateView(
