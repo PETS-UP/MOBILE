@@ -1,5 +1,6 @@
 package com.petsup.ui.view.activity
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -21,6 +22,7 @@ class PetshopDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPetshopDetailBinding
     private val viewModel = PetshopDetailViewModel()
     private lateinit var petshop: Petshop
+    private var idCliente = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +31,18 @@ class PetshopDetailActivity : AppCompatActivity() {
 
         petshop = intent.getSerializableExtra("petshop") as Petshop
 
+        val sharedPref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        idCliente = sharedPref.getInt("idCliente", 0)
+
         setObservers()
         getServicos(petshop.id)
 
         binding.arrowBack.setOnClickListener {
             this.finish()
+        }
+
+        binding.favoriteButton.setOnClickListener{
+            postFavorito(idCliente, petshop.id)
         }
 
         Glide.with(this).load(petshop.imagemPerfil).apply(RequestOptions.bitmapTransform(CircleCrop())).into(binding.petshopIcon)
@@ -56,4 +65,6 @@ class PetshopDetailActivity : AppCompatActivity() {
     }
 
     private fun getServicos(idPetshop: Int) = viewModel.getServices(idPetshop)
+
+    private fun postFavorito(idCliente: Int, idPetshop: Int) = viewModel.postFavorito(idCliente, idPetshop)
 }
