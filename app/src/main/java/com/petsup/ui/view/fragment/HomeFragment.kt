@@ -2,6 +2,7 @@ package com.petsup.ui.view.fragment
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.IntentSender.SendIntentException
 import android.content.pm.PackageManager
 import android.location.LocationManager
@@ -25,9 +26,10 @@ import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationSettingsStatusCodes
-import com.petsup.R
 import com.petsup.databinding.FragmentHomeBinding
 import com.petsup.models.petshop.Petshop
+import com.petsup.models.petshop.PetshopExibicao
+import com.petsup.ui.view.activity.PetshopDetailActivity
 import com.petsup.ui.view.adapter.PetshopsAdapter
 import com.petsup.ui.viewmodel.HomeViewModel
 
@@ -37,6 +39,10 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel = HomeViewModel()
     private lateinit var locationRequest: LocationRequest
+
+    private val sharedPrefs by lazy {
+        requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,6 +66,7 @@ class HomeFragment : Fragment() {
                                 val longitude = locationResult.locations[index].longitude
                                 Log.i("COORDINATES", latitude.toString())
                                 Log.i("COORDINATES", longitude.toString())
+                                viewModel.updateCurrentLocation(sharedPrefs.getInt("idCliente", 0), latitude, longitude)
                             }
                         }
                     }, Looper.getMainLooper())
@@ -113,16 +120,25 @@ class HomeFragment : Fragment() {
         viewModel.petshopList.observe(viewLifecycleOwner) {
             initRecyclerView(it)
         }
+
+        viewModel.petshop.observe(viewLifecycleOwner) {
+            val intent = Intent(context, PetshopDetailActivity::class.java)
+            intent.putExtra("petshop", it)
+            Log.i("INTENT", intent.getSerializableExtra("petshop").toString())
+            requireContext().startActivity(intent)
+        }
     }
 
-    private fun initRecyclerView(petshops: List<Petshop>) {
+    private fun initRecyclerView(petshops: List<PetshopExibicao>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.adapter = setAdapter(petshops)
     }
 
-    private fun setAdapter(petshops: List<Petshop>): PetshopsAdapter {
-        return PetshopsAdapter(petshops, requireContext())
+    private fun setAdapter(petshops: List<PetshopExibicao>): PetshopsAdapter {
+        return PetshopsAdapter(petshops, requireContext()) {
+            viewModel.getPetshopById(it)
+        }
     }
 
     private fun getPetshops() = viewModel.getPetshops()

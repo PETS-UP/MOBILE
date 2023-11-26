@@ -28,7 +28,6 @@ class PetshopDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         petshop = intent.getSerializableExtra("petshop") as Petshop
-
         setObservers()
         getServicos(petshop.id)
 

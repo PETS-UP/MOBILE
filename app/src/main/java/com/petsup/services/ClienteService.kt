@@ -17,12 +17,11 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
-import java.lang.reflect.Type
 
 interface
 ClienteService {
     @POST("clientes")
-    fun postCLiente(@Body signUpRequest: ClienteCadastro): Call<Unit>
+    fun postCliente(@Body signUpRequest: ClienteCadastro): Call<Unit>
 
     @POST("clientes/login")
     fun login(@Body loginRequest: ClienteLogin): Call<ClienteToken>
@@ -36,8 +35,10 @@ ClienteService {
     // obj na query tbm?
     //@RequestParam
     @POST("clientes/adicionar-pfp/{idCliente}/{obj}")
-    fun postProfilePicture(@Query("idCliente") idCliente: Int,
-                           @Query("obj") obj: String): Call<Boolean>
+    fun postProfilePicture(
+        @Query("idCliente") idCliente: Int,
+        @Query("obj") obj: String
+    ): Call<Boolean>
 
     // byte[] == ByteArray ???
     @GET("clientes/retornar-blob/{idCliente}")
@@ -66,8 +67,8 @@ ClienteService {
 
     @GET("clientes/avaliacao/{idCliente}/{idPetshop}")
     fun getAvaliacaoCliente(
-        @Query("idCliente") idCliente: Int,
-        @Query("idPetshop") idPetshop: Int
+        @Path("idCliente") idCliente: Int,
+        @Path("idPetshop") idPetshop: Int
     ): Call<Avaliacao>
 
     @GET("clientes/ordenar-media-avaliacao")
@@ -77,10 +78,12 @@ ClienteService {
     fun getPetshopsOrderByPrecoAsc(): Call<List<PetshopMediaPreco>>
 
     @PATCH("clientes/latitude-longitude/{idCliente}/{latitude}/{longitude}")
-    fun updateCurrentLocation(@Query("idCliente") idCliente: Int,
-                               @Query("latitude") latitude: Double,
-                               @Query("longitude") longitude: Double): Call<Unit>
+    fun updateCurrentLocation(
+        @Path("idCliente") idCliente: Int,
+        @Path("latitude") latitude: Double,
+        @Path("longitude") longitude: Double
+    ): Call<Unit>
 
     @GET("clientes/petshops-proximos/{idCliente}")
-    fun getPetshopsByClienteBairro(@Query("idCliente") idCliente: Int): Call<List<Petshop>>
+    fun getPetshopsByClienteBairro(@Path("idCliente") idCliente: Int): Call<List<Petshop>>
 }
