@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -13,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.petsup.databinding.ActivityPetshopDetailBinding
 import com.petsup.models.petshop.Petshop
 import com.petsup.models.servico.ServicoResposta
+import com.petsup.ui.model.PetshopDetailViewHolder
 import com.petsup.ui.`object`.FormatterObject
 import com.petsup.ui.view.adapter.ServicesAdapter
 import com.petsup.ui.viewmodel.PetshopDetailViewModel
@@ -36,19 +39,10 @@ class PetshopDetailActivity : AppCompatActivity() {
 
         setObservers()
         getServicos(petshop.id)
+        isFavoritado(idCliente, petshop.id)
 
         binding.arrowBack.setOnClickListener {
             this.finish()
-        }
-
-        isFavoritado(idCliente, petshop.id)
-
-        binding.favoriteButton.setOnClickListener {
-            if () {
-                deleteFavorito(idCliente, petshop.id)
-            } else {
-                postFavorito(idCliente, petshop.id)
-            }
         }
 
         Glide.with(this).load(petshop.imagemPerfil)
@@ -67,23 +61,48 @@ class PetshopDetailActivity : AppCompatActivity() {
         binding.recyclerView.adapter = ServicesAdapter(services, petshop)
     }
 
-    private fun setObservers(){
+    private fun setObservers() {
         viewModel.serviceList.observe(this@PetshopDetailActivity, Observer {
             initRecyclerView(it)
         })
 
-//        viewModel.favorite.observe(this@PetshopDetailActivity){
-//            isFavoritado()
-//        }
+        viewModel.state.observe(this@PetshopDetailActivity) {
+            var teste = false
+
+            binding.favoriteButton.setOnClickListener {
+                setFavoriteButton(teste)
+                teste = !teste
+            }
+
+            binding.favoriteButtonFilled.setOnClickListener {
+                setFavoriteButton(teste)
+                teste = !teste
+            }
+
+            Log.d("Fora", it.toString())
+
+        }
+    }
+
+    private fun setFavoriteButton(isFavorite: Boolean){
+        if (isFavorite){
+            postFavorito(idCliente, petshop.id)
+            binding.favoriteButtonFilled.isVisible = true
+            binding.favoriteButton.isVisible = false
+        } else{
+            deleteFavorito(idCliente, petshop.id)
+            binding.favoriteButtonFilled.isVisible = false
+            binding.favoriteButton.isVisible = true
+        }
     }
 
     private fun getServicos(idPetshop: Int) = viewModel.getServices(idPetshop)
 
     private fun postFavorito(idCliente: Int, idPetshop: Int) =
-        viewModel.postFavorito(idCliente, idPetshop)
+        viewModel.requestPostFavorito(idCliente, idPetshop)
 
     private fun deleteFavorito(idCliente: Int, idPetshop: Int) =
-        viewModel.deleteFavorito(idCliente, idPetshop)
+        viewModel.requestDeleteFavorito(idCliente, idPetshop)
 
     private fun isFavoritado(idCliente: Int, idPetshop: Int) =
         viewModel.isFavoritado(idCliente, idPetshop)

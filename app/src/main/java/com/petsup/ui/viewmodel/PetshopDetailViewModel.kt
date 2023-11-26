@@ -11,6 +11,8 @@ import com.petsup.models.servico.ServicoResposta
 import com.petsup.services.ClienteService
 import com.petsup.services.FavoritoService
 import com.petsup.services.ServicoService
+import com.petsup.ui.model.BookingConfirmationViewHolder
+import com.petsup.ui.model.PetshopDetailViewHolder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,6 +24,9 @@ import retrofit2.create
 import retrofit2.await
 
 class PetshopDetailViewModel : ViewModel() {
+    private var _state = MutableLiveData<PetshopDetailViewHolder>()
+    val state: LiveData<PetshopDetailViewHolder> = _state
+
     private var _serviceList = MutableLiveData<List<ServicoResposta>>()
     val serviceList: LiveData<List<ServicoResposta>> = _serviceList
 
@@ -39,64 +44,52 @@ class PetshopDetailViewModel : ViewModel() {
         )
     }
 
-    fun postFavorito(idCliente: Int, idPetshop: Int) {
-        var request: Response<Unit>
-        viewModelScope.launch {
-            request = requestPostFavorito(idCliente, idPetshop)
-            if (request.isSuccessful) {
-                Log.i("Cool", "Funcionou? Olha o banco")
+    fun isFavoritado(idCliente: Int, idPetshop: Int) = viewModelScope.launch(Dispatchers.IO) {
+        api.isFavoritado(idCliente, idPetshop).enqueue(object : Callback<Boolean> {
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if (response.body() == true){
+                    _state.postValue(PetshopDetailViewHolder.Filled())
+                    Log.i("PetshopDetailViewModelTrue", response.body().toString())
+                } else{
+                    _state.postValue(PetshopDetailViewHolder.Empty())
+                    Log.i("PetshopDetailViewModelFalse", response.body().toString())
+
+                }
             }
-        }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Log.e("PetshopDetailViewModel", "$t")
+            }
+
+        })
     }
 
-    fun deleteFavorito(idCliente: Int, idPetshop: Int) {
-        var request: Response<Unit>
-        viewModelScope.launch {
-            request = requestDeleteFavorito(idCliente, idPetshop)
-            if (request.isSuccessful) {
-                Log.i("Cool", "Funcionou? Olha o banco")
+    fun requestPostFavorito(idCliente: Int, idPetshop: Int) = viewModelScope.launch(Dispatchers.IO) {
+        api.postFavorito(idCliente, idPetshop).enqueue(object : Callback<Unit> {
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                _favorite.postValue(Unit)
+                _state.postValue(PetshopDetailViewHolder.Filled())
             }
-        }
+
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                Log.e("PetshopDetailViewModel", "$t")
+            }
+
+        })
     }
 
-    fun isFavoritado(idCliente: Int, idPetshop: Int) {
-        var request: Response<Boolean>
-        viewModelScope.launch {
-            request = requestIsFavoritado(idCliente, idPetshop)
-            if (request.isSuccessful) {
-                Log.i("Cool", "Funcionou? Olha o banco")
+    fun requestDeleteFavorito(idCliente: Int, idPetshop: Int) = viewModelScope.launch(Dispatchers.IO) {
+        api.deleteFavorito(idCliente, idPetshop).enqueue(object : Callback<Unit> {
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                _favorite.postValue(Unit)
+                _state.postValue(PetshopDetailViewHolder.Empty())
             }
-        }
-    }
 
-    private suspend fun requestPostFavorito(
-        idCliente: Int,
-        idPetshop: Int
-    ): Response<Unit> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val request = api.postFavorito(idCliente, idPetshop)
-                val response = request.await()
-                Response.success(response)
-            } catch (e: HttpException) {
-                Response.error(e.code(), e.response()?.errorBody())
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                Log.e("PetshopDetailViewModel", "$t")
             }
-        }
-    }
 
-    private suspend fun requestDeleteFavorito(
-        idCliente: Int,
-        idPetshop: Int
-    ): Response<Unit> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val request = api.deleteFavorito(idCliente, idPetshop)
-                val response = request.await()
-                Response.success(response)
-            } catch (e: HttpException) {
-                Response.error(e.code(), e.response()?.errorBody())
-            }
-        }
+        })
     }
 
     private suspend fun requestIsFavoritado(

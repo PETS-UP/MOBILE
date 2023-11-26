@@ -15,11 +15,11 @@ interface FavoritoService {
     @GET("favoritos/{idCliente}")
     fun getFavoritos(@Path("idCliente") idCliente: Int): Call<List<Petshop>>
 
-    @GET("favoritos/favoritado/{idCliente}/{idPetshop}")
+    @GET("favoritos/{idCliente}/favoritado/{idPetshop}")
     fun isFavoritado(@Path("idCliente") idCliente: Int,
                      @Path("idPetshop") idPetshop: Int): Call<Boolean>
 
-    @DELETE("favoritos/{idPetshop}")
+    @DELETE("favoritos/{idCliente}/{idPetshop}")
     fun deleteFavorito(@Path("idCliente") idCliente: Int,
                        @Path("idPetshop") idPetshop: Int): Call<Unit>
 }
