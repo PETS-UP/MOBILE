@@ -49,6 +49,26 @@ class PetshopDetailViewModel : ViewModel() {
         }
     }
 
+    fun deleteFavorito(idCliente: Int, idPetshop: Int) {
+        var request: Response<Unit>
+        viewModelScope.launch {
+            request = requestDeleteFavorito(idCliente, idPetshop)
+            if (request.isSuccessful) {
+                Log.i("Cool", "Funcionou? Olha o banco")
+            }
+        }
+    }
+
+    fun isFavoritado(idCliente: Int, idPetshop: Int) {
+        var request: Response<Boolean>
+        viewModelScope.launch {
+            request = requestIsFavoritado(idCliente, idPetshop)
+            if (request.isSuccessful) {
+                Log.i("Cool", "Funcionou? Olha o banco")
+            }
+        }
+    }
+
     private suspend fun requestPostFavorito(
         idCliente: Int,
         idPetshop: Int
@@ -56,6 +76,36 @@ class PetshopDetailViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             try {
                 val request = api.postFavorito(idCliente, idPetshop)
+                val response = request.await()
+                Response.success(response)
+            } catch (e: HttpException) {
+                Response.error(e.code(), e.response()?.errorBody())
+            }
+        }
+    }
+
+    private suspend fun requestDeleteFavorito(
+        idCliente: Int,
+        idPetshop: Int
+    ): Response<Unit> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val request = api.deleteFavorito(idCliente, idPetshop)
+                val response = request.await()
+                Response.success(response)
+            } catch (e: HttpException) {
+                Response.error(e.code(), e.response()?.errorBody())
+            }
+        }
+    }
+
+    private suspend fun requestIsFavoritado(
+        idCliente: Int,
+        idPetshop: Int
+    ): Response<Boolean> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val request = api.isFavoritado(idCliente, idPetshop)
                 val response = request.await()
                 Response.success(response)
             } catch (e: HttpException) {

@@ -41,14 +41,23 @@ class PetshopDetailActivity : AppCompatActivity() {
             this.finish()
         }
 
-        binding.favoriteButton.setOnClickListener{
-            postFavorito(idCliente, petshop.id)
+        isFavoritado(idCliente, petshop.id)
+
+        binding.favoriteButton.setOnClickListener {
+            if () {
+                deleteFavorito(idCliente, petshop.id)
+            } else {
+                postFavorito(idCliente, petshop.id)
+            }
         }
 
-        Glide.with(this).load(petshop.imagemPerfil).apply(RequestOptions.bitmapTransform(CircleCrop())).into(binding.petshopIcon)
+        Glide.with(this).load(petshop.imagemPerfil)
+            .apply(RequestOptions.bitmapTransform(CircleCrop())).into(binding.petshopIcon)
         binding.petshopName.text = petshop.nome
         binding.gradeTextView.text = FormatterObject.formatGrade(petshop.nota)
-        binding.petshopInfo.text = "${petshop.rua}, ${petshop.numero}\nContato - ${FormatterObject.formatPhoneNumber(petshop.telefone)}"
+        binding.petshopInfo.text = "${petshop.rua}, ${petshop.numero}\nContato - ${
+            FormatterObject.formatPhoneNumber(petshop.telefone)
+        }"
         binding.petshopStatus.text = FormatterObject.formatStatus(petshop.isOpen)
     }
 
@@ -58,13 +67,24 @@ class PetshopDetailActivity : AppCompatActivity() {
         binding.recyclerView.adapter = ServicesAdapter(services, petshop)
     }
 
-    private fun setObservers() {
-        viewModel.serviceList.observe(this, Observer {
+    private fun setObservers(){
+        viewModel.serviceList.observe(this@PetshopDetailActivity, Observer {
             initRecyclerView(it)
         })
+
+//        viewModel.favorite.observe(this@PetshopDetailActivity){
+//            isFavoritado()
+//        }
     }
 
     private fun getServicos(idPetshop: Int) = viewModel.getServices(idPetshop)
 
-    private fun postFavorito(idCliente: Int, idPetshop: Int) = viewModel.postFavorito(idCliente, idPetshop)
+    private fun postFavorito(idCliente: Int, idPetshop: Int) =
+        viewModel.postFavorito(idCliente, idPetshop)
+
+    private fun deleteFavorito(idCliente: Int, idPetshop: Int) =
+        viewModel.deleteFavorito(idCliente, idPetshop)
+
+    private fun isFavoritado(idCliente: Int, idPetshop: Int) =
+        viewModel.isFavoritado(idCliente, idPetshop)
 }
