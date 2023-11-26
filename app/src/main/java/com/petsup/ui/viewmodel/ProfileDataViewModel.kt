@@ -7,19 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.petsup.api.Rest
 import com.petsup.models.cliente.ClienteDetalhes
-import com.petsup.models.servico.ServicoResposta
-import com.petsup.services.AgendamentoService
 import com.petsup.services.ClienteService
-import com.petsup.services.ServicoService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
-import retrofit2.HttpException
 import retrofit2.Response
-import retrofit2.await
-import retrofit2.create
 
 class ProfileDataViewModel : ViewModel() {
     private var _profileData = MutableLiveData<ClienteDetalhes>()
@@ -38,7 +31,6 @@ class ProfileDataViewModel : ViewModel() {
 //
 //            }
 //        }
-//        return request.body()!!
 
         viewModelScope.launch(Dispatchers.IO) {
             api.getClienteById(idCliente)
