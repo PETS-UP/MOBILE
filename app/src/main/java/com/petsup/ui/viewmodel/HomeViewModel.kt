@@ -51,7 +51,7 @@ class HomeViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<Petshop>>, t: Throwable) {
-                Log.e("HOME VIEW MODEL", "Error fetching List Petshops")
+                Log.e("HOME VIEW MODEL", "Error fetching List Petshops: $t")
             }
 
         })
@@ -64,7 +64,7 @@ class HomeViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<Unit>, t: Throwable) {
-                Log.e("ERROR COORDINATES", "Error")
+                Log.e("ERROR COORDINATES", "Error: $t")
             }
 
         }))
@@ -79,7 +79,7 @@ class HomeViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<Petshop>>, t: Throwable) {
-                Log.e("HOME VIEW MODEL", "Error fetching Petshops Proximos")
+                Log.e("HOME VIEW MODEL", "Error fetching Petshops Proximos: $t")
             }
 
         })
@@ -97,7 +97,7 @@ class HomeViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<PetshopMediaAvaliacao>>, t: Throwable) {
-                Log.e("HOME VIEW MODEL", "Error fetching Media Avaliacao")
+                Log.e("HOME VIEW MODEL", "Error fetching Media Avaliacao: $t")
             }
 
         })
@@ -113,7 +113,20 @@ class HomeViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<PetshopMediaPreco>>, t: Throwable) {
-                Log.e("HOME VIEW MODEL", "Error fetching Media Preco")
+                Log.e("HOME VIEW MODEL", "Error fetching Media Preco: $t")
+            }
+
+        })
+    }
+
+    fun getFavoritos(idCliente: Int) = viewModelScope.launch(Dispatchers.IO) {
+        apiPetshop.getFavoritos(idCliente).enqueue(object : Callback<List<Petshop>> {
+            override fun onResponse(call: Call<List<Petshop>>, response: Response<List<Petshop>>) {
+                _petshopList.postValue(MapperObject.listPetshopToListPetshopExibicao(response.body() ?: emptyList()))
+            }
+
+            override fun onFailure(call: Call<List<Petshop>>, t: Throwable) {
+                Log.e("HOME VIEW MODEL", "Error fetching Favoritos: $t")
             }
 
         })
@@ -126,7 +139,7 @@ class HomeViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<Petshop>, t: Throwable) {
-                Log.e("HOME VIEW MODEL", "Error fetching petshop")
+                Log.e("HOME VIEW MODEL", "Error fetching petshop: $t")
             }
 
         })

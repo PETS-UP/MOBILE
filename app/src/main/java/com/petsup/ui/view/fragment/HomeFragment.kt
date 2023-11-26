@@ -101,16 +101,16 @@ class HomeFragment : Fragment() {
 
             when (item!!.itemId) {
                 R.id.filter_distance -> {
-                    Toast.makeText(requireContext(), item.title, Toast.LENGTH_SHORT).show()
+                    viewModel.getPetshopsByClienteBairro(idCliente)
                 }
                 R.id.filter_price -> {
-                    Toast.makeText(requireContext(), item.title, Toast.LENGTH_SHORT).show()
+                    viewModel.getPetshopsByMediaPreco()
                 }
                 R.id.filter_rating -> {
-                    Toast.makeText(requireContext(), item.title, Toast.LENGTH_SHORT).show()
+                    viewModel.getPetshopsByMediaAvaliacao()
                 }
                 R.id.filter_favorite -> {
-                    Toast.makeText(requireContext(), item.title, Toast.LENGTH_SHORT).show()
+                    viewModel.getFavoritos(idCliente)
                 }
             }
 

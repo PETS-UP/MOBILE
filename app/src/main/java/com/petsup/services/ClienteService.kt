@@ -5,9 +5,6 @@ import com.petsup.models.cliente.ClienteCadastro
 import com.petsup.models.cliente.ClienteDetalhes
 import com.petsup.models.cliente.ClienteLogin
 import com.petsup.models.cliente.ClienteToken
-import com.petsup.models.petshop.Petshop
-import com.petsup.models.petshop.PetshopAvaliacao
-import com.petsup.models.petshop.PetshopMediaPreco
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -71,19 +68,10 @@ ClienteService {
         @Path("idPetshop") idPetshop: Int
     ): Call<Avaliacao>
 
-    @GET("clientes/ordenar-media-avaliacao")
-    fun getPetshopsOrderByMedia(): Call<List<PetshopAvaliacao>>
-
-    @GET("clientes/ordenar-media-preco")
-    fun getPetshopsOrderByPrecoAsc(): Call<List<PetshopMediaPreco>>
-
     @PATCH("clientes/latitude-longitude/{idCliente}/{latitude}/{longitude}")
     fun updateCurrentLocation(
         @Path("idCliente") idCliente: Int,
         @Path("latitude") latitude: Double,
         @Path("longitude") longitude: Double
     ): Call<Unit>
-
-    @GET("clientes/petshops-proximos/{idCliente}")
-    fun getPetshopsByClienteBairro(@Path("idCliente") idCliente: Int): Call<List<Petshop>>
 }

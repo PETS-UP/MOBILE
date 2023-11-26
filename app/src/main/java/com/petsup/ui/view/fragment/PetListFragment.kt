@@ -25,6 +25,9 @@ class PetListFragment : Fragment() {
 
     private lateinit var binding: FragmentPetListBinding
     private val viewModel = PetListViewModel()
+    private val sharedPref by lazy {
+        requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,13 +80,12 @@ class PetListFragment : Fragment() {
         if (pets.isNotEmpty()) {
             binding.recyclerView.layoutManager = LinearLayoutManager(context)
             binding.recyclerView.setHasFixedSize(true)
-            binding.recyclerView.adapter = PetsAdapter(pets)
+            binding.recyclerView.adapter = PetsAdapter(pets, sharedPref.getInt("idCliente", 0))
         }
     }
 
     //private fun getPets(idCliente: Int) = viewModel.listPets(idCliente)
     private fun getPets(){
-        val sharedPref = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE)
         Log.d("CCCCCCC", "${sharedPref.getInt("idCliente", 0)}")
         viewModel.listPets(sharedPref.getInt("idCliente", 0))
     }

@@ -1,16 +1,12 @@
 package com.petsup.services
 
 import com.petsup.models.petshop.Petshop
-import com.petsup.models.petshop.PetshopAvaliacao
 import com.petsup.models.petshop.PetshopMediaAvaliacao
 import com.petsup.models.petshop.PetshopMediaPreco
 import retrofit2.Call
-import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.PUT
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface PetshopService {
     @GET("petshops")
