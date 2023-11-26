@@ -9,8 +9,8 @@ data class PetshopMediaAvaliacao(
     val nota: Double,
     val imagemPerfil: String,
     val isOpen: Boolean,
-    val horaAbertura: LocalTime,
-    val horaFechamento: LocalTime,
+    val horaAbertura: String,
+    val horaFechamento: String,
     val rua: String,
     val numero: String
 ) : Serializable

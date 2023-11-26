@@ -6,8 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.petsup.api.Rest
-import com.petsup.models.cliente.ClienteDetalhes
+import com.petsup.models.petshop.Petshop
 import com.petsup.models.servico.ServicoResposta
+import com.petsup.services.PetshopService
+import com.petsup.models.cliente.ClienteDetalhes
 import com.petsup.services.ClienteService
 import com.petsup.services.FavoritoService
 import com.petsup.services.ServicoService
@@ -30,22 +32,56 @@ class PetshopDetailViewModel : ViewModel() {
     private var _serviceList = MutableLiveData<List<ServicoResposta>>()
     val serviceList: LiveData<List<ServicoResposta>> = _serviceList
 
+    private var _petshop = MutableLiveData<Petshop>()
+    val petshop: LiveData<Petshop> = _petshop
+  
     private var _favorite = MutableLiveData<Unit>()
     val favorite: LiveData<Unit> = _favorite
 
-    private val api by lazy {
+    private val apiPetshop by lazy {
+        Rest.getInstance().create(PetshopService::class.java)
+    }
+
+    private val apiServico by lazy {
+        Rest.getInstance().create(ServicoService::class.java)
+    }
+    
+    private val apiFavorito by lazy {
         Rest.getInstance().create(FavoritoService::class.java)
     }
 
     fun getServices(idPetshop: Int) = viewModelScope.launch(Dispatchers.IO) {
-        _serviceList.postValue(
-            Rest.getInstance().create<ServicoService>().getServicosByIdPetshop(idPetshop).execute()
-                .body()
-        )
+        apiServico.getServicosByIdPetshop(idPetshop).enqueue(object : Callback<List<ServicoResposta>> {
+            override fun onResponse(
+                call: Call<List<ServicoResposta>>,
+                response: Response<List<ServicoResposta>>
+            ) {
+                _serviceList.postValue(response.body())
+            }
+
+            override fun onFailure(call: Call<List<ServicoResposta>>, t: Throwable) {
+                Log.e("DETAIL", "Error fetching services at PetshopDetail")
+            }
+
+        })
     }
 
+    fun getPetshopById(idPetshop: Int) = viewModelScope.launch(Dispatchers.IO) {
+        apiPetshop.getPetshopById(idPetshop)
+            .enqueue(object : Callback<Petshop> {
+                override fun onResponse(call: Call<Petshop>, response: Response<Petshop>) {
+                    _petshop.postValue(response.body())
+                }
+
+                override fun onFailure(call: Call<Petshop>, t: Throwable) {
+                    Log.e("DETAIL", "Error fetching petshop at PetshopDetail")
+                }
+
+            })
+    }
+    
     fun isFavoritado(idCliente: Int, idPetshop: Int) = viewModelScope.launch(Dispatchers.IO) {
-        api.isFavoritado(idCliente, idPetshop).enqueue(object : Callback<Boolean> {
+        apiFavorito.isFavoritado(idCliente, idPetshop).enqueue(object : Callback<Boolean> {
             override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                 if (response.body() == true){
                     _state.postValue(PetshopDetailViewHolder.Filled())
@@ -65,7 +101,7 @@ class PetshopDetailViewModel : ViewModel() {
     }
 
     fun requestPostFavorito(idCliente: Int, idPetshop: Int) = viewModelScope.launch(Dispatchers.IO) {
-        api.postFavorito(idCliente, idPetshop).enqueue(object : Callback<Unit> {
+        apiFavorito.postFavorito(idCliente, idPetshop).enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 _favorite.postValue(Unit)
                 _state.postValue(PetshopDetailViewHolder.Filled())
@@ -79,7 +115,7 @@ class PetshopDetailViewModel : ViewModel() {
     }
 
     fun requestDeleteFavorito(idCliente: Int, idPetshop: Int) = viewModelScope.launch(Dispatchers.IO) {
-        api.deleteFavorito(idCliente, idPetshop).enqueue(object : Callback<Unit> {
+        apiFavorito.deleteFavorito(idCliente, idPetshop).enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 _favorite.postValue(Unit)
                 _state.postValue(PetshopDetailViewHolder.Empty())
@@ -90,20 +126,5 @@ class PetshopDetailViewModel : ViewModel() {
             }
 
         })
-    }
-
-    private suspend fun requestIsFavoritado(
-        idCliente: Int,
-        idPetshop: Int
-    ): Response<Boolean> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val request = api.isFavoritado(idCliente, idPetshop)
-                val response = request.await()
-                Response.success(response)
-            } catch (e: HttpException) {
-                Response.error(e.code(), e.response()?.errorBody())
-            }
-        }
     }
 }

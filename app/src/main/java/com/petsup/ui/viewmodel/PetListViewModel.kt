@@ -1,5 +1,6 @@
 package com.petsup.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -47,26 +48,25 @@ class PetListViewModel : ViewModel() {
         })
     }
 
-    fun deletePet(idPet: Int) = viewModelScope.launch(Dispatchers.IO) {
+    fun deletePet(idPet: Int, idCliente: Int) = viewModelScope.launch(Dispatchers.IO) {
         val request = api.deletePet(idPet)
 
         request.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 if (response.isSuccessful) {
-                    _petList.value?.toMutableList()?.apply {
-                        val iterator = iterator()
-                        while (iterator.hasNext()) {
-                            val pet = iterator.next()
-                            if (pet.id == idPet) {
-                                iterator.remove()
-                                _petList.postValue(this)
-                                break
-                            }
+                    api.listPets(idCliente).enqueue(object : Callback<List<PetResposta>> {
+                        override fun onResponse(
+                            call: Call<List<PetResposta>>,
+                            response: Response<List<PetResposta>>
+                        ) {
+                            _petList.postValue(response.body())
                         }
-                        if (this.isEmpty()) {
-                            _state.value = PetListViewHolder.EmptyPetList()
+
+                        override fun onFailure(call: Call<List<PetResposta>>, t: Throwable) {
+                            Log.e("PET LIST VIEW MODEL", "Error deleting pet: $t")
                         }
-                    }
+
+                    })
                 }
             }
 

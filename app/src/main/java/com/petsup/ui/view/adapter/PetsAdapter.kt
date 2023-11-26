@@ -8,7 +8,7 @@ import com.petsup.models.pet.PetResposta
 import com.petsup.ui.model.PetViewHolder
 import com.petsup.ui.viewmodel.PetListViewModel
 
-class PetsAdapter(private val petCadastros: List<PetResposta>) : RecyclerView.Adapter<PetViewHolder>() {
+class PetsAdapter(private val petCadastros: List<PetResposta>, private val idCliente: Int) : RecyclerView.Adapter<PetViewHolder>() {
 
     private val viewModel by lazy {
         PetListViewModel()
@@ -28,7 +28,7 @@ class PetsAdapter(private val petCadastros: List<PetResposta>) : RecyclerView.Ad
         holder.petInfo.text = "${pet.especie}, ${pet.sexo}"
 
         holder.deleteButton.setOnClickListener {
-            viewModel.deletePet(pet.id)
+            viewModel.deletePet(pet.id, idCliente)
         }
     }
 }

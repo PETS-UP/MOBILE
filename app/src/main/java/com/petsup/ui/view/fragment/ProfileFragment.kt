@@ -19,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.petsup.R
 import com.petsup.databinding.FragmentProfileBinding
 import com.petsup.ui.view.activity.BottomMenuActivity
+import com.petsup.ui.view.activity.MainActivity
 import com.petsup.ui.view.activity.ProfileDataActivity
 import kotlin.system.exitProcess
 
@@ -58,7 +59,8 @@ class ProfileFragment : Fragment() {
             AlertDialog.Builder(requireContext())
                 .setMessage("Tem certeza que quer sair do aplicativo?")
                 .setPositiveButton("Sair", DialogInterface.OnClickListener { _, _ ->
-                    exitProcess(0)
+                    val intent = Intent(context, MainActivity::class.java)
+                    startActivity(intent)
                 })
                 .setNegativeButton("Cancelar", DialogInterface.OnClickListener { _, _ ->
                     editor.putInt("idCliente", idCliente)
