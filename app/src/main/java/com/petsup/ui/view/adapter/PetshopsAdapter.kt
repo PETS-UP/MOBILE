@@ -26,10 +26,6 @@ import kotlinx.coroutines.launch
 
 class PetshopsAdapter(private val petshops: List<PetshopExibicao>, private val context: Context, val fn: ((Int) -> Unit)) : RecyclerView.Adapter<PetshopViewHolder>() {
 
-    private val viewModel by lazy {
-        HomeViewModel()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetshopViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.adapter_petshop_item, parent, false)
         return PetshopViewHolder(itemView)
