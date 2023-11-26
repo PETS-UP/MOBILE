@@ -30,14 +30,10 @@ class PetGenderActivity : AppCompatActivity() {
     private fun setupOnClick() = with(binding) {
         maleCardView.setOnClickListener {
             viewModel.postPetStack("M")
-            val intent = Intent(this@PetGenderActivity, PetNameActivity::class.java)
-            startActivity(intent)
         }
 
         femaleCardView.setOnClickListener {
             viewModel.postPetStack("F")
-            val intent = Intent(this@PetGenderActivity, PetNameActivity::class.java)
-            startActivity(intent)
         }
 
         arrowBack.setOnClickListener {

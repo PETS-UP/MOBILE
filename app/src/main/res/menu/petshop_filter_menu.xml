@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/filter_rating"
-        android:title="Melhores avaliações" />
-
-    <item
         android:id="@+id/filter_distance"
         android:title="Próximos de mim" />
 
     <item
-        android:id="@+id/filter_favorite"
-        android:title="Meus favoritos" />
-
-    <item
         android:id="@+id/filter_price"
         android:title="Melhores preços" />
+
+    <item
+        android:id="@+id/filter_rating"
+        android:title="Melhores avaliações" />
+
+    <item
+        android:id="@+id/filter_favorite"
+        android:title="Meus favoritos" />
 </menu>

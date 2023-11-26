@@ -10,8 +10,8 @@ data class PetshopMediaPreco (
     val imagemPerfil: String,
     val isOpen: Boolean,
     val nota: Double,
-    val horaAbertura: LocalTime,
-    val horaFechamento: LocalTime,
+    val horaAbertura: String,
+    val horaFechamento: String,
     val rua: String,
     val numero: String
 ) : Serializable

@@ -7,15 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.petsup.R
 import com.petsup.databinding.FragmentBookingListBinding
-import com.petsup.databinding.FragmentHomeBinding
 import com.petsup.models.AgendamentoResposta
-import com.petsup.models.petshop.Petshop
 import com.petsup.ui.view.adapter.BookingsAdapter
-import com.petsup.ui.view.adapter.PetshopsAdapter
 import com.petsup.ui.viewmodel.BookingListViewModel
-import com.petsup.ui.viewmodel.HomeViewModel
 
 class BookingListFragment : Fragment() {
 
