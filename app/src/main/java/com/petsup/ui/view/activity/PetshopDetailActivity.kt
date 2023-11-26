@@ -40,19 +40,8 @@ class PetshopDetailActivity : AppCompatActivity() {
         setObservers()
         getServicos(petshop.id)
         isFavoritado(idCliente, petshop.id)
-
-        binding.arrowBack.setOnClickListener {
-            this.finish()
-        }
-
-        Glide.with(this).load(petshop.imagemPerfil)
-            .apply(RequestOptions.bitmapTransform(CircleCrop())).into(binding.petshopIcon)
-        binding.petshopName.text = petshop.nome
-        binding.gradeTextView.text = FormatterObject.formatGrade(petshop.nota)
-        binding.petshopInfo.text = "${petshop.rua}, ${petshop.numero}\nContato - ${
-            FormatterObject.formatPhoneNumber(petshop.telefone)
-        }"
-        binding.petshopStatus.text = FormatterObject.formatStatus(petshop.isOpen)
+        setOnClick()
+        setContent()
     }
 
     private fun initRecyclerView(services: List<ServicoResposta>) {
@@ -67,33 +56,41 @@ class PetshopDetailActivity : AppCompatActivity() {
         })
 
         viewModel.state.observe(this@PetshopDetailActivity) {
-            var teste = false
+            when (it) {
+                is PetshopDetailViewHolder.Filled -> {
+                    binding.favoriteButtonFilled.isVisible = true
+                    binding.favoriteButton.isVisible = false
+                }
 
-            binding.favoriteButton.setOnClickListener {
-                setFavoriteButton(teste)
-                teste = !teste
+                is PetshopDetailViewHolder.Empty -> {
+                    binding.favoriteButtonFilled.isVisible = false
+                    binding.favoriteButton.isVisible = true
+                }
             }
-
-            binding.favoriteButtonFilled.setOnClickListener {
-                setFavoriteButton(teste)
-                teste = !teste
-            }
-
-            Log.d("Fora", it.toString())
-
         }
     }
 
-    private fun setFavoriteButton(isFavorite: Boolean){
-        if (isFavorite){
+    private fun setOnClick() = with(binding) {
+        favoriteButton.setOnClickListener {
             postFavorito(idCliente, petshop.id)
-            binding.favoriteButtonFilled.isVisible = true
-            binding.favoriteButton.isVisible = false
-        } else{
-            deleteFavorito(idCliente, petshop.id)
-            binding.favoriteButtonFilled.isVisible = false
-            binding.favoriteButton.isVisible = true
         }
+        favoriteButtonFilled.setOnClickListener {
+            deleteFavorito(idCliente, petshop.id)
+        }
+        arrowBack.setOnClickListener {
+            finish()
+        }
+    }
+
+    private fun setContent() = with(binding) {
+        Glide.with(this@PetshopDetailActivity).load(petshop.imagemPerfil)
+            .apply(RequestOptions.bitmapTransform(CircleCrop())).into(petshopIcon)
+        petshopName.text = petshop.nome
+        gradeTextView.text = FormatterObject.formatGrade(petshop.nota)
+        petshopInfo.text = "${petshop.rua}, ${petshop.numero}\nContato - ${
+            FormatterObject.formatPhoneNumber(petshop.telefone)
+        }"
+        petshopStatus.text = FormatterObject.formatStatus(petshop.isOpen)
     }
 
     private fun getServicos(idPetshop: Int) = viewModel.getServices(idPetshop)
