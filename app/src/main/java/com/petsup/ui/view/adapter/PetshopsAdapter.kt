@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewModelScope
+import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.request.RequestOptions
 import com.petsup.R
 import com.petsup.models.petshop.Petshop
 import com.petsup.models.petshop.PetshopExibicao
@@ -23,6 +22,7 @@ import com.petsup.ui.viewmodel.HomeViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.Normalizer.Form
 
 class PetshopsAdapter(private val petshops: List<PetshopExibicao>, private val context: Context, val fn: ((Int) -> Unit)) : RecyclerView.Adapter<PetshopViewHolder>() {
 
@@ -40,6 +40,7 @@ class PetshopsAdapter(private val petshops: List<PetshopExibicao>, private val c
         holder.cardTitle.text = petshop.nome
         holder.cardLocation.text = "${petshop.rua}, ${petshop.numero}"
         holder.cardStatus.text = FormatterObject.formatStatus(petshop.isOpen ?: false)
+        holder.cardStatus.setTextColor(FormatterObject.formatStatusColor(petshop.isOpen))
         holder.gradeTextView.text = FormatterObject.formatGrade(petshop.nota ?: 0.0)
 
         holder.itemView.setOnClickListener {
