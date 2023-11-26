@@ -33,7 +33,4 @@ interface PetshopService {
 
     @GET("clientes/petshops-proximos/{idCliente}")
     fun getPetshopsByClienteBairro(@Path("idCliente") idCliente: Int): Call<List<Petshop>>
-
-    @GET("favoritos/{idCliente}")
-    fun getFavoritos(@Path("idCliente") idCliente: Int): Call<List<Petshop>>
 }

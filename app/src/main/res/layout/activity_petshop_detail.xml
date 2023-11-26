@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <ImageButton
         android:id="@+id/arrow_back"
@@ -27,9 +27,9 @@
         style="@style/default_title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Fofinho Pet shop"
         app:layout_constraintStart_toEndOf="@id/petshop_icon"
-        app:layout_constraintTop_toTopOf="@id/petshop_icon" />
+        app:layout_constraintTop_toTopOf="@id/petshop_icon"
+        tools:text="Fofinho Pet shop" />
 
     <ImageView
         android:id="@+id/grade_image_view"
@@ -47,27 +47,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        tools:text="4.5"
         app:layout_constraintStart_toEndOf="@id/grade_image_view"
-        app:layout_constraintTop_toBottomOf="@id/petshop_name" />
+        app:layout_constraintTop_toBottomOf="@id/petshop_name"
+        tools:text="4.5" />
 
     <TextView
         android:id="@+id/petshop_info"
         style="@style/gray_description_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Cerqueira César, São Paulo\nContato - (11) 94598-2534"
         app:layout_constraintStart_toStartOf="@id/petshop_name"
-        app:layout_constraintTop_toBottomOf="@id/grade_text_view" />
+        app:layout_constraintTop_toBottomOf="@id/grade_text_view"
+        tools:text="Cerqueira César, São Paulo\nContato - (11) 94598-2534" />
 
     <TextView
         android:id="@+id/petshop_status"
         style="@style/green_description_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Aberto"
         app:layout_constraintStart_toStartOf="@id/petshop_name"
-        app:layout_constraintTop_toBottomOf="@id/petshop_info" />
+        app:layout_constraintTop_toBottomOf="@id/petshop_info"
+        tools:text="Aberto" />
 
     <ImageView
         android:id="@+id/favorite_button"
@@ -76,6 +76,17 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/favorite_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/petshop_name" />
+
+    <ImageView
+        android:id="@+id/favorite_button_filled"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/filled_favorite_icon"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/petshop_name" />
 

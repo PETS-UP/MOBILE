@@ -4,17 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.request.RequestOptions
 import com.petsup.R
 import com.petsup.models.petshop.Petshop
 import com.petsup.ui.view.activity.PetshopDetailActivity
 import com.petsup.ui.model.PetshopViewHolder
 import com.petsup.ui.`object`.FormatterObject
-import com.petsup.ui.view.activity.BookingConfirmationActivity
 
 class PetshopsAdapter(private val petshops: List<Petshop>, private val context: Context) : RecyclerView.Adapter<PetshopViewHolder>() {
 
