@@ -1,5 +1,6 @@
 package com.petsup.ui.`object`
 
+import android.graphics.Color
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 
@@ -14,6 +15,10 @@ object FormatterObject {
 
     fun formatStatus(isOpen: Boolean): String {
         return if (isOpen) "Aberto" else "Fechado agora"
+    }
+
+    fun formatStatusColor(isOpen: Boolean): Int {
+        return if (isOpen) Color.GREEN else Color.RED
     }
 
     fun formatDateTime(timestamp: Long): String {
