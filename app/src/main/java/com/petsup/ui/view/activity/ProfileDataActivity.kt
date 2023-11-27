@@ -46,7 +46,6 @@ class ProfileDataActivity : AppCompatActivity(){
     private fun setContent(cliente: ClienteDetalhes) = with(binding){
         nameEditText.text = cliente.nome.toString()
         emailEditText.text = cliente.email.toString()
-        birthDateEditText.text = cliente.dataNasc.toString()
         phoneEditText.text = cliente.telefone.toString()
         cpfEditText.text = cliente.cpf.toString()
         cepEditText.text = cliente.cep.toString()

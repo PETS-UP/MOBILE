@@ -77,30 +77,11 @@
                 android:background="@drawable/default_edit_text_background" />
 
             <TextView
-                android:id="@+id/forms_birth_date_text_view"
-                style="@style/default_forms_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/email_edit_text"
-                android:layout_alignStart="@id/name_edit_text"
-                android:text="Data de nascimento" />
-
-            <TextView
-                android:id="@+id/birth_date_edit_text"
-                style="@style/default_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/forms_birth_date_text_view"
-                android:layout_alignStart="@id/forms_email_text_view"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/default_edit_text_background" />
-
-            <TextView
                 android:id="@+id/forms_phone_text_view"
                 style="@style/default_forms_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/birth_date_edit_text"
+                android:layout_below="@id/email_edit_text"
                 android:layout_alignStart="@id/name_edit_text"
                 android:text="Telefone" />
 
