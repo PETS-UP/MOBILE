@@ -90,8 +90,8 @@ class PetshopDetailActivity : AppCompatActivity() {
         petshopInfo.text = "${petshop.rua}, ${petshop.numero}\nContato - ${
             FormatterObject.formatPhoneNumber(petshop.telefone)
         }"
-        petshopStatus.text = FormatterObject.formatStatus(true) //petshop.isOpen
-        petshopStatus.setTextColor(FormatterObject.formatStatusColor(true))
+        petshopStatus.text = FormatterObject.formatStatus(false) //petshop.isOpen
+        petshopStatus.setTextColor(FormatterObject.formatStatusColor(false))
     }
 
     private fun getServicos(idPetshop: Int) = viewModel.getServices(idPetshop)

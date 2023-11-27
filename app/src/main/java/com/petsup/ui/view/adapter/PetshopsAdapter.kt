@@ -39,8 +39,8 @@ class PetshopsAdapter(private val petshops: List<PetshopExibicao>, private val c
         Glide.with(context).load(petshop.imagemPerfil).into(holder.petshopIcon)
         holder.cardTitle.text = petshop.nome
         holder.cardLocation.text = "${petshop.rua}, ${petshop.numero}"
-        holder.cardStatus.text = FormatterObject.formatStatus(true) //petshop.isOpen
-        holder.cardStatus.setTextColor(FormatterObject.formatStatusColor(true)) //petshop.isOpen
+        holder.cardStatus.text = FormatterObject.formatStatus(false) //petshop.isOpen
+        holder.cardStatus.setTextColor(FormatterObject.formatStatusColor(false)) //petshop.isOpen
         holder.gradeTextView.text = FormatterObject.formatGrade(petshop.nota ?: 0.0)
 
         holder.itemView.setOnClickListener {
