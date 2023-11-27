@@ -90,7 +90,7 @@ class PetshopDetailActivity : AppCompatActivity() {
         petshopInfo.text = "${petshop.rua}, ${petshop.numero}\nContato - ${
             FormatterObject.formatPhoneNumber(petshop.telefone)
         }"
-        petshopStatus.text = FormatterObject.formatStatus(petshop.isOpen)
+        petshopStatus.text = FormatterObject.formatStatus(true) //petshop.isOpen
         petshopStatus.setTextColor(FormatterObject.formatStatusColor(petshop.isOpen))
     }
 
