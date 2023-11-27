@@ -40,7 +40,7 @@ class PetshopsAdapter(private val petshops: List<PetshopExibicao>, private val c
         holder.cardTitle.text = petshop.nome
         holder.cardLocation.text = "${petshop.rua}, ${petshop.numero}"
         holder.cardStatus.text = FormatterObject.formatStatus(petshop.isOpen ?: false)
-        holder.cardStatus.setTextColor(FormatterObject.formatStatusColor(petshop.isOpen))
+        holder.cardStatus.setTextColor(FormatterObject.formatStatusColor(petshop.isOpen ?: false))
         holder.gradeTextView.text = FormatterObject.formatGrade(petshop.nota ?: 0.0)
 
         holder.itemView.setOnClickListener {

@@ -12,6 +12,7 @@ import com.petsup.models.petshop.PetshopExibicao
 import com.petsup.models.petshop.PetshopMediaAvaliacao
 import com.petsup.models.petshop.PetshopMediaPreco
 import com.petsup.services.ClienteService
+import com.petsup.services.FavoritoService
 import com.petsup.services.PetshopService
 import com.petsup.ui.`object`.MapperObject
 import kotlinx.coroutines.Dispatchers
@@ -40,6 +41,10 @@ class HomeViewModel : ViewModel() {
 
     private val apiPetshop by lazy {
         Rest.getInstance().create(PetshopService::class.java)
+    }
+
+    private val apiFavorito by lazy {
+        Rest.getInstance().create(FavoritoService::class.java)
     }
 
     fun getPetshops() = viewModelScope.launch(Dispatchers.IO) {
@@ -120,7 +125,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun getFavoritos(idCliente: Int) = viewModelScope.launch(Dispatchers.IO) {
-        apiPetshop.getFavoritos(idCliente).enqueue(object : Callback<List<Petshop>> {
+        apiFavorito.getFavoritos(idCliente).enqueue(object : Callback<List<Petshop>> {
             override fun onResponse(call: Call<List<Petshop>>, response: Response<List<Petshop>>) {
                 _petshopList.postValue(MapperObject.listPetshopToListPetshopExibicao(response.body() ?: emptyList()))
             }
