@@ -25,8 +25,8 @@
         android:layout_height="80dp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="24dp"
-        android:drawableTop="@drawable/baseline_save_24"
-        android:text="@string/save" />
+        android:drawableTop="@drawable/baseline_edit_24"
+        android:text="@string/edit_profile" />
 
     <ScrollView
         android:id="@+id/scroll_view"

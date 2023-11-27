@@ -6,13 +6,22 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
+import com.petsup.api.Rest
 import com.petsup.databinding.ActivityProfileDataBinding
 import com.petsup.models.cliente.ClienteDetalhes
+import com.petsup.services.ClienteService
 import com.petsup.ui.viewmodel.ProfileDataViewModel
 
 class ProfileDataActivity : AppCompatActivity(){
     private lateinit var binding: ActivityProfileDataBinding
     private val viewModel = ProfileDataViewModel()
+
+    private val sharedPref by lazy {
+        getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
 
     private var idCliente = 0
 
@@ -22,7 +31,6 @@ class ProfileDataActivity : AppCompatActivity(){
         binding = ActivityProfileDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
         idCliente = sharedPref.getInt("idCliente", 0)
 
         setObserver()
@@ -55,6 +63,11 @@ class ProfileDataActivity : AppCompatActivity(){
         districtEditText.text = cliente.bairro.toString()
         streetEditText.text = cliente.rua.toString()
         numberEditText.text = cliente.numero.toString()
+
+        Glide.with(this@ProfileDataActivity).load(sharedPref.getString("imagemPerfilCliente", "")).apply(
+            RequestOptions.bitmapTransform(
+                CircleCrop()
+            )).into(profileIcon)
 
         arrowBack.setOnClickListener {
             back()
