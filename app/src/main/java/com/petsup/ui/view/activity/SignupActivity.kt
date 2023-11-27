@@ -8,7 +8,6 @@ import com.petsup.api.Rest
 import com.petsup.ui.`object`.ValidationObject
 import com.petsup.databinding.ActivitySignupBinding
 import com.petsup.models.cliente.ClienteCadastro
-import com.petsup.models.cliente.ClienteDetalhes
 import com.petsup.services.ClienteService
 import retrofit2.Call
 import retrofit2.Callback
@@ -64,7 +63,7 @@ class SignupActivity : AppCompatActivity() {
         val retIn = Rest.getInstance().create(ClienteService::class.java)
         val registerInfo = ClienteCadastro(nome, email, senha)
 
-        retIn.postCLiente(registerInfo).enqueue(object : Callback<Unit> {
+        retIn.postCliente(registerInfo).enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>){
                 if (response.isSuccessful) {
                     // A resposta da API foi bem-sucedida

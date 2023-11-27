@@ -1,20 +1,16 @@
 package com.petsup.ui.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.petsup.R
 import com.petsup.databinding.FragmentBookingListBinding
-import com.petsup.databinding.FragmentHomeBinding
 import com.petsup.models.AgendamentoResposta
-import com.petsup.models.petshop.Petshop
 import com.petsup.ui.view.adapter.BookingsAdapter
-import com.petsup.ui.view.adapter.PetshopsAdapter
 import com.petsup.ui.viewmodel.BookingListViewModel
-import com.petsup.ui.viewmodel.HomeViewModel
 
 class BookingListFragment : Fragment() {
 
@@ -22,9 +18,9 @@ class BookingListFragment : Fragment() {
     private val viewModel = BookingListViewModel()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val sharedPref = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        getAgendamentos(sharedPref.getInt("idCliente", 0))
         setObservers()
-        getAgendamentos(2)
     }
 
     override fun onCreateView(

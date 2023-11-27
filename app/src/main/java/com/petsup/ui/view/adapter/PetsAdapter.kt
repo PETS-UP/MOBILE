@@ -6,8 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.petsup.R
 import com.petsup.models.pet.PetResposta
 import com.petsup.ui.model.PetViewHolder
+import com.petsup.ui.viewmodel.PetListViewModel
 
-class PetsAdapter(private val petCadastros: List<PetResposta>) : RecyclerView.Adapter<PetViewHolder>() {
+class PetsAdapter(private val petCadastros: List<PetResposta>, private val idCliente: Int) : RecyclerView.Adapter<PetViewHolder>() {
+
+    private val viewModel by lazy {
+        PetListViewModel()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.adapter_pet_item, parent, false)
@@ -23,7 +28,7 @@ class PetsAdapter(private val petCadastros: List<PetResposta>) : RecyclerView.Ad
         holder.petInfo.text = "${pet.especie}, ${pet.sexo}"
 
         holder.deleteButton.setOnClickListener {
-            TODO()
+            viewModel.deletePet(pet.id, idCliente)
         }
     }
 }

@@ -1,26 +1,123 @@
 package com.petsup.ui.view.fragment
 
+import android.Manifest
+import android.content.Context
+import android.content.Intent
+import android.content.IntentSender.SendIntentException
+import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.location.LocationSettingsStatusCodes
+import com.petsup.R
 import com.petsup.databinding.FragmentHomeBinding
 import com.petsup.models.petshop.Petshop
+import com.petsup.models.petshop.PetshopExibicao
+import com.petsup.ui.view.activity.PetshopDetailActivity
 import com.petsup.ui.view.adapter.PetshopsAdapter
 import com.petsup.ui.viewmodel.HomeViewModel
+
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val viewModel = HomeViewModel()
+    private lateinit var locationRequest: LocationRequest
+
+    private val sharedPrefs by lazy {
+        requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(5000);
+        locationRequest.setFastestInterval(2000);
+
+        if (ActivityCompat.checkSelfPermission(super.requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (isGPSEnabled()) {
+                LocationServices.getFusedLocationProviderClient(super.requireActivity())
+                    .requestLocationUpdates(locationRequest, object : LocationCallback() {
+                        override fun onLocationResult(locationResult: LocationResult) {
+                            super.onLocationResult(locationResult)
+                            LocationServices.getFusedLocationProviderClient(requireActivity())
+                                .removeLocationUpdates(this)
+                            if (locationResult != null && locationResult.locations.size > 0) {
+                                val index = locationResult.locations.size - 1
+                                val latitude = locationResult.locations[index].latitude
+                                val longitude = locationResult.locations[index].longitude
+                                Log.i("COORDINATES", latitude.toString())
+                                Log.i("COORDINATES", longitude.toString())
+                                viewModel.updateCurrentLocation(sharedPrefs.getInt("idCliente", 0), latitude, longitude)
+                            }
+                        }
+                    }, Looper.getMainLooper())
+            } else {
+                turnOnGPS()
+            }
+        } else {
+            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+        }
+
         setObservers()
+        setOnClick()
         getPetshops()
+    }
+
+    private fun setOnClick() = with(binding) {
+        filterButton.setOnClickListener {
+            showPopup(it)
+        }
+    }
+
+    private fun showPopup(view: View) {
+        val idCliente = sharedPrefs.getInt("idCliente", 0)
+
+        val popup = PopupMenu(context, view)
+        popup.inflate(R.menu.petshop_filter_menu)
+
+        popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
+
+            when (item!!.itemId) {
+                R.id.filter_distance -> {
+                    viewModel.getPetshopsByClienteBairro(idCliente)
+                }
+                R.id.filter_price -> {
+                    viewModel.getPetshopsByMediaPreco()
+                }
+                R.id.filter_rating -> {
+                    viewModel.getPetshopsByMediaAvaliacao()
+                }
+                R.id.filter_favorite -> {
+                    viewModel.getFavoritos(idCliente)
+                }
+            }
+
+            true
+        })
+
+        popup.show()
     }
 
     override fun onCreateView(
@@ -35,13 +132,63 @@ class HomeFragment : Fragment() {
         viewModel.petshopList.observe(viewLifecycleOwner) {
             initRecyclerView(it)
         }
+
+        viewModel.petshop.observe(viewLifecycleOwner) {
+            val intent = Intent(context, PetshopDetailActivity::class.java)
+            intent.putExtra("petshop", it)
+            Log.i("INTENT", intent.getSerializableExtra("petshop").toString())
+            requireContext().startActivity(intent)
+        }
     }
 
-    private fun initRecyclerView(petshops: List<Petshop>) {
+    private fun initRecyclerView(petshops: List<PetshopExibicao>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = PetshopsAdapter(petshops)
+        binding.recyclerView.adapter = setAdapter(petshops)
+    }
+
+    private fun setAdapter(petshops: List<PetshopExibicao>): PetshopsAdapter {
+        return PetshopsAdapter(petshops, requireContext()) {
+            viewModel.getPetshopById(it)
+        }
     }
 
     private fun getPetshops() = viewModel.getPetshops()
+
+    private fun turnOnGPS() {
+        val builder = LocationSettingsRequest.Builder()
+            .addLocationRequest(locationRequest)
+        builder.setAlwaysShow(true)
+        val result = LocationServices.getSettingsClient(requireActivity())
+            .checkLocationSettings(builder.build())
+        result.addOnCompleteListener { task ->
+            try {
+                val response = task.getResult(ApiException::class.java)
+                Toast.makeText(requireContext(), "O GPS já está ativado", Toast.LENGTH_SHORT)
+                    .show()
+            } catch (e: ApiException) {
+                when (e.statusCode) {
+                    LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> try {
+                        val resolvableApiException = e as ResolvableApiException
+                        resolvableApiException.startResolutionForResult(requireActivity(), 2)
+                    } catch (ex: SendIntentException) {
+                        ex.printStackTrace()
+                    }
+
+                    LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> {}
+                }
+            }
+        }
+    }
+
+    private fun isGPSEnabled(): Boolean {
+        var locationManager: LocationManager? = null
+        var isEnabled = false
+        if (locationManager == null) {
+            locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+        }
+        isEnabled = locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        return isEnabled
+    }
+
 }
