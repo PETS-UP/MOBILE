@@ -19,7 +19,7 @@
     <Button
         android:id="@+id/history_button"
         style="@style/vertical_button_with_icon"
-        android:layout_width="90dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
