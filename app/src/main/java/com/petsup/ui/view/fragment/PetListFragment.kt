@@ -77,6 +77,8 @@ class PetListFragment : Fragment() {
 
     private fun initRecyclerView(pets: List<PetResposta>) {
 
+        Log.i("PET LIST", "Pet list: $pets")
+
         if (pets.isNotEmpty()) {
             binding.recyclerView.layoutManager = LinearLayoutManager(context)
             binding.recyclerView.setHasFixedSize(true)

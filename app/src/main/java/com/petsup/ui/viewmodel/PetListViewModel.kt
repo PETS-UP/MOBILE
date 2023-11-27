@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class PetListViewModel : ViewModel() {
     private var _petList = MutableLiveData<List<PetResposta>>()
@@ -36,13 +35,13 @@ class PetListViewModel : ViewModel() {
                 response: Response<List<PetResposta>>
             ) {
                 if (response.isSuccessful) {
-                    _petList.value = response.body()
-                    _state.value = if (response.body()?.isEmpty() == true) PetListViewHolder.EmptyPetList() else PetListViewHolder.PetList()
+                    _petList.postValue(response.body())
+                    _state.postValue(if (response.body()?.isEmpty() == true) PetListViewHolder.EmptyPetList() else PetListViewHolder.PetList())
                 }
             }
 
             override fun onFailure(call: Call<List<PetResposta>>, t: Throwable) {
-                print("Erro ao acessar a lista de pets.")
+                Log.e("PET LIST VIEW MODEL", "Error fetching pets: $t")
             }
 
         })
@@ -54,24 +53,12 @@ class PetListViewModel : ViewModel() {
         request.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 if (response.isSuccessful) {
-                    api.listPets(idCliente).enqueue(object : Callback<List<PetResposta>> {
-                        override fun onResponse(
-                            call: Call<List<PetResposta>>,
-                            response: Response<List<PetResposta>>
-                        ) {
-                            _petList.postValue(response.body())
-                        }
-
-                        override fun onFailure(call: Call<List<PetResposta>>, t: Throwable) {
-                            Log.e("PET LIST VIEW MODEL", "Error deleting pet: $t")
-                        }
-
-                    })
+                    listPets(idCliente)
                 }
             }
 
             override fun onFailure(call: Call<Unit>, t: Throwable) {
-                print("Erro ao deletar o pet.")
+                Log.e("PET LIST VIEW MODEL", "Error deleting pet: $t")
             }
         })
     }
